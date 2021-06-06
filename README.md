@@ -1,2 +1,3 @@
 # dotfiles
-My Dotfiles for GNU/Linux
+
+My dotfiles configuration for GNU/Linux
