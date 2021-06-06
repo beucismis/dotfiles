@@ -1,7 +1,7 @@
 export NAME="beucismis"
 export EMAIL="$NAME@tutamail.com"
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTFILES_DIR/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTFILES_DIR/bin:$HOME/.local/bin"
 
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
