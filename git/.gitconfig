@@ -1,0 +1,45 @@
+[user]
+	name = beucismis
+	email = beucismis@tutamail.com
+[gpg]
+	program = gpg
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+  insteadOf = https://gitlab.com/
+[alias]
+	c = clone
+	i = init
+	a = add
+	m = mv
+	r = restore
+	rm = rm
+	b = bisect
+	d = diff
+	g = grep
+	s = show
+	st = status
+	br = branch
+	cm = commit
+	mr = merge
+	rb = rebase
+	rs = reset
+	t = tag
+	f = fetch
+	p = pull
+	aa = add -A
+	cmt = commit -m
+	rmt = remote -v
+	rr = rm -r
+	l = log
+	lo = log --graph --decorate --all
+	ll = log --graph --decorate --oneline --all
+	ls = ls-files
+[commit]
+	template = ~/.git-commit-template
+	gpgsign = true
+	verbose = true
+[core]
+	editor = nano
+[init]
+	defaultBranch = master
