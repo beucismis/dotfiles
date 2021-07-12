@@ -1,10 +1,7 @@
 [global_config]
-  dbus = False
-  handle_size = 0
-  extra_styling = False
   title_transmit_bg_color = "#26a269"
   inactive_color_offset = 0.5033557046979866
-  suppress_multiple_term_dialog = True
+  enabled_plugins = ActivityWatch, TerminalShot, LaunchpadBugURLHandler, LaunchpadCodeURLHandler
 [keybindings]
 [profiles]
   [[default]]
@@ -24,3 +21,5 @@
       parent = window0
       profile = default
 [plugins]
+  [[ActivityWatch]]
+    hush_period = 30.0
