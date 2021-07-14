@@ -1,10 +1,21 @@
-export NAME="beucismis"
-export EMAIL="$NAME@tutamail.com"
+# ~/.bashrc: executed by bash(1) for non-login shells.
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTFILES_DIR/bin:$HOME/.local/bin"
+[[ $- != *i* ]] && return
 
-export CLICOLOR=1
-export LSCOLORS=gxfxcxdxbxegedabagacad
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
 
-# Tell grep to highlight matches
-export GREP_OPTIONS='—color=auto'
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+PS1="\[\e[0m\][\[\e[0m\]\@\[\e[0m\]] \[\e[0m\][\[\e[0m\]\u\[\e[0m\]@\[\e[0m\]\h\[\e[0m\]:\[\e[0m\]\w\[\e[0m\]\w\[\e[0m\]]\n\[\e[0m\]$ \[\e[0m\]"
