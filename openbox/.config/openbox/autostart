@@ -4,4 +4,4 @@
 # to run user-specific things.
 #
 
-tint2 &
+(sleep 2s && tint2) &
