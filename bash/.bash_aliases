@@ -21,7 +21,7 @@ alias ....="cd ../../.."
 # Others
 
 alias reload="source ~/.bash_profile"
-alias tint2reload="killall -SIGUSR1 tint2"
+alias tint2-reload="killall -SIGUSR1 tint2"
 
 # Scripts
 
