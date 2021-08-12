@@ -264,28 +264,6 @@ separator_size = 3
 separator_padding = 0 0
 
 #-------------------------------------
-# Executor 1
-execp = new
-execp_command = top -bn1 | grep load | awk '{printf "CPU: %.2f %\n", $(NF-2)}'
-execp_interval = 1
-execp_has_icon = 0
-execp_cache_icon = 1
-execp_continuous = 1
-execp_markup = 1
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
-execp_font = Sans 7
-execp_font_color = #eeeeee 100
-execp_padding = 2 0
-execp_background_id = 6
-execp_centered = 0
-execp_icon_w = 0
-execp_icon_h = 0
-
-#-------------------------------------
 # Executor 2
 execp = new
 execp_command = free -m | awk 'NR==2{printf "Mem: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2}'
