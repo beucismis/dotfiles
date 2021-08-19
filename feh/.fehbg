@@ -1,3 +1,3 @@
 #!/bin/sh
 
-feh --bg-scale '/home/adil/'
+feh --bg-scale '~/.local/share/images/attraction_2560x1600.jpg'
