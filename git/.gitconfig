@@ -35,6 +35,7 @@
     lo = log --graph --decorate --all
     ll = log --graph --decorate --oneline --all
     ls = ls-files
+    yolo = !git commit -m "$(curl -s whatthecommit.com/index.txt)"
 [commit]
     template = ~/.git-commit-template
     gpgsign = true
