@@ -35,6 +35,11 @@
     <item label="Restart">
       <action name="Restart" />
     </item>
+    <item label="Tint2Conf">
+      <action name="Execute">
+        <execute>tint2conf</execute>
+      </action>
+    </item>
     <separator />
     <menu id="exit-menu" label="Exit">
       <item label="Log Out">
