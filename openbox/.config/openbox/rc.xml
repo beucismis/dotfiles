@@ -3,8 +3,8 @@
         Copy the file to $HOME/.config/openbox/ instead. -->
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
-    <strength>10</strength>
-    <screen_edge_strength>20</screen_edge_strength>
+    <strength>30</strength>
+    <screen_edge_strength>50</screen_edge_strength>
   </resistance>
   <focus>
     <focusNew>yes</focusNew>
@@ -134,7 +134,7 @@
   </desktops>
   <resize>
     <drawContents>yes</drawContents>
-    <popupShow>Nonpixel</popupShow>
+    <popupShow>Always</popupShow>
     <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
     <popupPosition>Center</popupPosition>
     <!-- 'Center', 'Top', or 'Fixed' -->
@@ -179,6 +179,12 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
+    <keybind key="A-d">
+      <action name="Execute">
+        <name>dmenu</name>
+        <command>dmenu_run -b</command>
+      </action>
+    </keybind>
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
         <to>left</to>
@@ -267,7 +273,7 @@
     <!-- Take a screenshot of the current window with scrot when Print are pressed -->
     <keybind key="Print">
       <action name="Execute">
-        <command></command>
+        <command>~/.local/bin/screenshot.sh</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
@@ -322,13 +328,31 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Konqueror</name>
+          <name>Terminal</name>
         </startupnotify>
-        <command>kfmclient openProfile filemanagement</command>
+        <command>terminator</command>
+      </action>
+    </keybind>
+    <keybind key="W-f">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>File Manager</name>
+        </startupnotify>
+        <command>thunar</command>
+      </action>
+    </keybind>
+    <keybind key="W-b">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Web Browser</name>
+        </startupnotify>
+        <command>firefox</command>
       </action>
     </keybind>
   </keyboard>
@@ -345,6 +369,12 @@
     <!-- Set this to TRUE to move the mouse pointer across the desktop when
        switching due to hitting the edge of the screen -->
     <context name="Frame">
+      <mousebind action="Press" button="W-Left">
+        <action name="UnmaximizeFull"/>
+        <action name="Execute">
+          <command>~/.local/bin/clicksnap.sh</command>
+        </action>
+      </mousebind>
       <mousebind button="A-Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>

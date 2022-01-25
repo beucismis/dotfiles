@@ -5,4 +5,4 @@
 #
 
 (sleep 2s && tint2) &
-feh --bg-scale ~/.local/share/images/attraction_2560x1600.jpg &
+feh --bg-scale ~/.local/share/images/desert_1600x1000.jpg &
