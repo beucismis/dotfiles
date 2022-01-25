@@ -3,6 +3,6 @@
 
 SCREENSHOT_DIR=$HOME/screenshots
 mkdir -p $SCREENSHOT_DIR
-sleep 0.2;
-scrot -s "$SCREENSHOT_DIR/%Y-%m-%d-%H%M%S_\$wx\$h.png" -e "xdg-open \$f"
+sleep 0.2
+scrot -s "$SCREENSHOT_DIR/%Y-%m-%d-%H%M%S_\$wx\$h.png"
 notify-send "New screenshot!"
