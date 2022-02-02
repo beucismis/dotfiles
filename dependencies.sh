@@ -10,7 +10,6 @@ apt update && apt upgrade
 # Window Manager
 apt install -qq openbox -y
 apt install -qq openbox-menu dmenu -y # Menu
-apt install -qq
 
 # Panel
 apt install -qq tint2 -y
