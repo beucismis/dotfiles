@@ -1,4 +1,3 @@
 # dotfiles
 
-My dotfiles configuration for GNU/Linux
-Install: `$ wget -O - https://git.io/JCkRk | bash`
+My dotfiles configuration for GNU/Linux - Install: `$ wget -O - https://git.io/JCkRk | bash`
