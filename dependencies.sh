@@ -13,6 +13,7 @@ apt install -qq lightdm -y
 # Window Manager
 apt install -qq openbox -y
 apt install -qq openbox-menu dmenu -y # Menu
+apt install -qq feh # Background image manager
 
 # Panel
 apt install -qq tint2 -y
@@ -76,4 +77,5 @@ apt install -qq pavucontrol -y # Sound control
 apt install -qq lightdm-gtk-greeter-settings -y # LightDM settingsn -y # VPN too
 
 ## Others
+apt install -qq git -y
 apt install -qq openvpn -y # VPN tool
