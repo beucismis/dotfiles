@@ -5,9 +5,9 @@ if ! [ -x "$(command -v stow)" ]; then
   exit 1
 fi
 
-cd ~
-git clone https://github.com/beucismis/dotfiles
-mv dotfiles .dotfiles
+#cd ~
+#git clone https://github.com/beucismis/dotfiles
+#mv dotfiles .dotfiles
 
 stow --adopt bash
 stow --adopt x11
