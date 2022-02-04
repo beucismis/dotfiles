@@ -240,27 +240,6 @@ execp_icon_w = 0
 execp_icon_h = 0
 
 #-------------------------------------
-# Executor 2
-execp = new
-execp_command = pasystray
-execp_interval = 0
-execp_has_icon = 0
-execp_cache_icon = 0
-execp_continuous = 0
-execp_markup = 0
-execp_lclick_command = 
-execp_rclick_command = 
-execp_mclick_command = 
-execp_uwheel_command = 
-execp_dwheel_command = 
-execp_font_color = #FFFFFF 100
-execp_padding = 0 0
-execp_background_id = 1
-execp_centered = 0
-execp_icon_w = 0
-execp_icon_h = 0
-
-#-------------------------------------
 # Tooltip
 tooltip_show_timeout = 0.5
 tooltip_hide_timeout = 0.1
