@@ -13,7 +13,7 @@ apt install -qq lightdm -y
 # Window Manager
 apt install -qq openbox -y
 apt install -qq openbox-menu dmenu -y # Menu
-apt install -qq feh # Background image manager
+apt install -qq feh -y # Background image manager
 
 # Panel
 apt install -qq tint2 -y
@@ -22,10 +22,10 @@ apt install -qq pasystray -y # Volume control applet
 apt install -qq network-manager-gnome -y # Network control applet
 
 # Deamons
-apt install -qq dunst # Notification
+apt install -qq dunst -y
+apt install -qq libnotify-bin -y
 
 # Theme
-apt install -qq adwaita-icon-theme-full -y # GTK theme
 apt install -qq papirus-icon-theme -y # Icon theme
 apt install -qq comixcursors-righthanded -y # Cursor theme
 
@@ -74,8 +74,9 @@ apt install -qq mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 l
 apt install -qq lxappearance qt5ct -y # Theme settings
 apt install -qq grub-customizer -y # Custom GRUB
 apt install -qq pavucontrol -y # Sound control
-apt install -qq lightdm-gtk-greeter-settings -y # LightDM settingsn -y # VPN too
+apt install -qq lightdm-gtk-greeter-settings -y # LightDM settings
 
 ## Others
+apt install -qq ssh -y
 apt install -qq git -y
 apt install -qq openvpn -y # VPN tool
