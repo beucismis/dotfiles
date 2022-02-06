@@ -273,7 +273,7 @@
     <!-- Take a screenshot of the current window with scrot when Print are pressed -->
     <keybind key="Print">
       <action name="Execute">
-        <command>~/.local/bin/screenshot.sh</command>
+        <command>~/.local/scripts/screenshot.sh</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
@@ -372,7 +372,7 @@
       <mousebind action="Press" button="W-Left">
         <action name="UnmaximizeFull"/>
         <action name="Execute">
-          <command>~/.local/bin/clicksnap.sh</command>
+          <command>~/.local/scripts/clicksnap.sh</command>
         </action>
       </mousebind>
       <mousebind button="A-Left" action="Press">

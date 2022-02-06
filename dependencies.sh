@@ -1,12 +1,13 @@
 #!/bin/bash
 
 if [[ "$(id -u)" != 0 ]]; then
-  echo -e "Requires root permissions!" > >&2
+  echo -e "Requires root permissions!" >&2
   exit 1
 fi
 
 dpkg --add-architecture i386
 apt update && apt upgrade -y
+apt autoremove
 
 # Display Manager
 apt install lightdm -y
@@ -30,11 +31,11 @@ apt install libnotify-bin -y
 apt install papirus-icon-theme -y # Icon theme
 apt install comixcursors-righthanded -y # Cursor theme
 
-## CLI Tools
+# CLI Tools
 apt install htop -y # System monitor
-apt install neofect -y # System fetcher
+apt install neofetch -y # System fetcher
 
-## General Tools
+# General Tools
 apt install tilix -y # Terminal emulator
 apt install thunar -y # File manager
 apt install mousepad -y # Text editor
@@ -52,7 +53,7 @@ apt install flameshot -y # Screenshot tool
 # Online Messaging
 cd /opt
 wget https://github.com/telegramdesktop/tdesktop/releases/download/v3.5.0/tsetup.3.5.0.tar.xz
-tar xjf tsetup.*.tar.xz
+#tar xjf tsetup.*.tar.xz
 rm tsetup.*.tar.xz
 
 # Internet Browser
@@ -71,15 +72,13 @@ apt install steam -y
 apt install mesa-vulkan-drivers libglx-mesa0:i386 \
 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386 -y
 
-## Config Tools
+# Config Tools
 apt install lxappearance qt5ct -y # Theme settings
 apt install grub-customizer -y # Custom GRUB
 apt install pavucontrol -y # Sound control
 apt install lightdm-gtk-greeter-settings -y # LightDM settings
 
-## Others
-apt install ssh -y
-apt install git -y
-apt install openvpn -y
+# Others
+apt install xcompmgr xdotool wmctrl ssh git stow openvpn -y
 
 echo "Done." >&2
