@@ -18,7 +18,6 @@ stow --adopt gtk-3.0
 stow --adopt gtk-2.0
 stow --adopt qt5ct
 stow --adopt git
-stow --adopt terminator
 
 stow --adopt bin
 stow --adopt images
