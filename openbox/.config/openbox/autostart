@@ -4,5 +4,6 @@
 # to run user-specific things.
 #
 
-(sleep 2s && tint2) &
+tint2 &
+xcompmgr &
 feh --bg-scale ~/.local/share/images/desert_1600x1000.jpg &
