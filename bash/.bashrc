@@ -15,5 +15,3 @@ if ! shopt -oq posix; then
     source /etc/bash_completion
   fi
 fi
-
-export PS1="[\A] [\u@\h:\w]\n\\$ \[$(tput sgr0)\]"

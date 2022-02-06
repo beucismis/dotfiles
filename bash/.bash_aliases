@@ -12,20 +12,20 @@ alias c="clear"
 alias rr="rm -rf"
 alias untar="tar -zxvf "
 
-# Directory Listing/Traversal
-alias l="ls -la"
-alias ld="ls -ld */"
-alias ls="ls --color=auto"
+# Directory Traversal/Listing
 alias ..="cd .."
 alias -- -="cd -"
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias l="ls -la"
+alias ld="ls -ld */"
+alias ls="ls --color=auto"
 
 # Package Managers
 alias apt="sudo apt"
-alias update="sudo apt update && sudo apt upgrade"
-alias pip3-update="/usr/bin/python3 -m pip install --upgrade pip"
+alias upup="sudo apt update && sudo apt upgrade -y"
+alias pip3-upgrade="/usr/bin/python3 -m pip install --upgrade pip"
 
 # Others
-alias reload="source ~/.bash_profile"
+alias reload="source ~/.bashrc"
 alias tint2-restart="killall -SIGUSR1 tint2"
