@@ -4,9 +4,9 @@
 [gpg]
     program = gpg
 [url "ssh://git@github.com/"]
-    insteadOf = https://github.com/
+    insteadOf = https://github.com
 [url "ssh://git@gitlab.com/"]
-    insteadOf = https://gitlab.com/
+    insteadOf = https://gitlab.com
 [alias]
     c = clone
     i = init
@@ -38,7 +38,6 @@
     yolo = !git commit -m "$(curl -s whatthecommit.com/index.txt)"
 [commit]
     template = ~/.git-commit-template
-    gpgsign = true
     verbose = true
 [core]
     editor = nano
