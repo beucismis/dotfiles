@@ -7,7 +7,6 @@ Distribution   : Debian Testing
 Shell          : Bash
 Window Manager : OpenBox
 Panel          : Tint2
-Terminal       : Tilix
 ```
 
 Installation: <br/>
@@ -21,6 +20,6 @@ wget -O - https://raw.githubusercontent.com/beucismis/dotfiles/main/dependencies
 
 ## Screenshots
 
-Date: `2022-02-06`
+Date: `2022-02-07`
 
-![2022-02-06-144105_1280x800](https://user-images.githubusercontent.com/40023234/152679184-36933088-470a-49ce-b0f2-8e616e489983.png)
+![2022-02-07-154540_1280x800](https://user-images.githubusercontent.com/40023234/152790671-f22abf4a-5223-4bf0-82aa-62e23c52b4ab.png)
