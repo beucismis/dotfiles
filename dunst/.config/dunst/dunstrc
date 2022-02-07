@@ -10,7 +10,7 @@
     progress_bar_max_width = 300
     indicate_hidden = yes
     shrink = no
-    transparency = 50
+    transparency = 0
     notification_height = 0
     separator_height = 2
     padding = 8
