@@ -7,7 +7,7 @@ alias mkdir="mkdir -pv"
 
 # Shortcuts
 alias g="git"
-alias _="sudo"
+alias s="sudo"
 alias c="clear"
 alias rr="rm -rf"
 alias untar="tar -zxvf "
@@ -23,7 +23,7 @@ alias ls="ls --color=auto"
 
 # Package Managers
 alias apt="sudo apt"
-alias upup="sudo apt update && sudo apt upgrade -y"
+alias upup="sudo apt update && sudo apt upgrade -y && sudo apt autoremove"
 alias pip3-upgrade="/usr/bin/python3 -m pip install --upgrade pip"
 
 # Others
