@@ -5,17 +5,17 @@
     file:///usr/share/openbox/menu.xsd">
   <menu id="root-menu" label="Openbox 3">
     <showIcons>yes</showIcons>
-    <item label="Terminal emulator">
+    <item label="Terminal Emulator">
       <action name="Execute">
-        <execute>terminator</execute>
+        <execute>tilix</execute>
       </action>
     </item>
-    <item label="File manager">
+    <item label="File Manager">
       <action name="Execute">
         <execute>thunar</execute>
       </action>
     </item>
-    <item label="Web browser">
+    <item label="Web Browser">
       <action name="Execute">
         <execute>firefox</execute>
       </action>
@@ -29,16 +29,16 @@
         <execute>obconf</execute>
       </action>
     </item>
+    <item label="Tint2Conf">
+      <action name="Execute">
+        <execute>tint2conf</execute>
+      </action>
+    </item>
     <item label="Reconfigure">
       <action name="Reconfigure" />
     </item>
     <item label="Restart">
       <action name="Restart" />
-    </item>
-    <item label="Tint2Conf">
-      <action name="Execute">
-        <execute>tint2conf</execute>
-      </action>
     </item>
     <separator />
     <menu id="exit-menu" label="Exit">

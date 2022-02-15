@@ -328,16 +328,16 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-t">
+    <keybind key="A-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>terminator</command>
+        <command>tilix</command>
       </action>
     </keybind>
-    <keybind key="W-f">
+    <keybind key="A-f">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -346,7 +346,7 @@
         <command>thunar</command>
       </action>
     </keybind>
-    <keybind key="W-b">
+    <keybind key="A-b">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
