@@ -49,12 +49,8 @@ apt install gparted bleachbit -y # Disk manager
 apt install keepassxc -y # Password manager
 apt install qbittorrent -y # Torrent client
 apt install flameshot -y # Screenshot tool
-
-# Online Messaging
-cd /opt
-wget https://github.com/telegramdesktop/tdesktop/releases/download/v3.5.0/tsetup.3.5.0.tar.xz
-#tar xjf tsetup.*.tar.xz
-rm tsetup.*.tar.xz
+apt install liferea -y # RSS reader tool
+apt install rednotebook -y # Journal taking tool
 
 # Internet Browser
 cd /opt
