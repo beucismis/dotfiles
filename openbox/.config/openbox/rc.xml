@@ -182,7 +182,7 @@
     <keybind key="A-d">
       <action name="Execute">
         <name>dmenu</name>
-        <command>dmenu_run -b</command>
+        <command>dmenu_run -b -nb '#0f0f0f' -nf '#ffffff'</command>
       </action>
     </keybind>
     <keybind key="C-A-Left">
