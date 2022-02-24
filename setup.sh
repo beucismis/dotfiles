@@ -19,6 +19,8 @@ stow --adopt gtk-2.0
 stow --adopt qt5ct
 stow --adopt git
 
+stow etc -t /etc/
+
 stow --adopt bin
 stow --adopt images
 
