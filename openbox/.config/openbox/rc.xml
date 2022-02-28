@@ -76,7 +76,7 @@
     </font>
     <font place="MenuHeader">
       <name>Monospace</name>
-      <size>9</size>
+      <size>8</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -85,7 +85,7 @@
     </font>
     <font place="MenuItem">
       <name>Monospace</name>
-      <size>9</size>
+      <size>8</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
