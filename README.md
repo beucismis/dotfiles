@@ -20,6 +20,6 @@ wget -O - https://raw.githubusercontent.com/beucismis/dotfiles/main/dependencies
 
 ## Screenshots
 
-Date: `2022-02-07`
+Date: `2022-03-06`
 
-![2022-02-07-154540_1280x800](https://user-images.githubusercontent.com/40023234/152790671-f22abf4a-5223-4bf0-82aa-62e23c52b4ab.png)
+![2022-03-06_1280x800](https://user-images.githubusercontent.com/40023234/156922875-01be8174-33eb-408f-bd6e-8f52509984a5.png)
