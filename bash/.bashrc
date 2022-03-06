@@ -15,3 +15,5 @@ if ! shopt -oq posix; then
     source /etc/bash_completion
   fi
 fi
+
+[[ -n "$PS1" ]] && source ~/.bash_export
