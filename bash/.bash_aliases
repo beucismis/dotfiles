@@ -22,8 +22,8 @@ alias ld="ls -ld */"
 alias ls="ls --color=auto"
 
 # Package Managers
-alias apt="sudo nala" # https://github.com/volitank/nala
-alias upup="sudo nala update && sudo nala upgrade -y && sudo apt autoremove"
+alias apt="sudo apt"
+alias upup="sudo apt update && sudo apt upgrade -y && sudo apt autoremove"
 alias pip3-upgrade="/usr/bin/python3 -m pip install --upgrade pip"
 
 # Others

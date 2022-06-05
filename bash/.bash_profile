@@ -2,15 +2,13 @@
 
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/Downloads/Package/AppImage:$PATH"
-
 export XDG_CONFIG_HOME="$HOME/.config"
 
-GREEN="\e[42m"
-END="\e[m"
-export PS1="$GREEN[\A] [\u@\h:\w]$END\n$ "
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin/appimage:$PATH"
 
-export NAME="beucismis"
-export EMAIL="$NAME@tutamail.com"
+GREEN="\e[32m"
+BOLD="\e[1m"
+END="\e[0m"
+export PS1="[$GREEN$BOLD\u$END@$GREEN$BOLD\h$END \w]\n$ "
