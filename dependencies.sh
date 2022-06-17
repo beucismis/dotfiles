@@ -5,9 +5,7 @@ if [[ "$(id -u)" != 0 ]]; then
   exit 1
 fi
 
-dpkg --add-architecture i386
-apt update && apt upgrade -y
-apt autoremove
+apt update && apt upgrade -y && apt autoremove
 
 # Display Manager
 apt install lightdm -y
@@ -27,17 +25,10 @@ apt install network-manager-gnome -y # Network control applet
 apt install dunst -y
 apt install libnotify-bin -y
 
-# Theme
-apt install papirus-icon-theme -y # Icon theme
-apt install comixcursors-righthanded -y # Cursor theme
-
-# CLI Tools
-apt install htop -y # System monitor
-apt install neofetch -y # System fetcher
-
 # General Tools
 apt install tilix -y # Terminal emulator
 apt install thunar -y # File manager
+apt install firefox # Internet Browser
 apt install mousepad -y # Text editor
 apt install atril -y # Document viewer
 apt install ristretto -y # Image viewer
@@ -52,27 +43,19 @@ apt install flameshot -y # Screenshot tool
 apt install liferea -y # RSS reader tool
 apt install rednotebook -y # Journal taking tool
 
-# Internet Browser
-cd /opt
-wget https://ftp.mozilla.org/pub/firefox/releases/95.0/linux-x86_64/tr/firefox-95.0.tar.bz2
-tar xjf firefox-*.tar.bz2
-rm firefox-*.tar.bz2
-
-cd ~
-
-# Game Library
-apt update
-apt install steam -y
-
-# Drivers
-apt install mesa-vulkan-drivers libglx-mesa0:i386 \
-mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386 -y
+# CLI Tools
+apt install htop -y # System monitor
+apt install neofetch -y # System fetcher
 
 # Config Tools
 apt install lxappearance qt5ct -y # Theme settings
 apt install grub-customizer -y # Custom GRUB
 apt install pavucontrol -y # Sound control
 apt install lightdm-gtk-greeter-settings -y # LightDM settings
+
+# Theme
+apt install papirus-icon-theme -y # Icon theme
+apt install comixcursors-righthanded -y # Cursor theme
 
 # Others
 apt install xcompmgr xdotool wmctrl ssh git stow openvpn -y
