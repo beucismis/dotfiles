@@ -1,0 +1,6 @@
+#!/bin/bash
+
+END="\e[0m"
+GREEN_BOLD="\e[32m\e[1m"
+
+export PS1="[$GREEN_BOLD\u$END@$GREEN_BOLD\h$END \w]\n$ "
