@@ -1,0 +1,14 @@
+width=300
+padding=10
+anchor=bottom-right
+
+icons=1
+font=Monospace 9
+max-icon-size=32
+icon-path=/usr/share/icons/Adwaita/
+
+markup=1
+actions=1
+sort=-time
+ignore-timeout=1
+default-timeout=5000
