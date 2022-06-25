@@ -1,0 +1,29 @@
+i(){
+    apt install $1 -y /dev/null
+}
+
+i atril                 # Document viewer
+i blueman               # Bluetooth applet
+i firefox               # Internet browser
+i foot                  # Terminal emulator
+i gimp                  # Image editor
+i grimshot              # Screenshot tool
+i gsimplecal            # Calander tool
+i gparted               # Disk manager
+i inkscape              # Image editor
+i liferea               # Feed reader
+i mako-notifier         # Notification daemon
+i mousepad              # Text editor
+i network-manager-gnome # Network applet
+i openvpn               # VPN clinet
+i parole                # Media player
+i pavucontrol           # Volume control
+i qbittorrent           # Torrent clinet
+i quodlibet             # Music player
+i ristretto             # Image viewer
+i ssh                   # Sheel client
+i sway*                 # Wayland compositor
+i thunar                # File manager
+i waybar                # Wayland bar
+i wayland*              # Display server
+i xarchiver             # Archive manager
