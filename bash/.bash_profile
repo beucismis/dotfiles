@@ -1,6 +1,9 @@
 # ~/.bash_profile: executed by the command interpreter for login shells.
 
+export XDG_CURRENT_DESKTOP=sway
 export XDG_CONFIG_HOME="$HOME/.config"
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
