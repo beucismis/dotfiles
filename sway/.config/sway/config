@@ -10,10 +10,10 @@ set {
 
     $display_name LVDS-1
     $resolution 1280x800
-    $wallpaper $HOME/Downloads/sway-blue.png
+    $wallpaper /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 
     $term foot
-    $menu wofi -i --show drun | xargs swaymsg exec
+    $menu wofi | xargs swaymsg exec
 
     $gnome-schema org.gnome.desktop.interface
 }
