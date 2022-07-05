@@ -5,6 +5,7 @@ i(){
 i atril                 # Document viewer
 i blueman               # Bluetooth applet
 i firefox               # Internet browser
+i ffmpeg                # Multimedia framework
 i foot                  # Terminal emulator
 i gimp                  # Image editor
 i grimshot              # Screenshot tool
