@@ -1,5 +1,5 @@
 i(){
-    apt install $1 -y /dev/null
+    apt install $1 -y > /dev/null
 }
 
 i atril                 # Document viewer
@@ -9,6 +9,7 @@ i foot                  # Terminal emulator
 i gimp                  # Image editor
 i grimshot              # Screenshot tool
 i gsimplecal            # Calander tool
+i gnome-themes-extra    # Adwaita GTK+ theme
 i gparted               # Disk manager
 i inkscape              # Image editor
 i liferea               # Feed reader
@@ -20,9 +21,11 @@ i parole                # Media player
 i pavucontrol           # Volume control
 i qbittorrent           # Torrent clinet
 i quodlibet             # Music player
+i qt5ct                 # Qt5 configuration tool
 i ristretto             # Image viewer
 i ssh                   # Sheel client
 i sway*                 # Wayland compositor
+i thinkfan              # Fan controller
 i thunar                # File manager
 i waybar                # Wayland bar
 i wayland*              # Display server
