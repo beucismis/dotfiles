@@ -1,5 +1,5 @@
+packages
 install.sh
-*.list
 
 \.git
 \.gitignore
