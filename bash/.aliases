@@ -1,35 +1,36 @@
 #!/bin/bash
 
 # Directory traversal
+
 alias ..="cd .."
 alias -- -="cd -"
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Directory listing
+
 alias l="ls -la"
 alias ld="ls -ld */"
 alias ls="ls --color=auto"
 
 # Shortcuts
+
 alias g="git"
 alias s="sudo"
 alias c="clear"
 alias rr="rm -rf"
 alias untar="tar -zxvf "
+alias reload="source $HOME/.bashrc"
 
 # Defaults
+
 alias df="df -H"
 alias du="du -ch"
 alias mkdir="mkdir -pv"
 alias grep='grep --color=auto'
 
-# Utils
-alias reload="source ~/.bashrc"
-alias mako-reload="killall -SIGUSR1 mako"
-alias waybar-reload="killall -SIGUSR1 waybar"
-
 # Package managers
+
 alias apt="s apt"
-alias upup="s apt update && s apt upgrade -y && s apt autoremove"
+alias upup="apt update && apt upgrade -y && apt autoremove"
 alias pip3-upgrade="python3 -m pip install --upgrade pip"
