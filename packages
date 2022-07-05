@@ -1,4 +1,4 @@
-i(){
+function i {
     apt install $1 -y > /dev/null
 }
 
@@ -30,4 +30,5 @@ i thinkfan              # Fan controller
 i thunar                # File manager
 i waybar                # Wayland bar
 i wayland*              # Display server
+i wofi                  # Application launcher
 i xarchiver             # Archive manager
