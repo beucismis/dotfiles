@@ -1,0 +1,10 @@
+term=foot
+mode=drun
+width=300
+height=300
+gtk_dark=true
+hide_scroll=true
+insensitive=true
+matching=contains
+dmenu-parse_action=true
+drun-display_generic=true
