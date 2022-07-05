@@ -1,0 +1,63 @@
+@define-color fg #bcbcbc;
+@define-color bg #090a0b;
+@define-color red #d7875f;
+@define-color blue #87afd7;
+@define-color yellow #d7af5f;
+
+* {
+    border: none;
+    min-height: 0;
+    font-size: 12px;
+    border-radius: 0;
+    font-family: Monospace;
+}
+
+window#waybar {
+    color: @fg;
+    background: @bg;
+}
+
+#workspaces button {
+    color: @fg;
+    margin: 0 2px;
+    padding: 0 2px;
+}
+
+#workspaces button.focused {
+    color: @yellow;
+}
+
+#mode  {
+    color: @red;
+    margin: 0 2px;
+    padding: 0 2px;
+}
+
+#window {
+    margin: 0 2px;
+    padding: 0 8px;
+}
+
+#waybar.empty #window {
+    color: @bg;
+    background: none;
+}
+
+#tray,
+#pulseaudio,
+#idle_inhibitor,
+#cpu,
+#temperature,
+#memory,
+#clock {
+    margin: 0 2px;
+    padding: 0 2px;
+}
+
+#clock {
+    color: @blue;
+}
+
+#temperature.critical {
+    color: @yellow;
+}
