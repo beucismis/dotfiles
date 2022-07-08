@@ -1,4 +1,3 @@
-include "/home/beucismis/.gtkrc-2.0.mine"
 gtk-theme-name="Adwaita-dark"
 gtk-icon-theme-name="Adwaita"
 gtk-font-name="Sans 10"
