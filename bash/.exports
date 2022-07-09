@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export XDG_CURRENT_DESKTOP=sway
+export XDG_CONFIG_HOME=$HOME/.config
+
+export PATH=/usr/local/sbin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/appimage:$PATH
+
+export GDK_BACKEND=wayland
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
+export MOZ_ENABLE_WAYLAND=1
+
+export GTK_THEME=Adwaita:dark
+export QT_QPA_PLATFORMTHEME=qt5ct
