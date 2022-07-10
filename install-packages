@@ -1,34 +1,58 @@
-function i {
-    apt install $1 -y > /dev/null
+#!/bin/bash
+
+root() {
+    su -c "$*"
 }
 
-i atril                 # Document viewer
-i blueman               # Bluetooth applet
-i firefox               # Internet browser
-i ffmpeg                # Multimedia framework
-i foot                  # Terminal emulator
-i gimp                  # Image editor
-i grimshot              # Screenshot tool
-i gsimplecal            # Calander tool
-i gnome-themes-extra    # Adwaita GTK+ theme
-i gparted               # Disk manager
-i inkscape              # Image editor
-i liferea               # Feed reader
-i mako-notifier         # Notification daemon
-i mousepad              # Text editor
-i network-manager-gnome # Network applet
-i openvpn               # VPN clinet
-i parole                # Media player
-i pavucontrol           # Volume control
-i qbittorrent           # Torrent clinet
-i quodlibet             # Music player
-i qt5ct                 # Qt5 configuration tool
-i ristretto             # Image viewer
-i ssh                   # Sheel client
-i sway*                 # Wayland compositor
-i thinkfan              # Fan controller
-i thunar                # File manager
-i waybar                # Wayland bar
-i wayland*              # Display server
-i wofi                  # Application launcher
-i xarchiver             # Archive manager
+base_packages=(
+    bash-completion
+    blueman
+    foot
+    gnome-themes-extra
+    grimshot
+    gsimplecal
+    lm-sensors
+    mako-notifier
+    network-manager-gnome
+    pavucontrol
+    qt5ct
+    qt5-style-plugins
+    sway*<
+    thinkfan
+    waybar
+    wayland*
+    wofi
+    xwayland
+)
+
+extra_packages=(
+    atril
+    firefox
+    gimp
+    git
+    gparted
+    inkscape
+    liferea
+    mousepad
+    network-manager-openvpn
+    openvpn
+    parole
+    qbittorrent
+    quodlibet
+    ristretto
+    ssh
+    thunar
+    xarchiver
+)
+
+echo -n "Install extra packages? [y/n] "
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ]; then
+    root apt install -y ${base_packages[@]}
+    root apt install -y ${extra_packages[@]}
+else
+    root apt install -y ${base_packages[@]}
+fi
+
+echo "Done."
