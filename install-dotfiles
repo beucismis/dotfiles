@@ -1,30 +1,24 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ]; then
-  echo "Please run as root!"
-  exit 1
+root() {
+    su -c "$*"
+}
+
+if ! [ -x "$(command -v stow)" ]; then
+    root apt install stow -y
 fi
 
-echo "Installing dependencies..."
+echo "Create symbolic links..."
+root stow --adopt etc -t /etc/
+stow --adopt bash foot git mako pip qt5ct sway waybar wofi
 
-apt update && apt upgrde -y
-apt install git stow -y
+echo "Update user dirs..."
+xdg-user-dirs-update
 
-cd $HOME
-git clone https://github.com/beucismis/dotfiles
-mv dotfiles .dotfiles
-
-echo "Dotfiles are symlinked..."
-
-stow --adopt bash
-stow --adopt foot
-stow --adopt git
-stow --adopt mako
-stow --adopt sway
-stow --adopt pip
-stow --adopt waybar
-stow --adopt wofi
-stow --adopt etc -t /etc
-stow --adopt usr -t /usr
+echo "Setup thinkfan..."
+root modprobe -r thinkpad_acpi
+root modprobe thinkpad_acpi
+root rc-update add thinkfan
+root rc-service thinkfan start
 
 echo "Done."
