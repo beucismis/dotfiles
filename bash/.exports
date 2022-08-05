@@ -1,17 +1,24 @@
 #!/bin/bash
 
+export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_SCREENSHOTS_DIR=$HOME/screenshot
 
+export GOPATH=$HOME/.go
+export PATH=$GOPATH/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/appimage:$PATH
 
+export GTK_USE_PORTAL=0
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
-export MOZ_ENABLE_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1 firefox
 
 export GTK_THEME=Adwaita:dark
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+export BROWSER=firefox
