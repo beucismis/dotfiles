@@ -15,10 +15,4 @@ stow --adopt bash foot git mako pip qt5ct sway waybar wofi
 echo "Update user dirs..."
 xdg-user-dirs-update
 
-echo "Setup thinkfan..."
-root modprobe -r thinkpad_acpi
-root modprobe thinkpad_acpi
-root rc-update add thinkfan
-root rc-service thinkfan start
-
 echo "Done."
