@@ -11,16 +11,17 @@ base_packages=(
     gnome-themes-extra
     grimshot
     gsimplecal
-    lm-sensors
     mako-notifier
     network-manager-gnome
     pavucontrol
     qt5ct
     qt5-style-plugins
-    sway*<
-    thinkfan
+    sway
+    swaybg
+    swayidle
+    swaylock
     waybar
-    wayland*
+    wayland-protocols
     wofi
     xwayland
 )
@@ -34,9 +35,9 @@ extra_packages=(
     inkscape
     liferea
     mousepad
+    mpv
     network-manager-openvpn
     openvpn
-    parole
     qbittorrent
     quodlibet
     ristretto
