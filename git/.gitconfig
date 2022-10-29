@@ -3,9 +3,9 @@
     email = beucismis@tutamail.com
 [gpg]
     program = gpg
-[url "ssh://git@github.com/"]
+[url "git@github.com:"]
     insteadOf = https://github.com/
-[url "ssh://git@gitlab.com/"]
+[url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
 [alias]
     m = mv
