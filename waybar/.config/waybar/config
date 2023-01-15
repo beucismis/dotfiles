@@ -1,6 +1,5 @@
 {
-    "height": 20,
-    "layer": "top",
+    "height": 0,
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -14,18 +13,19 @@
         "cpu",
         "temperature",
         "memory",
+        "user",
         "clock",
-    ],
+     ],
     "sway/workspaces": {
         "format": "[{icon}]",
         "all-outputs": true,
     },
     "sway/mode": {
-        "format": "[{}]",
+        "format": "[M: {}]",
     },
     "sway/window": {
-        "format": "{}",
-        "max-length": 50,
+        "tooltip": false,
+        "format": "[W: {}]",
     },
     "tray": {
         "spacing": 2,
@@ -35,7 +35,7 @@
    "pulseaudio": {
         "tooltip": false,
         "scroll-step": 1,
-        "format": "[V: {volume}%]",
+        "format": "[V: {volume:3}%]",
         "format-muted": "[V: Mute]",
         "on-click-right": "pavucontrol",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -45,21 +45,27 @@
         "format": "[I: {icon}]",
         "format-icons": {
             "activated": "Off",
-            "deactivated": "On",
+            "deactivated": " On",
         },
     },
     "cpu": {
         "tooltip": false,
-        "format": "[CPU: {usage}% {load}%",
+        "on-click": "",
+        "format": "[CPU: {usage:3}%",
     },
     "temperature": {
         "tooltip": false,
+        "on-click": "",
         "critical-threshold": 80,
-        "format": "{temperatureC}°C]",
+        "format": "{temperatureC:3}°C]",
     },
     "memory": {
         "tooltip": false,
+        "on-click": "",
         "format": "[RAM: {used:0.1f}G/{total:0.1f}G]",
+    },
+    "user": {
+        "format": "[U: {work_d:2}d:{work_H:2}h:{work_M:2}m]",
     },
     "clock": {
         "tooltip": false,
