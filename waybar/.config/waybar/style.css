@@ -1,9 +1,3 @@
-@define-color fg #bcbcbc;
-@define-color bg #090a0b;
-@define-color red #d7875f;
-@define-color blue #87afd7;
-@define-color yellow #d7af5f;
-
 * {
     border: none;
     min-height: 0;
@@ -13,51 +7,64 @@
 }
 
 window#waybar {
-    color: @fg;
-    background: @bg;
+    color: #ffffff;
+    background-color: #225877;
 }
 
+.modules-left {
+    background-color: #323232;
+}
+
+.modules-right {
+    background-color: #323232;
+}
+
+#workspaces {}
+
 #workspaces button {
-    color: @fg;
-    margin: 0 2px;
     padding: 0 2px;
+    margin: 0 2px;
 }
 
 #workspaces button.focused {
-    color: @yellow;
+    color: #ffffff;
+    background-color: #285577;
 }
 
-#mode  {
-    color: @red;
-    margin: 0 2px;
+#mode {
     padding: 0 2px;
+    color: #ffffff;
+    margin: 0 0 0 4px;
+    background-color: #900000;
 }
 
 #window {
-    margin: 0 2px;
-    padding: 0 8px;
+    padding: 0 2px;
+    color: #ffffff;
+    margin: 0 0 0 4px;
+    background-color: #285577;
 }
 
-#waybar.empty #window {
-    color: @bg;
-    background: none;
+window#waybar.empty #window {
+    color: transparent;
+    background-color: transparent;
 }
 
-#tray,
-#pulseaudio,
-#idle_inhibitor,
-#cpu,
-#temperature,
-#memory,
-#clock {
-    margin: 0 2px;
+window#waybar.empty {
+    background-color: #323232;
+}
+
+#tray {
+    padding: 0 2px;
+    margin: 0 1px 0 4px;
+}
+
+#pulseaudio, #idle_inhibitor, #cpu, #temperature, #memory, #user, #clock {
+    margin: 0 1px;
     padding: 0 2px;
 }
 
-#clock {
-    color: @blue;
-}
-
-#temperature.critical {
-    color: @yellow;
+#idle_inhibitor.deactivated {
+    color: #ffffff;
+    background-color: #900000;
 }
