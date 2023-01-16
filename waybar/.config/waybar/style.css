@@ -22,24 +22,24 @@ window#waybar {
 #workspaces {}
 
 #workspaces button {
-    padding: 0 2px;
+    padding: 0 0;
     margin: 0 2px;
 }
 
 #workspaces button.focused {
     color: #ffffff;
-    background-color: #285577;
+    background-color: #111111;
 }
 
 #mode {
-    padding: 0 2px;
+    padding: 0 0;
     color: #ffffff;
     margin: 0 0 0 4px;
     background-color: #900000;
 }
 
 #window {
-    padding: 0 2px;
+    padding: 0 0;
     color: #ffffff;
     margin: 0 0 0 4px;
     background-color: #285577;
@@ -54,17 +54,39 @@ window#waybar.empty {
     background-color: #323232;
 }
 
-#tray {
-    padding: 0 2px;
-    margin: 0 1px 0 4px;
+#idle_inhibitor, #cpu, #temperature,
+#memory, #pulseaudio, #user, #clock {
+    padding: 0 0;
+    margin: 0 2px;
 }
 
-#pulseaudio, #idle_inhibitor, #cpu, #temperature, #memory, #user, #clock {
-    margin: 0 1px;
-    padding: 0 2px;
+#tray {
+    padding: 0 6px;
+    margin: 0 4px 0 6px;
+    background-color: #33aa66;
+}
+
+#idle_inhibitor {
+    color: #000000;
+    background-color: #dddddd;
 }
 
 #idle_inhibitor.deactivated {
     color: #ffffff;
     background-color: #900000;
+}
+
+#temperature.critical {
+    color: #ffffff;
+    background-color: #909000;
+}
+
+#pulseaudio.muted {
+    color: #ffffff;
+    background-color: #900000;
+}
+
+#clock {
+    color: #000000;
+    background-color: #aa00aa;
 }

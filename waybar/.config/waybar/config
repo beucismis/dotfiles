@@ -8,12 +8,12 @@
     "modules-center": [],
     "modules-right": [
         "tray",
-        "pulseaudio",
         "idle_inhibitor",
         "cpu",
         "temperature",
         "memory",
         "user",
+        "pulseaudio",
         "clock",
      ],
     "sway/workspaces": {
@@ -25,20 +25,13 @@
     },
     "sway/window": {
         "tooltip": false,
-        "format": "[W: {}]",
+        "format": "[> {}]",
     },
     "tray": {
-        "spacing": 2,
-        "icon-size": 13,
+        "spacing": 6,
+        "icon-size": 14,
         "reverse-direction": true,
-    },
-   "pulseaudio": {
-        "tooltip": false,
-        "scroll-step": 1,
-        "format": "[V: {volume:3}%]",
-        "format-muted": "[V: Mute]",
-        "on-click-right": "pavucontrol",
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "show-passive-items": true,
     },
     "idle_inhibitor": {
         "tooltip": false,
@@ -50,22 +43,27 @@
     },
     "cpu": {
         "tooltip": false,
-        "on-click": "",
         "format": "[CPU: {usage:3}%",
     },
     "temperature": {
         "tooltip": false,
-        "on-click": "",
         "critical-threshold": 80,
         "format": "{temperatureC:3}°C]",
     },
     "memory": {
         "tooltip": false,
-        "on-click": "",
         "format": "[RAM: {used:0.1f}G/{total:0.1f}G]",
     },
     "user": {
         "format": "[U: {work_d:2}d:{work_H:2}h:{work_M:2}m]",
+    },
+   "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 1,
+        "format": "[V: {volume:3}%]",
+        "format-muted": "[V: Mute]",
+        "on-click-right": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     },
     "clock": {
         "tooltip": false,
