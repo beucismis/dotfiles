@@ -43,4 +43,8 @@ Soon...
 
 ## Preview
 
-Soon...
+![](https://user-images.githubusercontent.com/40023234/212693944-e7374a9d-9650-4f28-8e28-eab131c73d0f.png)
+
+![](https://user-images.githubusercontent.com/40023234/212693622-17d0556b-0880-421b-bd54-b097012a2c8d.png)
+
+![](https://user-images.githubusercontent.com/40023234/212695333-262b4d2c-5089-42f6-9c38-dc1c8a2cf431.png)
