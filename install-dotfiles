@@ -10,7 +10,7 @@ fi
 
 echo "Create symbolic links..."
 root stow --adopt etc -t /etc/
-stow --adopt bash foot git mako pip qt5ct sway waybar wofi
+stow --adopt bash foot git mako pip qt5ct sway tofi waybar
 
 echo "Update user dirs..."
 xdg-user-dirs-update

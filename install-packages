@@ -20,29 +20,29 @@ base_packages=(
     swaybg
     swayidle
     swaylock
+    tofi
     waybar
     wayland-protocols
-    wofi
     xwayland
 )
 
 extra_packages=(
-    atril
     firefox
     gimp
     git
     gparted
     inkscape
+    imv
     liferea
     mousepad
     mpv
     network-manager-openvpn
     openvpn
+    pcmanfm
     qbittorrent
     quodlibet
-    ristretto
     ssh
-    thunar
+    zathura
     xarchiver
 )
 
