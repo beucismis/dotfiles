@@ -2,72 +2,60 @@
     "height": 0,
     "modules-left": [
         "sway/workspaces",
-        "sway/mode",
+		"sway/mode",
         "sway/window",
     ],
     "modules-center": [],
     "modules-right": [
-        "tray",
-        "idle_inhibitor",
         "cpu",
         "temperature",
         "memory",
-        "user",
-        "pulseaudio",
         "clock",
+        "pulseaudio",
+        "tray",
      ],
     "sway/workspaces": {
-        "format": "[{icon}]",
         "all-outputs": true,
-    },
-    "sway/mode": {
-        "format": "[M: {}]",
     },
     "sway/window": {
         "tooltip": false,
-        "format": "[> {}]",
-    },
-    "tray": {
-        "spacing": 6,
-        "icon-size": 14,
-        "reverse-direction": true,
-        "show-passive-items": true,
-    },
-    "idle_inhibitor": {
-        "tooltip": false,
-        "format": "[I: {icon}]",
-        "format-icons": {
-            "activated": "Off",
-            "deactivated": " On",
-        },
     },
     "cpu": {
         "tooltip": false,
-        "format": "[CPU: {usage:3}%",
+        "format": "{usage}%",
     },
     "temperature": {
         "tooltip": false,
         "critical-threshold": 80,
-        "format": "{temperatureC:3}°C]",
+        "format": "{temperatureC:3}°C",
     },
     "memory": {
         "tooltip": false,
-        "format": "[RAM: {used:0.1f}G/{total:0.1f}G]",
-    },
-    "user": {
-        "format": "[U: {work_d:2}d:{work_H:2}h:{work_M:2}m]",
-    },
-   "pulseaudio": {
-        "tooltip": false,
-        "scroll-step": 1,
-        "format": "[V: {volume:3}%]",
-        "format-muted": "[V: Mute]",
-        "on-click-right": "pavucontrol",
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "format": "{used:0.1f}G/{total:0.1f}G",
     },
     "clock": {
         "tooltip": false,
         "on-click": "gsimplecal",
-        "format": "[{:%a %d %b %H:%M}]",
+        "format": "{:%a %d %b %H:%M}",
     },
+   "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 1,
+        "format": "{volume:3}%",
+        "format-muted": "Mute",
+        "on-click-right": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    },
+    "tray": {
+        "icon-size": 15,
+        "reverse-direction": true,
+        "show-passive-items": true,
+    },
+	"idle_inhibitor": {
+    	"format": "{icon}",
+    	"format-icons": {
+        	"activated": "",
+        	"deactivated": ""
+    	},
+	},
 }
