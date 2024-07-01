@@ -1,92 +1,76 @@
 * {
+	margin: 0;
+	padding: 0;
     border: none;
     min-height: 0;
     font-size: 12px;
     border-radius: 0;
-    font-family: Monospace;
 }
 
 window#waybar {
-    color: #ffffff;
+	color: #eee;
     background-color: #225877;
 }
 
 .modules-left {
-    background-color: #323232;
+	background-color: #323232;
 }
 
 .modules-right {
-    background-color: #323232;
+	background-color: #323232;
 }
 
 #workspaces {}
 
 #workspaces button {
-    padding: 0 0;
-    margin: 0 2px;
+	color: #888888;
 }
 
 #workspaces button.focused {
-    color: #ffffff;
-    background-color: #111111;
+	padding: 0;
+	color: #eee;
+	background-color: #285577;
+	border-bottom: 1px solid #eee;
 }
 
 #mode {
-    padding: 0 0;
-    color: #ffffff;
-    margin: 0 0 0 4px;
-    background-color: #900000;
+	color: #eee;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #900000;
 }
 
 #window {
-    padding: 0 0;
-    color: #ffffff;
-    margin: 0 0 0 4px;
-    background-color: #285577;
+	color: #eee;
+	padding-left: 5px;
+	background-color: #285577;
 }
 
 window#waybar.empty #window {
-    color: transparent;
-    background-color: transparent;
+	color: transparent;
+	background-color: transparent;
 }
+
 
 window#waybar.empty {
-    background-color: #323232;
+	background-color: #323232;
 }
 
-#idle_inhibitor, #cpu, #temperature,
-#memory, #pulseaudio, #user, #clock {
-    padding: 0 0;
-    margin: 0 2px;
+#cpu, #temperature, #memory, #clock, #pulseaudio, #tray, #idle_inhibitor {
+	color: #eee;
+	margin-top: 2px;
+	margin-left: 10px;
+	margin-bottom: 2px;
+}
+
+#cpu {
+	margin-left: 5px;
+}
+
+#temperature {
+	margin-left: 1px;
 }
 
 #tray {
-    padding: 0 6px;
-    margin: 0 4px 0 6px;
-    background-color: #33aa66;
-}
-
-#idle_inhibitor {
-    color: #000000;
-    background-color: #dddddd;
-}
-
-#idle_inhibitor.deactivated {
-    color: #ffffff;
-    background-color: #900000;
-}
-
-#temperature.critical {
-    color: #ffffff;
-    background-color: #909000;
-}
-
-#pulseaudio.muted {
-    color: #ffffff;
-    background-color: #900000;
-}
-
-#clock {
-    color: #000000;
-    background-color: #aa00aa;
+	margin-right: 5px;
 }
