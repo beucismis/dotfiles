@@ -4,32 +4,28 @@ This repository contains the configuration files and scripts that I use in my De
 
 <table><tbody>
   <tr>
-    <td>Distribution</td>
-    <td>Devuan Ceres - https://devuan.org</td>
+    <td>Shell</td>
+    <td>bash</td>
   </tr>
   <tr>
     <td>Window Manager</td>
-    <td>Sway - https://swaywm.org</td>
+    <td>sway - https://swaywm.org</td>
   </tr>
   <tr>
     <td>Notification Daemon</td>
-    <td>Mako - https://github.com/emersion/mako</td>
+    <td>mako - https://github.com/emersion/mako</td>
   </tr>
   <tr>
     <td>Status Bar</td>
-    <td>Waybar - https://github.com/alexays/waybar</td>
+    <td>waybar - https://github.com/alexays/waybar</td>
   </tr>
   <tr>
     <td>Dynamic Menu</td>
-    <td>Tofi - https://github.com/philj56/tofi</td>
-  </tr>
-  <tr>
-    <td>Shell</td>
-    <td>Bash</td>
+    <td>wmenu - https://codeberg.org/adnano/wmenu</td>
   </tr>
   <tr>
     <td>Terminal</td>
-    <td>Foot - https://codeberg.org/dnkl/foot</td>
+    <td>foot - https://codeberg.org/dnkl/foot</td>
   </tr>
   <tr>
     <td>Theme</td>
