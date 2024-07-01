@@ -13,7 +13,7 @@ set {
     $wallpaper /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 
     $term foot
-    $menu wofi | xargs swaymsg exec
+    $menu dmenu_path | wmenu | xargs swaymsg exec --
 
     $gnome-schema org.gnome.desktop.interface
 }
@@ -21,7 +21,7 @@ set {
 # Output Configuration
 
 output {
-    $display_name scale 0.8
+    #$display_name scale 0.8
     $display_name bg $wallpaper fill
     $display_name resolution $resolution position 0,0
 }
