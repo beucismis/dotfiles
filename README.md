@@ -33,6 +33,13 @@ This repository contains the configuration files and scripts that I use in my Ar
   </tr>
 </tbody></table>
 
+![20240703_00h40m24s_grim](https://github.com/beucismis/dotfiles/assets/40023234/1459c936-2988-4a7c-8548-2ab049b5d27b)
+
 ## Installation
 
-Soon...
+```
+git clone https://github.com/beucismis/dotfiles/ ~/.dotfiles
+cd dotfiles
+pacman -S - < pkglist.txt
+bash install.sh 
+```
