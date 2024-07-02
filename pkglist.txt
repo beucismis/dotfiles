@@ -1,0 +1,12 @@
+git
+ssh
+bash-completion
+sway
+waybar
+foot
+mako
+wmenu
+grimshot
+gsimplecal
+pavucontrol
+networkmanager

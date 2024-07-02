@@ -1,0 +1,13 @@
+ranger
+zathura
+imv
+mpv
+xarchiver
+liferea
+mousepad
+quodlibet
+librewolf
+gimp
+inkscape
+gparted
+qbittorrent
