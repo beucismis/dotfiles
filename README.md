@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository contains the configuration files and scripts that I use in my Devuan Ceres daily working environment.
+This repository contains the configuration files and scripts that I use in my Arch Linux daily working environment.
 
 <table><tbody>
   <tr>
@@ -10,6 +10,10 @@ This repository contains the configuration files and scripts that I use in my De
   <tr>
     <td>Window Manager</td>
     <td>sway - https://swaywm.org</td>
+  </tr>
+  <tr>
+    <td>Display Manager</td>
+    <td>ly - https://github.com/fairyglade/ly</td>
   </tr>
   <tr>
     <td>Notification Daemon</td>
@@ -26,10 +30,6 @@ This repository contains the configuration files and scripts that I use in my De
   <tr>
     <td>Terminal</td>
     <td>foot - https://codeberg.org/dnkl/foot</td>
-  </tr>
-  <tr>
-    <td>Theme</td>
-    <td>Adwaita Dark</td>
   </tr>
 </tbody></table>
 
