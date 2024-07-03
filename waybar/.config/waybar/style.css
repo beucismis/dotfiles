@@ -1,1 +1,73 @@
-/home/beucismis/.config/waybar/style.css
+* {
+	margin: 0;
+	padding: 0;
+    border: none;
+    min-height: 0;
+	color: #b8b8b8;
+    font-size: 11px;
+    border-radius: 0;
+	font-weight: bold;
+	font-family: "Monospace"
+}
+
+window#waybar {
+    background-color: #225877;
+}
+
+.modules-left {
+	background-color: #323232;
+}
+
+.modules-right {
+	background-color: #323232;
+}
+
+#workspaces {}
+
+#workspaces button {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+#workspaces button.focused {
+	background-color: #285577;
+}
+
+#mode {
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #900000;
+}
+
+#window {
+	padding-left: 8px;
+	background-color: #285577;
+}
+
+window#waybar.empty #window {
+	color: transparent;
+	background-color: transparent;
+}
+
+
+window#waybar.empty {
+	background-color: #323232;
+}
+
+#pulseaudio, #cpu, #temperature, #memory, #clock, #tray {
+	margin-top: 2px;
+	margin-left: 15px;
+	margin-bottom: 2px;
+}
+
+#pulseaudio {
+	margin-left: 8px;
+}
+
+#temperature {
+	margin-left: 5px;
+}
+
+#tray {
+	margin-right: 5px;
+}

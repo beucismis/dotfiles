@@ -1,1 +1,192 @@
-/home/beucismis/.config/sway/config
+# Variables
+
+set {
+    $mod Mod4
+
+    $language tr
+    $keyboard_type pc105
+    $keyboard 1:1:AT_Translated_Set_2_keyboard
+    $touchpad 2:7:SynPS\/2_Synaptics_TouchPad
+
+    $display_name LVDS-1
+    $resolution 1280x800
+    $wallpaper /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+
+    $term foot
+    $menu dmenu_path | wmenu | xargs swaymsg exec --
+
+    $gnome-schema org.gnome.desktop.interface
+}
+
+# Output Configuration
+
+output {
+    #$display_name scale 0.8
+    $display_name bg $wallpaper fill
+    $display_name resolution $resolution position 0,0
+}
+
+# Input Configuration
+
+input $touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input $keyboard {
+    xkb_layout $language
+    xkb_model $keyboard_type
+}
+
+# Container Configurations
+
+gaps inner 5
+default_border pixel 2
+
+# Status Bar
+
+bar {
+    position top
+    swaybar_command waybar
+}
+
+# Basics and Shortcuts
+
+floating_modifier $mod normal
+
+bindsym {
+    $mod+q kill
+    $mod+Shift+r reload
+
+    $mod+m exec $menu
+    $mod+Return exec $term
+
+    $mod+Shift+e exec swaynag -t warning  \
+        -m 'Do you really want to exit sway?' \
+        -B 'Yes, exit sway' 'swaymsg exit'
+
+    XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+}
+
+# Moving Around
+
+bindsym {
+    $mod+Left focus left
+    $mod+Down focus down
+    $mod+Up focus up
+    $mod+Right focus right
+
+    $mod+Shift+Left move left
+    $mod+Shift+Down move down
+    $mod+Shift+Up move up
+    $mod+Shift+Right move right
+}
+
+# Resizing Containers
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+    bindsym {
+        Return mode "default"
+        Escape mode "default"
+
+        Right resize shrink width 10px
+        Up resize grow height 10px
+        Down resize shrink height 10px
+        Left resize grow width 10px
+    }
+}
+
+# Layout Stuff
+
+bindsym {
+    $mod+b splith
+    $mod+v splitv
+    $mod+w layout tabbed
+    $mod+s layout stacking
+    $mod+e layout toggle split
+
+    $mod+f fullscreen
+    $mod+a focus parent
+    $mod+space focus mode_toggle
+    $mod+Shift+space floating toggle
+}
+
+for_window {
+    [app_id="thunar"] floating enable
+    [app_id="blueman-*"] floating enable
+    [app_id="xarchiver"] floating enable
+    [app_id="pavucontrol"] floating enable
+    [app_id="nm-connection-*"] floating enable
+}
+
+# Workspaces
+
+set $w workspace
+set $c container
+
+bindsym {
+    Control+Left $w prev
+    Control+Right $w next
+
+    $mod+1 $w number 1
+    $mod+2 $w number 2
+    $mod+3 $w number 3
+    $mod+4 $w number 4
+    $mod+5 $w number 5
+    $mod+6 $w number 6
+    $mod+7 $w number 7
+    $mod+8 $w number 8
+    $mod+9 $w number 9
+    $mod+0 $w number 10
+
+    $mod+Shift+1 move $c to $w number 1
+    $mod+Shift+2 move $c to $w number 2
+    $mod+Shift+3 move $c to $w number 3
+    $mod+Shift+4 move $c to $w number 4
+    $mod+Shift+5 move $c to $w number 5
+    $mod+Shift+6 move $c to $w number 6
+    $mod+Shift+7 move $c to $w number 7
+    $mod+Shift+8 move $c to $w number 8
+    $mod+Shift+9 move $c to $w number 9
+    $mod+Shift+0 move $c to $w number 10
+}
+
+# Scratchpad
+
+bindsym {
+    $mod+minus scratchpad show
+    $mod+Shift+minus move scratchpad
+}
+
+# Idle Configuration
+
+set $screenlock grim -s 0.3 /tmp/lock-image.png && \
+   swaylock -f -i /tmp/lock-image.png
+
+exec swayidle -w \
+    timeout 300 '$screenlock' \
+    timeout 600 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"' \
+        before-sleep 'swaylock -f -c 000000'
+
+bindsym $mod+Shift+x exec bash -c "$screenlock"
+
+# Auto Start
+
+exec_always {
+    mako
+    nm-applet --indicator
+
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'Sans 10'
+}
+
+include /etc/sway/config-vars.d/*
