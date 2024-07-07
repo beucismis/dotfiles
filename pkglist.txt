@@ -9,9 +9,6 @@ mako
 networkmanager
 pavucontrol
 pipewire
-pipewire-alsa
-pipewire-jack
-pipewire-pulse
 ranger
 sway
 swaybg
@@ -19,3 +16,4 @@ swayidle
 swaylock
 waybar
 wmenu
+wob
