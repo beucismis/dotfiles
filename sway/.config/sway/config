@@ -16,6 +16,7 @@ set {
     $menu dmenu_path | wmenu | xargs swaymsg exec --
 
     $gnome-schema org.gnome.desktop.interface
+	$wobsock $XDG_RUNTIME_DIR/wob.sock
 }
 
 # Output Configuration
@@ -67,9 +68,12 @@ bindsym {
         -m 'Do you really want to exit sway?' \
         -B 'Yes, exit sway' 'swaymsg exit'
 
-    XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+	XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+	XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+
+	XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+	XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+	XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
 }
 
 # Moving Around
@@ -164,17 +168,10 @@ bindsym {
     $mod+Shift+minus move scratchpad
 }
 
-# Idle Configuration
+# Idle
 
-set $screenlock grim -s 0.3 /tmp/lock-image.png && \
-   swaylock -f -i /tmp/lock-image.png
-
-exec swayidle -w \
-    timeout 300 '$screenlock' \
-    timeout 600 'swaymsg "output * power off"' \
-        resume 'swaymsg "output * power on"' \
-        before-sleep 'swaylock -f -c 000000'
-
+set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
+exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
 bindsym $mod+Shift+x exec bash -c "$screenlock"
 
 # Auto Start
@@ -182,6 +179,7 @@ bindsym $mod+Shift+x exec bash -c "$screenlock"
 exec_always {
     mako
     nm-applet --indicator
+	rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 
     gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
     gsettings set $gnome-schema icon-theme 'Adwaita'
