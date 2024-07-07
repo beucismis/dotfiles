@@ -64,9 +64,16 @@ bindsym {
     $mod+m exec $menu
     $mod+Return exec $term
 
-    $mod+Shift+e exec swaynag -t warning  \
-        -m 'Do you really want to exit sway?' \
-        -B 'Yes, exit sway' 'swaymsg exit'
+    $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+
+	$mod+p exec hyprpicker -ar && notify-send $(wl-paste) 
+
+	Shift+Print exec grimshot copy output
+	Shift+Alt+Print exec grimshot copy active
+	Shift+Ctrl+Print exec grimshot copy area
+    Print exec grimshot save output ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
+    Alt+Print exec grimshot save active ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
+    Ctrl+Print exec grimshot save area ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
 
 	XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
 	XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
