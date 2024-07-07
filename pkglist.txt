@@ -3,8 +3,10 @@ brightnessctl
 foot
 git
 grim
+grimshot
 gsimplecal
 ly
+hyprpicker
 mako
 networkmanager
 pavucontrol
@@ -17,3 +19,4 @@ swaylock
 waybar
 wmenu
 wob
+wl-clipboard
