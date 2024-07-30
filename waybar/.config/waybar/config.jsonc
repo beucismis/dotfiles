@@ -1,0 +1,50 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": [
+		"pulseaudio",
+		"cpu",
+		"temperature",
+		"memory",
+		"battery",
+		"clock",
+		"tray",
+	],
+	"sway/window": {},
+	"pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 1,
+        "format": "VOL: {volume}%",
+        "format-muted": "VOL: Mute",
+        "on-click-right": "pavucontrol",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	},
+    "cpu": {
+        "tooltip": false,
+        "format": "CPU: {usage}%",
+    },
+    "temperature": {
+        "tooltip": false,
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C",
+    },
+    "memory": {
+        "tooltip": false,
+        "format": "MEM: {used:0.1f}G/{total:0.1f}G",
+    },
+    "battery": {
+        "format": "BAT: {capacity}%",
+    },
+    "clock": {
+        "tooltip": false,
+        "on-click": "gsimplecal",
+        "format": "{:%a %d %b %H:%M}",
+    },
+    "tray": {
+		"spacing": 5,
+		"icon-size": 13,
+        "show-passive-items": true,
+    },
+}
