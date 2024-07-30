@@ -3,42 +3,34 @@
 set {
     $mod Mod4
 
-    $language tr
-    $keyboard_type pc105
-    $keyboard 1:1:AT_Translated_Set_2_keyboard
-    $touchpad 2:7:SynPS\/2_Synaptics_TouchPad
+    $language "tr"
+    $keyboard "1:1:AT_Translated_Set_2_keyboard"
+    $touchpad "1739:52967:SYNA32E4:00_06CB:CEE7_Touchpad"
 
-    $display_name LVDS-1
-    $resolution 1280x800
-    $wallpaper /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+    $display_name "eDP-1"
+    $wallpaper "$HOME/wallpaper.jpg"
 
     $term foot
     $menu dmenu_path | wmenu | xargs swaymsg exec --
-
     $gnome-schema org.gnome.desktop.interface
-	$wobsock $XDG_RUNTIME_DIR/wob.sock
+    $wobsock $XDG_RUNTIME_DIR/wob.sock
 }
 
-# Output Configuration
+# Output & Input Configuration
 
 output {
-    #$display_name scale 0.8
     $display_name bg $wallpaper fill
-    $display_name resolution $resolution position 0,0
 }
 
-# Input Configuration
+input $keyboard {
+    xkb_layout $language
+}
 
 input $touchpad {
     dwt enabled
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
-}
-
-input $keyboard {
-    xkb_layout $language
-    xkb_model $keyboard_type
 }
 
 # Container Configurations
@@ -63,24 +55,30 @@ bindsym {
 
     $mod+m exec $menu
     $mod+Return exec $term
+    XF86Calculator exec galculator
+    $mod+p exec hyprpicker -ar && notify-send $(wl-paste)
 
-    $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+    $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit Sway?' -B 'Exit' 'swaymsg exit'
 
-	$mod+p exec hyprpicker -ar && notify-send $(wl-paste) 
+    # Screenshot
 
-	Shift+Print exec grimshot copy output
-	Shift+Alt+Print exec grimshot copy active
-	Shift+Ctrl+Print exec grimshot copy area
+    Shift+Print exec grimshot copy output
+    Shift+Alt+Print exec grimshot copy active
+    Shift+Ctrl+Print exec grimshot copy area
     Print exec grimshot save output ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
     Alt+Print exec grimshot save active ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
     Ctrl+Print exec grimshot save area ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
 
-	XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
-	XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+    # Backlight Control
 
-	XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
-	XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
-	XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
+    XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+    XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+
+    # Sound Control
+
+    XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+    XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+    XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
 }
 
 # Moving Around
@@ -130,11 +128,13 @@ bindsym {
 
 for_window {
     [app_id="thunar"] floating enable
-    [app_id="blueman-*"] floating enable
     [app_id="xarchiver"] floating enable
+    [app_id="galculator"] floating enable
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-*"] floating enable
 }
+
+for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 # Workspaces
 
@@ -178,20 +178,17 @@ bindsym {
 # Idle
 
 set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
-exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
-bindsym $mod+Shift+x exec bash -c "$screenlock"
+#exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
+#bindsym XF86Launch2 exec bash -c "$screenlock"
 
 # Auto Start
 
 exec_always {
+    import-gsettings.sh
+
     mako
     nm-applet --indicator
-	rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
-
-    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
-    gsettings set $gnome-schema icon-theme 'Adwaita'
-    gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set $gnome-schema font-name 'Sans 10'
+    rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 }
 
 include /etc/sway/config-vars.d/*
