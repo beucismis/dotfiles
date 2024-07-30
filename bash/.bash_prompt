@@ -1,11 +1,3 @@
 #!/bin/bash
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-
-parse_git_branch() {
-  if [ -n "$(git rev-parse --git-dir 2> /dev/null)" ]; then
-    echo "$(__git_ps1 "(%s) ")"
-  fi
-}
-
-export PS1="[\[\e[38;5;39m\]\u\[\e[38;5;81m\]@\[\e[38;5;77m\]\h \[\e[38;5;226m\]\w\[\033[0m\]]\n\[\033[0m\]$ \$(parse_git_branch)"
+export PS1="[\[\e[38;5;39m\]\u\[\e[38;5;81m\]@\[\e[38;5;77m\]\h \[\e[38;5;226m\]\w\[\033[0m\]]\[\033[0m\]$ "
