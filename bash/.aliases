@@ -26,6 +26,4 @@ alias mkdir="mkdir -pv"
 alias grep='grep --color=auto'
 
 # Package managers
-alias apt="s apt"
-alias upup="apt update && apt upgrade -y && apt autoremove"
 alias pip3-upgrade="python3 -m pip install --upgrade pip"

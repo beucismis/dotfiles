@@ -13,11 +13,3 @@ esac
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-function init {
-    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec sway
-    fi
-}
-
-init

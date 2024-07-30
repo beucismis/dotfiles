@@ -21,4 +21,4 @@ export MOZ_ENABLE_WAYLAND=1 firefox
 export GTK_THEME=Adwaita:dark
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-export BROWSER=firefox
+export BROWSER=librewolf
