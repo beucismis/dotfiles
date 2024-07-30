@@ -7,7 +7,6 @@ layer=overlay
 outer-margin=5
 font=FreeMono 10
 ignore-timeout=1
-max-icon-size=32
 anchor=top-right
 default-timeout=5000
 background-color=#225877
