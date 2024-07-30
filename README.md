@@ -33,7 +33,7 @@ This repository contains the configuration files and scripts that I use in my Ar
   </tr>
 </tbody></table>
 
-![20240703_00h40m24s_grim](https://github.com/beucismis/dotfiles/assets/40023234/1459c936-2988-4a7c-8548-2ab049b5d27b)
+![](https://github.com/user-attachments/assets/58a117eb-2e6d-4dca-b4b2-0edb82723cb9)
 
 ## Installation
 
