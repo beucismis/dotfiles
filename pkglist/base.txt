@@ -10,6 +10,7 @@ mako
 networkmanager
 pavucontrol
 pipewire
+playerctl
 sway
 swaybg
 sway-contrib
@@ -17,6 +18,7 @@ swayidle
 swaylock
 waybar
 walker-bin
+wireplumber
 wmenu
 wob
 wl-clipboard

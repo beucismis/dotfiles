@@ -1,5 +1,6 @@
 gimp
 gparted
+gnome-calculator
 imv
 inkscape
 librewolf-bin
