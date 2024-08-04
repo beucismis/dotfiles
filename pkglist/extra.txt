@@ -2,12 +2,13 @@ gimp
 gparted
 imv
 inkscape
-librewolf
+librewolf-bin
 liferea
 mousepad
 mpv
 qbittorrent
 quodlibet
 ranger
+thunar
 xarchiver
 zathura

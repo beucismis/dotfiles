@@ -2,9 +2,9 @@ bash-completion
 brightnessctl
 foot
 grim
-grimshot
 gsimplecal
 hyprpicker
+libnotify
 ly
 mako
 networkmanager
@@ -12,9 +12,11 @@ pavucontrol
 pipewire
 sway
 swaybg
+sway-contrib
 swayidle
 swaylock
 waybar
+walker-bin
 wmenu
 wob
 wl-clipboard

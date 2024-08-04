@@ -1,5 +1,5 @@
-steam
-heroic-games-launcher-bin
-protonup-qt-bin
-mangohud
 goverlay
+heroic-games-launcher-bin
+mangohud
+protonup-qt-bin
+steam
