@@ -1,10 +1,16 @@
 // -*- mode: jsonc -*-
 {
     "layer": "top",
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": [],
+    "modules-left": [
+		"sway/workspaces",
+		"sway/mode",
+		"sway/window",
+	],
+    "modules-center": [
+		"custom/spotify",
+	],
     "modules-right": [
-		"pulseaudio",
+		"wireplumber",
 		"cpu",
 		"temperature",
 		"memory",
@@ -13,32 +19,44 @@
 		"tray",
 	],
 	"sway/window": {},
-	"pulseaudio": {
-        "tooltip": false,
-        "scroll-step": 1,
-        "format": "VOL: {volume}%",
+	"custom/spotify": {
+    	"format": "{}",
+    	"escape": true,
+    	"max-length": 30,
+    	"return-type": "json",
+    	"exec-if": "pgrep spotify",
+    	"on-click-right": "killall spotify",
+    	"on-scroll-up": "playerctl -p spotify next",
+    	"on-click": "playerctl -p spotify play-pause",
+    	"on-scroll-down": "playerctl -p spotify previous",
+    	"exec": "/usr/bin/python3 $HOME/.config/waybar/mediaplayer.py --player spotify",
+	},
+	"wireplumber": {
+		"tooltip": false,	
+        "format": "VOL: {volume:3}%",
         "format-muted": "VOL: Mute",
         "on-click-right": "pavucontrol",
-		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
 	},
     "cpu": {
-        "tooltip": false,
-        "format": "CPU: {usage}%",
+        "format": "CPU: {usage:3}%",
     },
     "temperature": {
-        "tooltip": false,
+		"tooltip": false,
         "critical-threshold": 80,
-        "format": "{temperatureC}°C",
+        "format": "({temperatureC}°C)",
     },
     "memory": {
-        "tooltip": false,
-        "format": "MEM: {used:0.1f}G/{total:0.1f}G",
+		"tooltip": false,
+        "format": "MEM: {used:0.1f}GiB ({percentage}%)",
     },
     "battery": {
-        "format": "BAT: {capacity}%",
+		"full-at": 80,
+        "format": "BAT: {capacity:3}%",
+		"tooltip-format": "{time}\n\nPower: {power}\nCycles: {cycles}\nHealth: {health}"
     },
     "clock": {
-        "tooltip": false,
+		"tooltip": false,
         "on-click": "gsimplecal",
         "format": "{:%a %d %b %H:%M}",
     },

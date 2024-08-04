@@ -22,7 +22,6 @@ window#waybar {
     background: transparent;
 }
 
-
 #workspaces button.focused {
     background: #225877;
 }
@@ -33,10 +32,14 @@ window#waybar {
     background: #225877;
 }
 
-#mode, #pulseaudio, #cpu, #temperature, #memory, #battery, #clock, #tray {
+#mode, #custom-spotify, #wireplumber, #cpu, #temperature, #memory, #battery, #clock, #tray {
     padding: 2px 8px;
 }
 
+#custom-spotify {
+	background: #225877;
+}
+
 #temperature {
-	padding-left: 2px;
+	padding-left: 0;
 }
