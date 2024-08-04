@@ -10,10 +10,14 @@ set {
     $display_name "eDP-1"
     $wallpaper "$HOME/wallpaper.jpg"
 
-    $term foot
-    $menu dmenu_path | wmenu | xargs swaymsg exec --
-    $gnome-schema org.gnome.desktop.interface
     $wobsock $XDG_RUNTIME_DIR/wob.sock
+    $gnome-schema org.gnome.desktop.interface
+
+    $terminal foot
+    $menu wmenu-run -b
+	$launcher walker --modules applications,ssh
+	$calculator gnome-calculator
+	$colorpicker hyprpicker -ar && notify-send $(wl-paste)
 }
 
 # Output & Input Configuration
@@ -54,14 +58,12 @@ bindsym {
     $mod+Shift+r reload
 
     $mod+m exec $menu
-    $mod+Return exec $term
-    XF86Calculator exec galculator
-    $mod+p exec hyprpicker -ar && notify-send $(wl-paste)
-
-    $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit Sway?' -B 'Exit' 'swaymsg exit'
+	$mod+w exec $launcher
+    $mod+Return exec $terminal
+    XF86Calculator exec $calculator
+    $mod+p exec $colorpicker
 
     # Screenshot
-
     Shift+Print exec grimshot copy output
     Shift+Alt+Print exec grimshot copy active
     Shift+Ctrl+Print exec grimshot copy area
@@ -70,12 +72,10 @@ bindsym {
     Ctrl+Print exec grimshot save area ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
 
     # Backlight Control
-
     XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
     XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
 
     # Sound Control
-
     XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
     XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
     XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
@@ -116,7 +116,7 @@ mode "resize" {
 bindsym {
     $mod+b splith
     $mod+v splitv
-    $mod+w layout tabbed
+    $mod+t layout tabbed
     $mod+s layout stacking
     $mod+e layout toggle split
 
@@ -129,9 +129,9 @@ bindsym {
 for_window {
     [app_id="thunar"] floating enable
     [app_id="xarchiver"] floating enable
-    [app_id="galculator"] floating enable
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-*"] floating enable
+    [app_id="org.gnome.Calculator"] floating enable
 }
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
@@ -181,6 +181,9 @@ set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-imag
 #exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
 #bindsym XF86Launch2 exec bash -c "$screenlock"
 
+exec "wlgreet --command sway; swaymsg exit"
+bindsym	$mod+Shift+e exec swaynag -t warning -m 'What do you want to do?' -b 'Poweroff' 'systemctl poweroff' dd-b 'Reboot' 'systemctl reboot'
+
 # Auto Start
 
 exec_always {
@@ -188,6 +191,7 @@ exec_always {
 
     mako
     nm-applet --indicator
+	walker --gapplication-service
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 }
 
