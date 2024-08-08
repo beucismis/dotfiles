@@ -15,6 +15,7 @@
 		"temperature",
 		"memory",
 		"battery",
+		"custom/updates",
 		"clock",
 		"tray",
 	],
@@ -51,10 +52,15 @@
         "format": "MEM: {used:0.1f}GiB ({percentage}%)",
     },
     "battery": {
-		"full-at": 80,
         "format": "BAT: {capacity:3}%",
 		"tooltip-format": "{time}\n\nPower: {power}\nCycles: {cycles}\nHealth: {health}"
     },
+	"custom/updates": {
+		"format": "UP: {}",
+		"return-type": "json",
+		"exec-if": "which waybar-module-pacman-updates",
+		"exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
+	},
     "clock": {
 		"tooltip": false,
         "on-click": "gsimplecal",
