@@ -11,12 +11,14 @@ networkmanager
 pavucontrol
 pipewire
 playerctl
+poweralertd
 sway
 swaybg
 sway-contrib
 swayidle
 swaylock
 waybar
+waybar-module-pacman-updates-git
 walker-bin
 wireplumber
 wmenu
