@@ -28,9 +28,19 @@
     rb = rebase
     cmt = commit -m
     rmt = remote -v
-[commit]
-    verbose = true
 [core]
     editor = nano
+	pager = delta
+[commit]
+    verbose = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
 [init]
     defaultBranch = master
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+	dark = true
+    navigate = true
