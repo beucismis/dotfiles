@@ -15,9 +15,9 @@ set {
 
     $terminal foot
     $menu wmenu-run -b
-	$launcher walker --modules applications,ssh
-	$calculator gnome-calculator
-	$colorpicker hyprpicker -ar && notify-send $(wl-paste)
+    $launcher walker --theme kanagawa
+    $calculator gnome-calculator
+    $colorpicker hyprpicker -ar && notify-send $(wl-paste)
 }
 
 # Output & Input Configuration
@@ -58,18 +58,18 @@ bindsym {
     $mod+Shift+r reload
 
     $mod+m exec $menu
-	$mod+w exec $launcher
+    $mod+w exec $launcher
     $mod+Return exec $terminal
     XF86Calculator exec $calculator
     $mod+p exec $colorpicker
 
     # Screenshot
-    Shift+Print exec grimshot copy output
-    Shift+Alt+Print exec grimshot copy active
-    Shift+Ctrl+Print exec grimshot copy area
-    Print exec grimshot save output ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
-    Alt+Print exec grimshot save active ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
-    Ctrl+Print exec grimshot save area ~/screenshot/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
+    Shift+Print exec grimshot copy output && notify-send "Screenshot copy output"
+    Shift+Alt+Print exec grimshot copy active && notify-send "Screenshot copy active window"
+    Shift+Ctrl+Print exec grimshot copy area && notify-send "Screenshot copy area"
+    Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save output"
+    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save active window"
+    Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save area"
 
     # Backlight Control
     XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
@@ -132,6 +132,7 @@ for_window {
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-*"] floating enable
     [app_id="org.gnome.Calculator"] floating enable
+    [app_id="io.github.quodlibet.QuodLibet"] floating enable
 }
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
@@ -181,7 +182,7 @@ set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-imag
 #exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
 #bindsym XF86Launch2 exec bash -c "$screenlock"
 
-exec "wlgreet --command sway; swaymsg exit"
+#exec "wlgreet --command sway; swaymsg exit"
 bindsym	$mod+Shift+e exec swaynag -t warning -m 'What do you want to do?' -b 'Poweroff' 'systemctl poweroff' dd-b 'Reboot' 'systemctl reboot'
 
 # Auto Start
@@ -190,8 +191,9 @@ exec_always {
     import-gsettings.sh
 
     mako
+	kdeconnectd
     nm-applet --indicator
-	walker --gapplication-service
+    #walker --gapplication-service
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 }
 
