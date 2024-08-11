@@ -1,0 +1,7 @@
+gping
+dust
+duf
+exa
+bat
+mcfly
+htop

@@ -1,0 +1,8 @@
+python-black
+python-hatch
+python-pip
+python-pipx
+python-pytest
+python-ruff
+python-virtualenv
+pyenv

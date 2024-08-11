@@ -3,6 +3,7 @@ brightnessctl
 foot
 grim
 gsimplecal
+git-delta
 hyprpicker
 libnotify
 ly
@@ -11,7 +12,6 @@ networkmanager
 pavucontrol
 pipewire
 playerctl
-poweralertd
 sway
 swaybg
 sway-contrib
