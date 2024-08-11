@@ -13,3 +13,9 @@ esac
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+. $HOME/.local/bin/git-completion.bash
+
+eval "$(mcfly init bash)"
+
+source $HOME/.config/broot/launcher/bash/br

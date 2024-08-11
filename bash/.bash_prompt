@@ -1,3 +1,6 @@
 #!/bin/bash
 
-export PS1="[\[\e[38;5;39m\]\u\[\e[38;5;81m\]@\[\e[38;5;77m\]\h \[\e[38;5;226m\]\w\[\033[0m\]]\[\033[0m\]$ "
+. $HOME/.local/bin/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+
+export PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 "(%s)")'; PS1='[\u@\h \w]${PS1_CMD1}\$ '
