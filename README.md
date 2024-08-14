@@ -44,7 +44,42 @@ This repository contains the configuration files and scripts that I use in my [A
     <td>Application Launcher</td>
     <td>walker - https://github.com/abenz1267/walker</td>
   </tr>
-
+  <tr>
+    <td>File Browser</td>
+    <td>thunar - https://gitlab.xfce.org/xfce/thunar</td>
+  </tr>
+  <tr>
+    <td>Internet Browser</td>
+    <td>librewolf - https://librewolf.net</td>
+  </tr>
+  <tr>
+    <td>Text Editor</td>
+    <td>mousepad - https://gitlab.xfce.org/apps/mousepad</td>
+  </tr>
+  <tr>
+    <td>Image Viewer</td>
+    <td>imv - https://git.sr.ht/~exec64/imv</td>
+  </tr>
+  <tr>
+    <td>PDF Viewer</td>
+    <td>zathura - https://github.com/pwmt/zathura</td>
+  </tr>
+  <tr>
+    <td>Video Player</td>
+    <td>mpv - https://github.com/mpv-player/mpv</td>
+  </tr>
+  <tr>
+    <td>Color Picker</td>
+    <td>hyprpicker - https://github.com/hyprwm/hyprpicker</td>
+  </tr>
+  <tr>
+    <td>Backlight Control</td>
+    <td>brightnessctl - https://github.com/Hummer12007/brightnessctl</td>
+  </tr>
+  <tr>
+    <td>Audio Control</td>
+    <td>wireplumber - https://gitlab.freedesktop.org/pipewire/wireplumber</td>
+  </tr>
 </tbody></table> 
 
 ## Installation
