@@ -195,6 +195,7 @@ exec_always {
     nm-applet --indicator
     #walker --gapplication-service
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
+	dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 }
 
 include /etc/sway/config-vars.d/*
