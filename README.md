@@ -1,15 +1,24 @@
 # dotfiles
 
-This repository contains the configuration files and scripts that I use in my Arch Linux daily working environment.
+This repository contains the configuration files and scripts that I use in my [Arch Linux](https://archlinux.org) daily working environment.
 
 <table><tbody>
   <tr>
     <td>Shell</td>
-    <td>bash</td>
+    <td>bash - https://gnu.org/software/bash</td>
+  </tr>
+  <tr>
+    <td>Display Server</td>
+    <td>ly - https://wayland.freedesktop.org</td>
+  </tr>
+  <tr>
+  <tr>
+    <td>Audio Server</td>
+    <td>pipewire - https://pipewire.org</td>
   </tr>
   <tr>
     <td>Window Manager</td>
-    <td>sway - https://swaywm.org</td>
+    <td>wayland - https://swaywm.org</td>
   </tr>
   <tr>
     <td>Display Manager</td>
@@ -24,22 +33,25 @@ This repository contains the configuration files and scripts that I use in my Ar
     <td>waybar - https://github.com/alexays/waybar</td>
   </tr>
   <tr>
+    <td>Terminal</td>
+    <td>foot - https://codeberg.org/dnkl/foot</td>
+  </tr>
+  <tr>
     <td>Dynamic Menu</td>
     <td>wmenu - https://codeberg.org/adnano/wmenu</td>
   </tr>
   <tr>
-    <td>Terminal</td>
-    <td>foot - https://codeberg.org/dnkl/foot</td>
+    <td>Application Launcher</td>
+    <td>walker - https://github.com/abenz1267/walker</td>
   </tr>
-</tbody></table>
 
-![](https://github.com/user-attachments/assets/58a117eb-2e6d-4dca-b4b2-0edb82723cb9)
+</tbody></table> 
 
 ## Installation
 
 ```
 git clone https://github.com/beucismis/dotfiles/ ~/.dotfiles
 cd dotfiles
-pacman -S - < pkglist.txt
+pacman -S - -noconfirm < pkglist.txt
 bash install.sh 
 ```
