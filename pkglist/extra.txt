@@ -10,7 +10,6 @@ mpv
 kdeconnect
 qbittorrent
 quodlibet
-ranger
 thunar
 xarchiver
 zathura
