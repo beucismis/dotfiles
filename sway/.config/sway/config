@@ -22,9 +22,9 @@ set {
 
 # Output & Input Configuration
 
-output {
-    $display_name bg $wallpaper fill
-}
+#output {
+#    $display_name bg $wallpaper fill
+#}
 
 input $keyboard {
     xkb_layout $language
@@ -62,6 +62,7 @@ bindsym {
     $mod+Return exec $terminal
     XF86Calculator exec $calculator
     $mod+p exec $colorpicker
+	XF86Launch2 exec $terminal -H cat $HOME/.dotfiles/scripts/help.txt | more
 
     # Screenshot
     Shift+Print exec grimshot copy output && notify-send "Screenshot copy output"
@@ -183,7 +184,7 @@ set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-imag
 #bindsym XF86Launch2 exec bash -c "$screenlock"
 
 #exec "wlgreet --command sway; swaymsg exit"
-bindsym	$mod+Shift+e exec swaynag -t warning -m 'What do you want to do?' -b 'Poweroff' 'systemctl poweroff' dd-b 'Reboot' 'systemctl reboot'
+bindsym	$mod+Shift+e exec swaynag -t warning -m "What do you want to do?" -b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot"
 
 # Auto Start
 
