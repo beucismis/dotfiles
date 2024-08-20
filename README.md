@@ -84,7 +84,5 @@ This repository contains the configuration files and scripts that I use in my [A
 ## Installation
 
 ```
-git clone https://github.com/beucismis/dotfiles/ ~/.dotfiles
-cd .dotfiles
-bash install.sh 
+wget https://raw.githubusercontent.com/beucismis/dotfiles/main/install.sh | bash install.sh
 ```
