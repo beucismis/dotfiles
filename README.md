@@ -9,16 +9,15 @@ This repository contains the configuration files and scripts that I use in my [A
   </tr>
   <tr>
     <td>Display Server</td>
-    <td>ly - https://wayland.freedesktop.org</td>
+    <td>wayland - https://wayland.freedesktop.org</td>
   </tr>
-  <tr>
   <tr>
     <td>Audio Server</td>
     <td>pipewire - https://pipewire.org</td>
   </tr>
   <tr>
     <td>Window Manager</td>
-    <td>wayland - https://swaywm.org</td>
+    <td>sway - https://swaywm.org</td>
   </tr>
   <tr>
     <td>Display Manager</td>
@@ -86,7 +85,6 @@ This repository contains the configuration files and scripts that I use in my [A
 
 ```
 git clone https://github.com/beucismis/dotfiles/ ~/.dotfiles
-cd dotfiles
-pacman -S - -noconfirm < pkglist.txt
+cd .dotfiles
 bash install.sh 
 ```
