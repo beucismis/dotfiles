@@ -84,5 +84,5 @@ This repository contains the configuration files and scripts that I use in my [A
 ## Installation
 
 ```
-wget https://raw.githubusercontent.com/beucismis/dotfiles/main/install.sh | bash install.sh
+wget -O - wget https://raw.githubusercontent.com/beucismis/dotfiles/main/install.sh | bash
 ```
