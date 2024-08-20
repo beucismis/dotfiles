@@ -1,12 +1,6 @@
 #!/bin/bash
 
-# Directory traversal
-alias ..="cd .."
-alias -- -="cd -"
-alias ...="cd ../.."
-alias ....="cd ../../.."
-
-# Directory listing
+# Listing
 alias l="ls -la"
 alias ld="ls -ld */"
 alias ls="ls --color=auto"
@@ -25,5 +19,12 @@ alias du="du -ch"
 alias mkdir="mkdir -pv"
 alias grep='grep --color=auto'
 
-# Package managers
+# Package Managers
+alias pacman="sudo pacman"
 alias pip3-upgrade="python3 -m pip install --upgrade pip"
+
+# Dotfiles
+alias dotfiles-check="git -C $HOME/.dotfiles status"
+
+# Test
+alias camera-test="ffplay /dev/video0"
