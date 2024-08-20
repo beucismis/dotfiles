@@ -24,3 +24,4 @@ wireplumber
 wmenu
 wob
 wl-clipboard
+xcursor-comix
