@@ -1,4 +1,4 @@
-# dotfiles
+![resim](https://github.com/user-attachments/assets/0745118e-3f86-4fe5-a627-fa44c13e96f0)# dotfiles
 
 This repository contains the configuration files and scripts that I use in my [Arch Linux](https://archlinux.org) daily working environment.
 
@@ -91,4 +91,6 @@ wget -O - wget https://raw.githubusercontent.com/beucismis/dotfiles/main/install
 
 ## Preview
 
-![](https://github.com/user-attachments/assets/ebfdabd1-e712-40b6-82ba-91890bb2c2c5)
+![](https://github.com/user-attachments/assets/873453a4-4f37-46d5-ac32-7bb244da3392)
+
+Date: 22 Aug 2024
