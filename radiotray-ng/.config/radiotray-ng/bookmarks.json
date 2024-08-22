@@ -1,0 +1,32 @@
+[
+	{
+		"group" : "Rock",
+		"stations" : 
+		[
+			{
+				"name" : "\u0130T\u00dc Rock",
+				"url" : "http://160.75.86.29:8088/iturockmp3"
+			}
+		]
+	},
+	{
+		"group" : "Jazz/Blues",
+		"stations" : 
+		[
+			{
+				"name" : "\u0130T\u00dc Jazz/Blues",
+				"url" : "http://160.75.86.29:8088/itucazmp3"
+			}
+		]
+	},
+	{
+		"group" : "Classical",
+		"stations" : 
+		[
+			{
+				"name" : "\u0130T\u00dc Classical",
+				"url" : "http://160.75.86.29:8088/ituklasikmp3"
+			}
+		]
+	}
+]

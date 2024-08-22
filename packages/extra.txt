@@ -13,3 +13,4 @@ quodlibet
 thunar
 xarchiver
 zathura
+radiotray-ng
