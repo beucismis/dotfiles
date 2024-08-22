@@ -8,7 +8,8 @@ set {
     $touchpad "1739:52967:SYNA32E4:00_06CB:CEE7_Touchpad"
 
     $display_name "eDP-1"
-    $wallpaper "$HOME/wallpaper.jpg"
+    $wallpaper "$HOME/.wallpaper.jpg"
+	$bg_color "#225877"
 
     $wobsock $XDG_RUNTIME_DIR/wob.sock
     $gnome-schema org.gnome.desktop.interface
@@ -22,9 +23,9 @@ set {
 
 # Output & Input Configuration
 
-#output {
-#    $display_name bg $wallpaper fill
-#}
+output {
+    $display_name $bg_color solid_color
+}
 
 input $keyboard {
     xkb_layout $language
