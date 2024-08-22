@@ -32,7 +32,18 @@ window#waybar {
     background: #225877;
 }
 
-#mode, #custom-spotify, #wireplumber, #cpu, #temperature, #memory, #battery, #custom-updates, #clock, #tray {
+#mode,
+#custom-spotify,
+#backlight,
+#wireplumber,
+#cpu,
+#temperature,
+#memory,
+#battery,
+#custom-updates,
+##systemd-failed-units,
+#clock,
+#tray {
     padding: 2px 8px;
 }
 
