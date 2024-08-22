@@ -2,6 +2,14 @@
 
 This repository contains the configuration files and scripts that I use in my [Arch Linux](https://archlinux.org) daily working environment.
 
+## Installation
+
+```
+wget -O - wget https://raw.githubusercontent.com/beucismis/dotfiles/main/install.sh | bash
+```
+
+## Tools
+
 <table><tbody>
   <tr>
     <td>Shell</td>
@@ -81,8 +89,6 @@ This repository contains the configuration files and scripts that I use in my [A
   </tr>
 </tbody></table> 
 
-## Installation
+## Preview
 
-```
-wget -O - wget https://raw.githubusercontent.com/beucismis/dotfiles/main/install.sh | bash
-```
+![](https://github.com/user-attachments/assets/ebfdabd1-e712-40b6-82ba-91890bb2c2c5)
