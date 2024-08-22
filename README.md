@@ -1,4 +1,4 @@
-![resim](https://github.com/user-attachments/assets/0745118e-3f86-4fe5-a627-fa44c13e96f0)# dotfiles
+dotfiles
 
 This repository contains the configuration files and scripts that I use in my [Arch Linux](https://archlinux.org) daily working environment.
 
