@@ -1,4 +1,4 @@
-dotfiles
+# dotfiles
 
 This repository contains the configuration files and scripts that I use in my [Arch Linux](https://archlinux.org) daily working environment.
 
