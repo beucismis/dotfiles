@@ -1,7 +1,8 @@
-lutris
 goverlay
 heroic-games-launcher-bin
+lutris
 mangohud
-protonup-qt-bin
+polymc-qt5-bin
 polymc-bin
+protonup-qt-bin
 steam

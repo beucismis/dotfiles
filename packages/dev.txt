@@ -1,4 +1,6 @@
 docker
+go
+python
 python-black
 python-hatch
 python-pip
@@ -7,3 +9,4 @@ python-pytest
 python-ruff
 python-virtualenv
 pyenv
+rust
