@@ -17,7 +17,8 @@ alias reload="source $HOME/.bashrc"
 alias df="df -H"
 alias du="du -ch"
 alias mkdir="mkdir -pv"
-alias grep='grep --color=auto'
+alias grep="grep --color=auto"
+alias nano="micro"
 
 # Package Managers
 alias pacman="sudo pacman"
