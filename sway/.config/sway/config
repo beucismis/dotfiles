@@ -18,13 +18,14 @@ set {
     $menu wmenu-run -b
     $launcher walker --theme kanagawa
     $calculator gnome-calculator
+	$radio radiotray-ng
     $colorpicker hyprpicker -ar && notify-send $(wl-paste)
 }
 
 # Output & Input Configuration
 
 output {
-    $display_name $bg_color solid_color
+    $display_name bg $bg_color solid_color
 }
 
 input $keyboard {
@@ -62,8 +63,9 @@ bindsym {
     $mod+w exec $launcher
     $mod+Return exec $terminal
     XF86Calculator exec $calculator
-    $mod+p exec $colorpicker
-	XF86Launch2 exec $terminal -H cat $HOME/.dotfiles/scripts/help.txt | more
+	$mod+1+r exec $radio
+    $mod+Plus+p exec $colorpicker
+	XF86Launch2 exec $terminal -T "Dotfiles Help Page" -H glow $HOME/.dotfiles/scripts/help.md
 
     # Screenshot
     Shift+Print exec grimshot copy output && notify-send "Screenshot copy output"
@@ -135,6 +137,8 @@ for_window {
     [app_id="nm-connection-*"] floating enable
     [app_id="org.gnome.Calculator"] floating enable
     [app_id="io.github.quodlibet.QuodLibet"] floating enable
+	[app_id="org.keepassxc.KeePassXC"] floating enable
+	[title="Dotfiles Help Page"] floating enable
 }
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
