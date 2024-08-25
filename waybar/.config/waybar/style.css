@@ -33,7 +33,7 @@ window#waybar {
 }
 
 #mode,
-#custom-spotify,
+#custom-waybar-mpris,
 #backlight,
 #wireplumber,
 #cpu,
@@ -41,13 +41,13 @@ window#waybar {
 #memory,
 #battery,
 #custom-updates,
-##systemd-failed-units,
+#systemd-failed-units,
 #clock,
 #tray {
     padding: 2px 8px;
 }
 
-#custom-spotify {
+#custom-waybar-mpris {
 	background: #225877;
 }
 

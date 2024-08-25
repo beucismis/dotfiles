@@ -7,7 +7,7 @@
 		"sway/window",
 	],
     "modules-center": [
-		"custom/spotify",
+		"custom/waybar-mpris",
 	],
     "modules-right": [
 		"backlight",
@@ -22,17 +22,12 @@
 		"tray",
 	],
 	"sway/window": {},
-	"custom/spotify": {
-    	"format": "{}",
-    	"escape": true,
-    	"max-length": 30,
+	"custom/waybar-mpris": {
     	"return-type": "json",
-    	"exec-if": "pgrep spotify",
-    	"on-click-right": "killall spotify",
-    	"on-scroll-up": "playerctl -p spotify next",
-    	"on-click": "playerctl -p spotify play-pause",
-    	"on-scroll-down": "playerctl -p spotify previous",
-    	"exec": "/usr/bin/python3 $HOME/.config/waybar/mediaplayer.py --player spotify",
+    	"exec": "waybar-mpris --autofocus --play 'P:' --pause '' --order 'SYMBOL:ARTIST:TITLE'",
+    	"on-click": "waybar-mpris --send toggle",
+        "on-click-right": "waybar-mpris --send player-next",
+    	"escape": true,
 	},
 	"backlight": {
     	"format": "BL: {percent:3}%",
@@ -50,11 +45,11 @@
     "temperature": {
 		"tooltip": false,
         "critical-threshold": 80,
-        "format": "({temperatureC}°C)",
+        "format": "[{temperatureC}°C]",
     },
     "memory": {
 		"tooltip": false,
-        "format": "MEM: {used:0.1f}GiB ({percentage}%)",
+        "format": "MEM: {used:0.1f}GiB [{percentage}%]",
     },
     "battery": {
         "format": "BAT: {capacity:3}%",
