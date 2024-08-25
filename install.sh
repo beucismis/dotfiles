@@ -27,7 +27,7 @@ fi
 echo "Symlinking configuration files with stow..."
 cd $HOME/.dotfiles
 sudo stow --adopt etc -t /etc/
-stow --adopt bash fastfetch foot git mako mangohud pip qt5ct sway waybar wob
+stow --adopt bash fastfetch foot git mako mangohud pip qt5ct qt6ct sway waybar wob
 
 echo "Setting up Git completion and prompt..."
 cd $HOME/.local/bin
