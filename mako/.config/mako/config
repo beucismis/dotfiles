@@ -1,13 +1,22 @@
-icons=1
-margin=5
-sort=-time
-padding=10
-border-size=0
 layer=overlay
-outer-margin=5
-font=FreeMono 10
-ignore-timeout=1
-anchor=top-right
-default-timeout=5000
-background-color=#225877
+anchor=bottom-right
+
+padding=10
+margin=5
+outer-margin=15,10
+font=SourceCodePro 10
+
+border-size=0
+background-color=#2D2D2D
+#border-color=#225877
+
+icons=1
 icon-path=/usr/share/icons/Adwaita/
+
+sort=-time
+ignore-timeout=1
+default-timeout=5000
+
+[urgency=high]
+default-timeout=0
+border-color=#BF616A
