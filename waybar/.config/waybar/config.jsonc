@@ -9,6 +9,9 @@
     "modules-center": [
 		"custom/waybar-mpris",
 	],
+	"sway/window": {
+		"max-length": 50,
+	},
     "modules-right": [
 		"backlight",
 		"wireplumber",
@@ -16,21 +19,26 @@
 		"temperature",
 		"memory",
 		"battery",
-		"custom/updates",
+		"custom/wayman",
 		"systemd-failed-units",
 		"clock",
 		"tray",
 	],
 	"sway/window": {},
 	"custom/waybar-mpris": {
+    	"escape": true,
+		"max-length": 50,
     	"return-type": "json",
-    	"exec": "waybar-mpris --autofocus --play 'P:' --pause '' --order 'SYMBOL:ARTIST:TITLE'",
     	"on-click": "waybar-mpris --send toggle",
         "on-click-right": "waybar-mpris --send player-next",
-    	"escape": true,
+    	"exec": "waybar-mpris --autofocus --order 'ARTIST:TITLE'",
 	},
 	"backlight": {
+		"tooltip": false,
     	"format": "BL: {percent:3}%",
+		"on-click": "brightnessctl set 100%",
+		"on-click-right": "brightnessctl set 0%",
+		
 	},
 	"wireplumber": {
 		"tooltip": false,	
@@ -53,14 +61,8 @@
     },
     "battery": {
         "format": "BAT: {capacity:3}%",
-		"tooltip-format": "{time}\n\nPower: {power}\nCycles: {cycles}\nHealth: {health}"
+		"tooltip-format": "Time: {time}\n\nPower: {power}\nCycles: {cycles}\nHealth: {health}"
     },
-	"custom/updates": {
-		"format": "UP: {}",
-		"return-type": "json",
-		"exec-if": "which waybar-module-pacman-updates",
-		"exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
-	},
 	"systemd-failed-units": {
 		"user": true,
 		"system": true,
@@ -73,6 +75,7 @@
         "format": "{:%a %d %b %H:%M}",
     },
     "tray": {
+		"tooltip": false,
 		"spacing": 5,
 		"icon-size": 13,
 		"reverse-direction": true,
