@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo "Creating directories..."
+mkdir $HOME/screenshots $HOME/games $HOME/projects $HOME/clones $HOME/area51
+
+echo "Updating xdg user directory settings..."
+xdg-user-dirs-update
+
 echo "Updating package list..."
 sudo pacman -Syu --noconfirm
 
@@ -27,18 +33,13 @@ fi
 echo "Symlinking configuration files with stow..."
 cd $HOME/.dotfiles
 sudo stow --adopt etc -t /etc/
-stow --adopt bash fastfetch foot git mako mangohud pip qt5ct qt6ct sway waybar wob
+sudo stow --adopt usr -t /usr/
+stow --adopt bash fastfetch foot git heroic mako mangohud pip qt5ct qt6ct radiotray-ng sway waybar wob
 
 echo "Setting up Git completion and prompt..."
 cd $HOME/.local/bin
 wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 chmod +rx $HOME/.local/bin/git-completion.bash $HOME/.local/bin/git-prompt.sh
-
-echo "Creating directories..."
-mkdir $HOME/screenshots $HOME/games $HOME/projects $HOME/clones
-
-echo "Updating xdg user directory settings..."
-xdg-user-dirs-update
 
 echo "Done!"
