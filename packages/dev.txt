@@ -10,3 +10,4 @@ python-ruff
 python-virtualenv
 pyenv
 rust
+jdk21-openjdk
