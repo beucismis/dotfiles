@@ -22,7 +22,12 @@ alias nano="micro"
 
 # Package Managers
 alias pacman="sudo pacman"
-alias pip3-upgrade="python3 -m pip install --upgrade pip"
+alias pacu="pacman -Syuu --noconfirm"
+alias pacc="pacman -Scc --noconfirm"
+alias mirror="pacman-mirrors"
+alias mirror-fast="sudo pacman-mirrors --fasttrack 20 && pacman -Syyu"
+alias mirrors-choose="sudo pacman-mirrors --interactive && pacman -Syyu"
+alias pipu="python3 -m pip install --upgrade pip"
 
 # Dotfiles
 alias dotfiles-check="git -C $HOME/.dotfiles status"
