@@ -15,7 +15,7 @@ icon-path=/usr/share/icons/Adwaita/
 
 sort=-time
 ignore-timeout=1
-default-timeout=5000
+default-timeout=10000
 
 [urgency=high]
 default-timeout=0
