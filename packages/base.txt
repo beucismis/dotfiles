@@ -22,7 +22,6 @@ swaylock
 walker-bin
 waybar
 waybar-mpris
-waybar-module-pacman-updates-git
 wireplumber
 wmenu
 wob

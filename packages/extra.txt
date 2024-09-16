@@ -1,3 +1,5 @@
+android-file-transfer
+bleachbit
 gimp
 gnome-calculator
 gparted
