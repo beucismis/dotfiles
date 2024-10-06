@@ -1,2 +1,3 @@
 spotify
 vesktop-bin
+telegram-desktop

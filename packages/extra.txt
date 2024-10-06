@@ -1,10 +1,13 @@
 android-file-transfer
+android-tools
 bleachbit
 gimp
 gnome-calculator
 gparted
+gvfs
 imv
 inkscape
+keepassxc
 kdeconnect
 librewolf-bin
 liferea
@@ -14,5 +17,6 @@ quodlibet
 radiotray-ng
 qbittorrent
 thunar
+thunar-volman
 xarchiver
 zathura

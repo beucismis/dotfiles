@@ -3,6 +3,5 @@ heroic-games-launcher-bin
 lutris
 mangohud
 polymc-qt5-bin
-polymc-bin
 protonup-qt-bin
 steam

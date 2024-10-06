@@ -1,0 +1,4 @@
+nvidia
+nvidia-dkms
+nvidia-utils
+nvidia-settings
