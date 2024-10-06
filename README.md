@@ -84,14 +84,6 @@ This repository contains the configuration files and scripts that I use in my [A
   </tbody></table>
 </details>
 
-## Installation
-
-```
-wget -O - wget https://raw.githubusercontent.com/beucismis/dotfiles/main/install.sh | bash
-```
-
 ## Preview
 
-![](https://github.com/user-attachments/assets/9ecce5b7-ade3-4933-b297-21f363f4778e)
-
-Date: 25 Aug 2024
+![](https://github.com/user-attachments/assets/af87b16a-d430-4c27-ab83-0c6e13a878e0)
