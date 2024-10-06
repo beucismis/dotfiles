@@ -14,8 +14,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# git completion
 . $HOME/.local/bin/git-completion.bash
 
+# mcfly
 eval "$(mcfly init bash)"
 
+# broot
 source $HOME/.config/broot/launcher/bash/br

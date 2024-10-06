@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Listing
-alias l="ls -la"
-alias ld="ls -ld */"
-alias ls="ls --color=auto"
+alias l="eza -la"
+alias ld="eza -ld */"
+alias ls="eza --color=auto"
 
 # Shortcuts
 alias g="git"
@@ -11,6 +11,7 @@ alias s="sudo"
 alias c="clear"
 alias rr="rm -rf"
 alias untar="tar -zxvf "
+alias m="mousepad"
 alias reload="source $HOME/.bashrc"
 
 # Defaults
@@ -19,15 +20,18 @@ alias du="du -ch"
 alias mkdir="mkdir -pv"
 alias grep="grep --color=auto"
 alias nano="micro"
+alias catmd="glow"
+alias imageviewer="viu"
 
 # Package Managers
 alias pacman="sudo pacman"
 alias pacu="pacman -Syuu --noconfirm"
 alias pacc="pacman -Scc --noconfirm"
-alias mirror="pacman-mirrors"
-alias mirror-fast="sudo pacman-mirrors --fasttrack 20 && pacman -Syyu"
-alias mirrors-choose="sudo pacman-mirrors --interactive && pacman -Syyu"
+alias paru-stats="paru --show --stats"
 alias pipu="python3 -m pip install --upgrade pip"
+
+# Service Stuff
+alias failed-units="systemctl list-units --state failed"
 
 # Dotfiles
 alias dotfiles-check="git -C $HOME/.dotfiles status"
