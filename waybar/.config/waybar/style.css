@@ -36,11 +36,12 @@ window#waybar {
 #custom-waybar-mpris,
 #backlight,
 #wireplumber,
+#bluetooth,
 #cpu,
 #temperature,
 #memory,
 #battery,
-#custom-wayman,
+#custom-pacman,
 #systemd-failed-units,
 #clock,
 #tray {
@@ -51,6 +52,6 @@ window#waybar {
 	background: #225877;
 }
 
-#temperature {
+#bluetooth, #temperature {
 	padding-left: 0;
 }

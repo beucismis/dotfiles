@@ -15,11 +15,12 @@
     "modules-right": [
 		"backlight",
 		"wireplumber",
+		"bluetooth",
 		"cpu",
 		"temperature",
 		"memory",
 		"battery",
-		"custom/wayman",
+		"custom/pacman",
 		"systemd-failed-units",
 		"clock",
 		"tray",
@@ -46,6 +47,14 @@
         "format-muted": "VOL: Mute",
         "on-click-right": "pavucontrol",
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+	},
+	"bluetooth": {
+		"format": "{status}",
+		"format-on": "",
+		"format-off": "",
+		"format-disabled": "",
+		"format-connected": "[BT]",
+		"on-click": "foot -H bluetuith",
 	},
     "cpu": {
         "format": "CPU: {usage:3}%",
@@ -74,6 +83,13 @@
         "on-click": "gsimplecal",
         "format": "{:%a %d %b %H:%M}",
     },
+	"custom/pacman": {
+		"signal": 8,
+		"interval": 3600,
+		"format": "UP: {}",
+	  	"return-type": "json",
+		"exec": "bash /home/$USER/.dotfiles/waybar/.config/waybar/pacman.sh",
+	},
     "tray": {
 		"tooltip": false,
 		"spacing": 5,
