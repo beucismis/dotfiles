@@ -3,29 +3,31 @@
 set {
     $mod Mod4
 
+    $bg_color "#225877"
+    $wallpaper "$HOME/.wallpaper.jpg"
+
     $language "tr"
     $keyboard "1:1:AT_Translated_Set_2_keyboard"
     $touchpad "1739:52967:SYNA32E4:00_06CB:CEE7_Touchpad"
-
-    $display_name "eDP-1"
-    $wallpaper "$HOME/.wallpaper.jpg"
-	$bg_color "#225877"
 
     $wobsock $XDG_RUNTIME_DIR/wob.sock
     $gnome-schema org.gnome.desktop.interface
 
     $terminal foot
     $menu wmenu-run -b
-    $launcher walker --theme kanagawa
+    $radio radiotray-ng
     $calculator gnome-calculator
-	$radio radiotray-ng
-    $colorpicker hyprpicker -ar && notify-send $(wl-paste)
+    $launcher walker --theme kanagawa
+    $colorpicker hyprpicker -a && notify-send $(wl-paste)
 }
 
 # Output & Input Configuration
 
 output {
-    $display_name bg $bg_color solid_color
+    #"eDP-1" bg $bg_color solid_color
+    #"eDP-2" bg $bg_color solid_color
+	"eDP-1" background $wallpaper fill
+	"eDP-2" background $wallpaper fill
 }
 
 input $keyboard {
@@ -49,40 +51,6 @@ default_border pixel 2
 bar {
     position top
     swaybar_command waybar
-}
-
-# Basics and Shortcuts
-
-floating_modifier $mod normal
-
-bindsym {
-    $mod+q kill
-    $mod+Shift+r reload
-
-    $mod+m exec $menu
-    $mod+w exec $launcher
-    $mod+Return exec $terminal
-    XF86Calculator exec $calculator
-	$mod+1+r exec $radio
-    $mod+Plus+p exec $colorpicker
-	XF86Launch2 exec $terminal -T "Dotfiles Help Page" -H glow $HOME/.dotfiles/scripts/help.md
-
-    # Screenshot
-    Shift+Print exec grimshot copy output && notify-send "Screenshot copy output"
-    Shift+Alt+Print exec grimshot copy active && notify-send "Screenshot copy active window"
-    Shift+Ctrl+Print exec grimshot copy area && notify-send "Screenshot copy area"
-    Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save output"
-    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save active window"
-    Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save area"
-
-    # Backlight Control
-    XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
-    XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
-
-    # Sound Control
-    XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
-    XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
-    XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
 }
 
 # Moving Around
@@ -137,8 +105,8 @@ for_window {
     [app_id="nm-connection-*"] floating enable
     [app_id="org.gnome.Calculator"] floating enable
     [app_id="io.github.quodlibet.QuodLibet"] floating enable
-	[app_id="org.keepassxc.KeePassXC"] floating enable
-	[title="Dotfiles Help Page"] floating enable
+    [app_id="org.keepassxc.KeePassXC"] floating enable
+    [title="Dotfiles Help Page"] floating enable
 }
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
@@ -182,6 +150,40 @@ bindsym {
     $mod+Shift+minus move scratchpad
 }
 
+# Basics and Shortcuts
+
+floating_modifier $mod normal
+
+bindsym {
+    $mod+q kill
+    $mod+Shift+r reload
+
+    $mod+m exec $menu
+    $mod+w exec $launcher
+    $mod+Return exec $terminal
+    XF86Calculator exec $calculator
+    $mod+1+r exec $radio
+    $mod+Plus+p exec $colorpicker
+    XF86Launch2 exec $terminal -T "Dotfiles Help Page" -H glow $HOME/.dotfiles/scripts/help.md
+
+    # Screenshot
+    Shift+Print exec grimshot copy output && notify-send "Screenshot copy output"
+    Shift+Alt+Print exec grimshot copy active && notify-send "Screenshot copy active window"
+    Shift+Ctrl+Print exec grimshot copy area && notify-send "Screenshot copy area"
+    Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save output"
+    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save active window"
+    Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save area"
+
+    # Backlight Control
+    XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+    XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+
+    # Sound Control
+    XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+    XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+    XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
+}
+
 # Idle
 
 set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
@@ -194,14 +196,17 @@ bindsym	$mod+Shift+e exec swaynag -t warning -m "What do you want to do?" -b "Po
 # Auto Start
 
 exec_always {
-    import-gsettings.sh
+    gsettings set "$gnome-schema" font-name "Source Code Pro"
+    gsettings set "$gnome-schema" gtk-theme "Adwaita-dark"
+    gsettings set "$gnome-schema" icon-theme "Adwaita"
+    gsettings set "$gnome-schema" cursor-theme "ComixCursors-Black"
 
     mako
-	kdeconnectd
+    kdeconnectd
     nm-applet --indicator
     #walker --gapplication-service
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
-	dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 }
 
 include /etc/sway/config-vars.d/*
