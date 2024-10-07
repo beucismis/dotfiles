@@ -20,7 +20,7 @@
 		"temperature",
 		"memory",
 		"battery",
-		"custom/pacman",
+		"custom/updates",
 		"systemd-failed-units",
 		"clock",
 		"tray",
@@ -83,12 +83,15 @@
         "on-click": "gsimplecal",
         "format": "{:%a %d %b %H:%M}",
     },
-	"custom/pacman": {
-		"signal": 8,
-		"interval": 3600,
-		"format": "UP: {}",
-	  	"return-type": "json",
-		"exec": "bash /home/$USER/.dotfiles/waybar/.config/waybar/pacman.sh",
+	"custom/updates": {
+		"format": "{icon} {}",
+		"format-icons": {
+			"updated": ""
+			"has-updates": "UP:",
+		},
+		"return-type": "json",
+		"exec-if": "which waybar-module-pacman-updates",
+		"exec": "waybar-module-pacman-updates --no-zero-output --tooltip-align-columns"
 	},
     "tray": {
 		"tooltip": false,

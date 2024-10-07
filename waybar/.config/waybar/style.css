@@ -41,7 +41,7 @@ window#waybar {
 #temperature,
 #memory,
 #battery,
-#custom-pacman,
+#custom-updates,
 #systemd-failed-units,
 #clock,
 #tray {
@@ -54,4 +54,8 @@ window#waybar {
 
 #bluetooth, #temperature {
 	padding-left: 0;
+}
+
+#custom-updates {
+	background-color: transparent;
 }
