@@ -84,14 +84,10 @@
         "format": "{:%a %d %b %H:%M}",
     },
 	"custom/updates": {
-		"format": "{icon} {}",
-		"format-icons": {
-			"updated": ""
-			"has-updates": "UP:",
-		},
+		"format": "UP: {}",
 		"return-type": "json",
 		"exec-if": "which waybar-module-pacman-updates",
-		"exec": "waybar-module-pacman-updates --no-zero-output --tooltip-align-columns"
+		"exec": "waybar-module-pacman-updates --tooltip-align-columns",
 	},
     "tray": {
 		"tooltip": false,
