@@ -10,16 +10,16 @@ export MOZ_ENABLE_WAYLAND=1
 export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland
 export SDL_VIDEODRIVER=wayland
-export GBM_BACKEND=nvidia-drm
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-export GOPATH=$HOME/.go
-export PATH=$GOPATH/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.local/appimage:$PATH
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export MANGOHUD=1
 export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct

@@ -22,3 +22,6 @@ eval "$(mcfly init bash)"
 
 # broot
 source $HOME/.config/broot/launcher/bash/br
+
+# Created by `pipx` on 2024-10-11 23:10:26
+export PATH="$PATH:/home/beucismis/.local/bin"
