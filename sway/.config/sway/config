@@ -191,7 +191,8 @@ set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-imag
 #bindsym XF86Launch2 exec bash -c "$screenlock"
 
 #exec "wlgreet --command sway; swaymsg exit"
-bindsym	$mod+Shift+e exec swaynag -t warning -m "What do you want to do?" -b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot"
+bindsym	$mod+Shift+e exec swaynag -t default -m "What do you want to do?" \
+	-b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot" -b "Exit" "systemctl exit" -b "Suspend" "systemctl suspend"
 
 # Auto Start
 
