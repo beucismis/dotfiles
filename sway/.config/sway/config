@@ -32,6 +32,7 @@ output {
 
 input $keyboard {
     xkb_layout $language
+	xkb_numlock enabled
 }
 
 input $touchpad {
@@ -161,9 +162,10 @@ bindsym {
     $mod+m exec $menu
     $mod+w exec $launcher
     $mod+Return exec $terminal
-    XF86Calculator exec $calculator
+
     $mod+1+r exec $radio
-    $mod+Plus+p exec $colorpicker
+    $mod+p exec $colorpicker
+    XF86Calculator exec GTK_THEME=Adwaita:dark $calculator
     XF86Launch2 exec $terminal -T "Dotfiles Help Page" -H glow $HOME/.dotfiles/scripts/help.md
 
     # Screenshot
@@ -197,15 +199,15 @@ bindsym	$mod+Shift+e exec swaynag -t default -m "What do you want to do?" \
 # Auto Start
 
 exec_always {
-    gsettings set "$gnome-schema" font-name "Source Code Pro"
     gsettings set "$gnome-schema" gtk-theme "Adwaita-dark"
     gsettings set "$gnome-schema" icon-theme "Adwaita"
     gsettings set "$gnome-schema" cursor-theme "ComixCursors-Black"
+    gsettings set "$gnome-schema" font-name "Source Code Pro"
 
     mako
     kdeconnectd
     nm-applet --indicator
-    #walker --gapplication-service
+    walker --gapplication-service
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 }
