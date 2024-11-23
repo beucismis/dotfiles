@@ -6,20 +6,26 @@ export XDG_CURRENT_DESKTOP=sway
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_SCREENSHOTS_DIR=$HOME/screenshots
 
-export MOZ_ENABLE_WAYLAND=1
-export CLUTTER_BACKEND=wayland
-export QT_QPA_PLATFORM=wayland
-export SDL_VIDEODRIVER=wayland
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-export GBM_BACKEND=nvidia-drm
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
-
 export GOPATH="$HOME/.go"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
-export MANGOHUD=1
+export MOZ_ENABLE_WAYLAND=1
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export ECORE_EVAS_ENGINE=wayland_egl
+export ELM_ENGINE=wayland_egl
+
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+
+#export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+export QT_STYLE_OVERRIDE=Adwaita-Dark
+
+export MANGOHUD=0 walker zedbrowser
