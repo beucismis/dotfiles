@@ -27,8 +27,9 @@
 	],
 	"sway/window": {},
 	"custom/waybar-mpris": {
+		"format": "{}",
     	"escape": true,
-		"max-length": 50,
+		"max-length": 25,
     	"return-type": "json",
     	"on-click": "waybar-mpris --send toggle",
         "on-click-right": "waybar-mpris --send player-next",
