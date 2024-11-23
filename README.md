@@ -86,4 +86,4 @@ This repository contains the configuration files and scripts that I use in my [A
 
 ## Preview
 
-![](https://github.com/user-attachments/assets/af87b16a-d430-4c27-ab83-0c6e13a878e0)
+![](https://github.com/user-attachments/assets/3de46e2b-7740-4fc4-83df-6542e1b606c7)
