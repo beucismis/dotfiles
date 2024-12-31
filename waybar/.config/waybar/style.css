@@ -50,6 +50,7 @@ window#waybar {
 
 #custom-waybar-mpris {
 	background: #225877;
+    padding: 2px 2px 2px 8px;
 }
 
 #bluetooth, #temperature {
