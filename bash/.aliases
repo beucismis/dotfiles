@@ -1,40 +1,58 @@
 #!/bin/bash
 
 # Listing
+
 alias l="eza -la"
 alias ld="eza -ld */"
 alias ls="eza --color=auto"
 
 # Shortcuts
+
 alias g="git"
 alias s="sudo"
 alias c="clear"
 alias rr="rm -rf"
 alias untar="tar -zxvf "
 alias m="mousepad"
+alias catmd="glow"
+alias imageviewer="viu"
 alias reload="source $HOME/.bashrc"
 
 # Defaults
+
+alias rm="rm -I"
 alias df="df -H"
-alias du="du -ch"
 alias mkdir="mkdir -pv"
 alias grep="grep --color=auto"
-alias nano="micro"
-alias catmd="glow"
-alias imageviewer="viu"
+alias du='du -h --max-depth=1'
+
+# Network
+
+alias ports="ss -tuln"
 
 # Package Managers
-alias pacman="sudo pacman"
-alias pacu="pacman -Syuu --noconfirm"
-alias pacc="pacman -Scc --noconfirm"
+
+alias pacu="sudo pacman -Syuu --noconfirm"
+alias pacr="sudo pacman -Rns --noconfirm"
+alias pacc="sudo pacman -Scc --noconfirm"
+alias paco="pacman -Qdtq | sudo pacman -Rns --noconfirm -"
 alias paru-stats="paru --show --stats"
 alias pipu="python3 -m pip install --upgrade pip"
 
 # Service Stuff
+
 alias failed-units="systemctl list-units --state failed"
 
 # Dotfiles
+
 alias dotfiles-check="git -C $HOME/.dotfiles status"
 
 # Test
+
 alias camera-test="ffplay /dev/video0"
+
+# Functions
+
+function ffss {
+	ffsubsync $1 -i $2 -o $3
+}
