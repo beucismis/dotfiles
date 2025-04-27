@@ -10,6 +10,7 @@ imv
 inkscape
 keepassxc
 kdeconnect
+librewolf-bin
 mousepad
 mpv
 quodlibet
@@ -19,4 +20,3 @@ thunar
 thunar-volman
 xarchiver
 zathura
-zen-browser-bin
