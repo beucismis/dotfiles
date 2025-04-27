@@ -51,7 +51,7 @@ This repository contains the configuration files and scripts that I use in my [A
     </tr>
     <tr>
       <td>Internet Browser</td>
-      <td>zen browser - https://github.com/zen-browser/desktop</td>
+      <td>librewolf - https://codeberg.org/librewolf</td>
     </tr>
     <tr>
       <td>Text Editor</td>
