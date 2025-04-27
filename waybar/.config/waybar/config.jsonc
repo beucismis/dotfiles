@@ -13,6 +13,7 @@
 		"max-length": 50,
 	},
     "modules-right": [
+		"custom/updates",
 		"backlight",
 		"wireplumber",
 		"bluetooth",
@@ -20,7 +21,6 @@
 		"temperature",
 		"memory",
 		"battery",
-		"custom/updates",
 		"systemd-failed-units",
 		"clock",
 		"tray",
@@ -34,6 +34,12 @@
     	"on-click": "waybar-mpris --send toggle",
         "on-click-right": "waybar-mpris --send player-next",
     	"exec": "waybar-mpris --autofocus --order 'ARTIST:TITLE'",
+	},
+	"custom/updates": {
+		"format": "UP: {}",
+		"return-type": "json",
+		"exec-if": "which waybar-module-pacman-updates",
+		"exec": "waybar-module-pacman-updates --tooltip-align-columns",
 	},
 	"backlight": {
 		"tooltip": false,
@@ -74,7 +80,7 @@
 		"tooltip-format": "Time: {time}\n\nPower: {power}\nCycles: {cycles}\nHealth: {health}"
     },
 	"systemd-failed-units": {
-		"user": true,
+		"user": false,
 		"system": true,
 		"hide-on-ok": true,
 		"format": "SYS: {nr_failed}",
@@ -84,12 +90,6 @@
         "on-click": "gsimplecal",
         "format": "{:%a %d %b %H:%M}",
     },
-	"custom/updates": {
-		"format": "UP: {}",
-		"return-type": "json",
-		"exec-if": "which waybar-module-pacman-updates",
-		"exec": "waybar-module-pacman-updates --tooltip-align-columns",
-	},
     "tray": {
 		"tooltip": false,
 		"spacing": 5,
