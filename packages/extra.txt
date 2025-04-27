@@ -1,3 +1,4 @@
+adobe-source-code-pro-fonts
 android-file-transfer
 android-tools
 bleachbit
