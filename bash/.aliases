@@ -15,7 +15,7 @@ alias rr="rm -rf"
 alias untar="tar -zxvf "
 alias m="mousepad"
 alias catmd="glow"
-alias imageviewer="viu"
+alias icat="viu"
 alias reload="source $HOME/.bashrc"
 
 # Defaults
@@ -49,7 +49,8 @@ alias dotfiles-check="git -C $HOME/.dotfiles status"
 
 # Test
 
-alias camera-test="ffplay /dev/video0"
+alias swaylog="sway -d 2> ~/sway.log"
+alias cameratest="ffplay /dev/video0"
 
 # Functions
 
