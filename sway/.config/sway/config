@@ -10,15 +10,14 @@ set {
     $keyboard "1:1:AT_Translated_Set_2_keyboard"
     $touchpad "1739:52967:SYNA32E4:00_06CB:CEE7_Touchpad"
 
-    $wobsock $XDG_RUNTIME_DIR/wob.sock
-    $gnome-schema org.gnome.desktop.interface
-
     $terminal foot
     $menu wmenu-run -b
     $radio radiotray-ng
     $calculator gnome-calculator
-    $launcher walker --theme kanagawa
-    $colorpicker hyprpicker -a && notify-send $(wl-paste)
+    $colorpicker hyprpicker -ard && notify-send $(wl-paste)
+
+    $wobsock $XDG_RUNTIME_DIR/wob.sock
+    $gnome-schema org.gnome.desktop.interface
 }
 
 # Output & Input Configuration
@@ -86,6 +85,8 @@ mode "resize" {
 
 # Layout Stuff
 
+popup_during_fullscreen smart
+
 bindsym {
     $mod+b splith
     $mod+v splitv
@@ -105,8 +106,9 @@ for_window {
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-*"] floating enable
     [app_id="org.gnome.Calculator"] floating enable
-    [app_id="io.github.quodlibet.QuodLibet"] floating enable
     [app_id="org.keepassxc.KeePassXC"] floating enable
+    [app_id="io.github.quodlibet.QuodLibet"] floating enable
+
     [title="Dotfiles Help Page"] floating enable
 }
 
@@ -160,7 +162,6 @@ bindsym {
     $mod+Shift+r reload
 
     $mod+m exec $menu
-    $mod+w exec $launcher
     $mod+Return exec $terminal
 
     $mod+1+r exec $radio
@@ -181,8 +182,8 @@ bindsym {
     XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
 
     # Sound Control
-    XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
-    XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+    XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
+    XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
     XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
 }
 
@@ -199,17 +200,18 @@ bindsym	$mod+Shift+e exec swaynag -t default -m "What do you want to do?" \
 # Auto Start
 
 exec_always {
+	dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+
     gsettings set "$gnome-schema" gtk-theme "Adwaita-dark"
     gsettings set "$gnome-schema" icon-theme "Adwaita"
-    gsettings set "$gnome-schema" cursor-theme "ComixCursors-Black"
+    gsettings set "$gnome-schema" cursor-theme "ComixCursors-Blue"
     gsettings set "$gnome-schema" font-name "Source Code Pro"
 
     mako
     kdeconnectd
+	poweralertd -S
     nm-applet --indicator
-    walker --gapplication-service
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 }
 
 include /etc/sway/config-vars.d/*
