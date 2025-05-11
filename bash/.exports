@@ -1,31 +1,41 @@
 #!/bin/bash
 
+export EDITOR=nano
+
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_SCREENSHOTS_DIR=$HOME/screenshots
 
-export GOPATH="$HOME/.go"
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.local/bin"
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin
 
+export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
-export _JAVA_AWT_WM_NONREPARENTING=1
+
+export QT_QPA_PLATFORM=wayland
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_STYLE_OVERRIDE=Adwaita-Dark
+export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
 
 export ECORE_EVAS_ENGINE=wayland_egl
 export ELM_ENGINE=wayland_egl
 
+export WLR_NO_HARDWARE_CURSORS=1
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 export GBM_BACKEND=nvidia-drm
+export __GL_VRR_ALLOWED=1
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __VK_LAYER_NV_optimus=NVIDIA_only
 
-#export QT_QPA_PLATFORM=wayland
-export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
-export QT_STYLE_OVERRIDE=Adwaita-Dark
-
-export MANGOHUD=0 walker zedbrowser
+# export MANGOHUD=0
