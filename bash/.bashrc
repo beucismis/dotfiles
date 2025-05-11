@@ -3,15 +3,12 @@
 [ -z "$PS1" ] && return
 [ -n "$PS1" ] && source ~/.bash_profile;
 
+clear-screen-keep-sb() {
+    printf '\e[%dS' $((LINES-1))
+    tput -x clear
+}
 
-
-if [[ $TERM =~ ^foot ]]; then
-    clear-screen-keep-sb() {
-        printf '\e[%dS' $((LINES-1))
-        tput -x clear
-    }
-    bind -x '"\C-l":"clear-screen-keep-sb"'
-fi
+bind -x '"\C-l":"clear-screen-keep-sb"'
 
 osc7_cwd() {
     local strlen=${#PWD}
@@ -28,4 +25,4 @@ osc7_cwd() {
     printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
 
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
+PROMPT_COMMAND=${PROMPT_COMMAND:+${PROMPT_COMMAND%;}; }osc7_cwd
