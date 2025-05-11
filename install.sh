@@ -27,11 +27,10 @@ echo "Symlinking configuration files with stow..."
 cd /home/$USER/.dotfiles
 sudo stow --adopt etc -t /etc/
 sudo stow --adopt usr -t /usr/
-stow --adopt bash fastfetch foot git heroic mako mangohud pip qt5ct qt6ct radiotray-ng sway swaynag user-dirs waybar wob
+stow --adopt bash fastfetch foot git mako mangohud pip qt5ct qt6ct radiotray-ng sway swaynag user-dirs waybar wob
 
 echo "Updating xdg user directory settings..."
-sudo pacman -S xdg-user-dirs --noconfirm
-xdg-user-dirs-update
+sudo pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
 
 echo "Creating custom directories..."
 mkdir /home/$USER/screenshots
