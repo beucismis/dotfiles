@@ -14,14 +14,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# git completion
+# Git completion
 . $HOME/.local/bin/git-completion.bash
 
-# mcfly
+# McFly
 eval "$(mcfly init bash)"
 
-# broot
+# Broot
 source $HOME/.config/broot/launcher/bash/br
-
-# Created by `pipx` on 2024-10-11 23:10:26
-export PATH="$PATH:/home/beucismis/.local/bin"
