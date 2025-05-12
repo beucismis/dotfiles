@@ -3,7 +3,7 @@
 This repository contains the configuration files and scripts that I use in my [Arch Linux](https://archlinux.org) daily working environment.
 
 <details>
-  <summary>Click for tool list</summary>
+  <summary>Tools</summary>
   <table><tbody>
     <tr>
       <td>Shell</td>
@@ -14,24 +14,24 @@ This repository contains the configuration files and scripts that I use in my [A
       <td>wayland - https://wayland.freedesktop.org</td>
     </tr>
     <tr>
-      <td>Audio Server</td>
-      <td>pipewire - https://pipewire.org</td>
-    </tr>
-    <tr>
       <td>Window Manager</td>
       <td>sway - https://swaywm.org</td>
+    </tr>
+    <tr>
+      <td>Status Bar</td>
+      <td>waybar - https://github.com/alexays/waybar</td>
     </tr>
     <tr>
       <td>Display Manager</td>
       <td>ly - https://github.com/fairyglade/ly</td>
     </tr>
     <tr>
-      <td>Notification Daemon</td>
-      <td>mako - https://github.com/emersion/mako</td>
+      <td>Audio Server</td>
+      <td>pipewire - https://pipewire.org</td>
     </tr>
     <tr>
-      <td>Status Bar</td>
-      <td>waybar - https://github.com/alexays/waybar</td>
+      <td>Notification Daemon</td>
+      <td>mako - https://github.com/emersion/mako</td>
     </tr>
     <tr>
       <td>Terminal</td>
@@ -40,10 +40,6 @@ This repository contains the configuration files and scripts that I use in my [A
     <tr>
       <td>Dynamic Menu</td>
       <td>wmenu - https://codeberg.org/adnano/wmenu</td>
-    </tr>
-    <tr>
-      <td>Application Launcher</td>
-      <td>walker - https://github.com/abenz1267/walker</td>
     </tr>
     <tr>
       <td>File Browser</td>
@@ -84,6 +80,7 @@ This repository contains the configuration files and scripts that I use in my [A
   </tbody></table>
 </details>
 
-## Preview
-
-![](https://github.com/user-attachments/assets/3de46e2b-7740-4fc4-83df-6542e1b606c7)
+<details>
+  <summary>Preview</summary>
+  <img src="https://github.com/user-attachments/assets/c517d3b4-f659-48c4-99d9-415065516833">
+</details>
