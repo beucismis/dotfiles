@@ -1,7 +1,0 @@
-Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch
-Server = http://depo.turkiye.linux.web.tr/archlinux/$repo/os/$arch
-Server = https://depo.turkiye.linux.web.tr/archlinux/$repo/os/$arch
-Server = https://tr.arch.niranjan.co/$repo/os/$arch
-Server = http://mirror.timtal.com.tr/archlinux/$repo/os/$arch
-Server = https://mirror.timtal.com.tr/archlinux/$repo/os/$arch
-Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch

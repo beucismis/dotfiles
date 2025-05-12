@@ -16,6 +16,12 @@ window#waybar {
 	padding: 0 8px;
 }
 
+#mode {
+	margin-left: 8px;
+	margin-right: 0px;
+    background: #225877;
+}
+
 #workspaces button {
 	padding: 0;
     color: white;
@@ -26,14 +32,9 @@ window#waybar {
     background: #225877;
 }
 
-#mode {
-	margin-left: 8px;
-	margin-right: 0px;
-    background: #225877;
-}
-
 #mode,
-#custom-waybar-mpris,
+#mpris,
+#custom-updates,
 #backlight,
 #wireplumber,
 #bluetooth,
@@ -41,16 +42,14 @@ window#waybar {
 #temperature,
 #memory,
 #battery,
-#custom-updates,
 #systemd-failed-units,
 #clock,
 #tray {
     padding: 2px 8px;
 }
 
-#custom-waybar-mpris {
+#mpris {
 	background: #225877;
-    padding: 2px 2px 2px 8px;
 }
 
 #bluetooth, #temperature {
@@ -58,5 +57,5 @@ window#waybar {
 }
 
 #custom-updates {
-	background-color: transparent;
+	background: transparent;
 }

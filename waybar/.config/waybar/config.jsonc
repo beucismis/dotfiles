@@ -7,11 +7,8 @@
 		"sway/window",
 	],
     "modules-center": [
-		"custom/waybar-mpris",
+		"mpris",
 	],
-	"sway/window": {
-		"max-length": 50,
-	},
     "modules-right": [
 		"custom/updates",
 		"backlight",
@@ -25,35 +22,44 @@
 		"clock",
 		"tray",
 	],
-	"sway/window": {},
-	"custom/waybar-mpris": {
+	"sway/window": {
+		"tooltip": false,
 		"format": "{}",
-    	"escape": true,
-		"max-length": 25,
-    	"return-type": "json",
-    	"on-click": "waybar-mpris --send toggle",
-        "on-click-right": "waybar-mpris --send player-next",
-    	"exec": "waybar-mpris --autofocus --order 'ARTIST:TITLE'",
+		"max-length": 100,
+	},
+	"mpris": {
+		"artist-len": 25,
+		"title-len": 25,
+		"format": "{dynamic}",
+		"format-paused": "P: {dynamic}",
+		"dynamic-order": ["artist", "title"],
+		"dynamic-importance-order": ["artist", "title"],
+		"tooltip-format": "{player} ({status}) - [{position}/{length}]"
 	},
 	"custom/updates": {
-		"format": "UP: {}",
-		"return-type": "json",
-		"exec-if": "which waybar-module-pacman-updates",
-		"exec": "waybar-module-pacman-updates --tooltip-align-columns",
+    	"format": "U: {}",
+    	"return-type": "json",
+    	"exec": "waybar-module-pacman-updates",
+    	"exec-if": "which waybar-module-pacman-updates",
 	},
 	"backlight": {
 		"tooltip": false,
+		"scroll-step": 5,
     	"format": "BL: {percent:3}%",
 		"on-click": "brightnessctl set 100%",
 		"on-click-right": "brightnessctl set 0%",
-		
+		"on-scroll-up": "brightnessctl set +5% | sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > $XDG_RUNTIME_DIR/wob.sock",
+		"on-scroll-down": "brightnessctl set 5%- | sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > $XDG_RUNTIME_DIR/wob.sock",
 	},
 	"wireplumber": {
-		"tooltip": false,	
+		"tooltip": false,
+		"max-volume": "100",
         "format": "VOL: {volume:3}%",
         "format-muted": "VOL: Mute",
         "on-click-right": "pavucontrol",
-		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $XDG_RUNTIME_DIR/wob.sock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock",
+		"on-scroll-up": "(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $XDG_RUNTIME_DIR/wob.sock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock)",
+		"on-scroll-down": "(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $XDG_RUNTIME_DIR/wob.sock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock)",
 	},
 	"bluetooth": {
 		"format": "{status}",
