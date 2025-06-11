@@ -1,17 +1,15 @@
-edge = top
-dismiss-button = [X]
+edge=top
+dismiss-button=[X]
+font=Source Code Pro 9
 
 [default]
-font = Source Code Pro 9
-
-text = FFFFFF
-button-text = FFFFFF
-background = 2D2D2D
-button-background = 225877
-
-message-padding = 1
-border-bottom-size = 0
-button-gap = 10
-button-padding = 1
-button-dismiss-gap = 10
-button-border-size = 0
+text=FFFFFF
+button-text=FFFFFF
+background=2D2D2D
+button-background=225877
+message-padding=4
+border-bottom-size=0
+button-gap=10
+button-padding=3
+button-dismiss-gap=10
+button-border-size=0
