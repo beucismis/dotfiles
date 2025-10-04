@@ -18,6 +18,7 @@ pavucontrol
 pacman-contrib
 pipewire
 playerctl
+poweralertd-git
 qt5ct
 qt6ct
 sway
@@ -25,9 +26,7 @@ swaybg
 sway-contrib
 swayidle
 swaylock
-walker-bin
 waybar
-waybar-mpris-git
 waybar-module-pacman-updates
 wireplumber
 wmenu

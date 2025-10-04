@@ -1,7 +1,6 @@
 aria2
 bandwhich
 bat
-bottom-git
 ctop
 dua-cli
 dust
@@ -17,7 +16,6 @@ lnav
 micro
 mcfly
 perl-image-exiftool
-ranger
 scc
 streamlink
 trashy

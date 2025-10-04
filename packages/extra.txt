@@ -10,13 +10,11 @@ imv
 inkscape
 keepassxc
 kdeconnect
-librewolf-bin
+zen-browser-bin
 mousepad
 mpv
-quodlibet
 radiotray-ng
 qbittorrent
-thunar
-thunar-volman
-xarchiver
+pcmanfm
+file-roller
 zathura
