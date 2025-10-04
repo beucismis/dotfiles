@@ -18,7 +18,6 @@
 		"temperature",
 		"memory",
 		"battery",
-		"systemd-failed-units",
 		"clock",
 		"tray",
 	],
@@ -34,7 +33,8 @@
 		"format-paused": "P: {dynamic}",
 		"dynamic-order": ["artist", "title"],
 		"dynamic-importance-order": ["artist", "title"],
-		"tooltip-format": "{player} ({status}) - [{position}/{length}]"
+		"tooltip-format": "{player} ({status}) - [{position}/{length}]",
+        "ignored-players": ["firefox", "librewolf", "chromium", "kdeconnect"]
 	},
 	"custom/updates": {
     	"format": "U: {}",
@@ -85,12 +85,6 @@
         "format": "BAT: {capacity:3}%",
 		"tooltip-format": "Time: {time}\n\nPower: {power}\nCycles: {cycles}\nHealth: {health}"
     },
-	"systemd-failed-units": {
-		"user": false,
-		"system": true,
-		"hide-on-ok": true,
-		"format": "SYS: {nr_failed}",
-	},
     "clock": {
 		"tooltip": false,
         "on-click": "gsimplecal",

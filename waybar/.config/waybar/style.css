@@ -17,9 +17,10 @@ window#waybar {
 }
 
 #mode {
+	color: #2D2D2D;
 	margin-left: 8px;
 	margin-right: 0px;
-    background: #225877;
+    background: #F4C542;
 }
 
 #workspaces button {
@@ -42,7 +43,6 @@ window#waybar {
 #temperature,
 #memory,
 #battery,
-#systemd-failed-units,
 #clock,
 #tray {
     padding: 2px 8px;
