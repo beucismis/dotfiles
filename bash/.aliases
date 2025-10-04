@@ -18,6 +18,9 @@ alias catmd="glow"
 alias icat="viu"
 alias reload="source $HOME/.bashrc"
 
+alias venvsetup="virtualenv $PWD/.venv"
+alias venvactivate="source $PWD/.venv/bin/activate"
+
 # Defaults
 
 alias rm="rm -I"

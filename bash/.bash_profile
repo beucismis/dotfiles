@@ -14,11 +14,16 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Git completion
+# git completion
 . $HOME/.local/bin/git-completion.bash
 
-# McFly
+# mcfly
 eval "$(mcfly init bash)"
 
-# Broot
+# broot
 source $HOME/.config/broot/launcher/bash/br
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
