@@ -101,13 +101,10 @@ bindsym {
 }
 
 for_window {
-	[instance="peazip"] floating enable
-
-    [app_id="thunar"] floating enable
-	[app_id="Thunar"] floating enable
-    [app_id="xarchiver"] floating enable
+	[app_id="pcmanfm"] floating enable
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-*"] floating enable
+    [app_id="org.gnome.FileRoller"] floating enable
     [app_id="org.gnome.Calculator"] floating enable
     [app_id="org.keepassxc.KeePassXC"] floating enable
     [app_id="io.github.quodlibet.QuodLibet"] floating enable
