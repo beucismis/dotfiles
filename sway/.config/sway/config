@@ -101,7 +101,10 @@ bindsym {
 }
 
 for_window {
+	[instance="peazip"] floating enable
+
     [app_id="thunar"] floating enable
+	[app_id="Thunar"] floating enable
     [app_id="xarchiver"] floating enable
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-*"] floating enable
@@ -109,6 +112,11 @@ for_window {
     [app_id="org.keepassxc.KeePassXC"] floating enable
     [app_id="io.github.quodlibet.QuodLibet"] floating enable
 
+	[title="About*"] floating enable
+    [title="about*"] floating enable
+	[title="Hakkında*"] floating enable
+    [title="hakkında*"] floating enable
+	[title="OCR Result"] floating enable
     [title="Dotfiles Help Page"] floating enable
 }
 
@@ -166,6 +174,7 @@ bindsym {
 
     $mod+1+r exec $radio
     $mod+p exec $colorpicker
+    $mod+o exec bash /home/$USER/.dotfiles/scripts/ocr.sh
     XF86Calculator exec GTK_THEME=Adwaita:dark $calculator
     XF86Launch2 exec $terminal -T "Dotfiles Help Page" -H glow $HOME/.dotfiles/scripts/help.md
 
@@ -204,7 +213,7 @@ exec_always {
 
     gsettings set "$gnome-schema" gtk-theme "Adwaita-dark"
     gsettings set "$gnome-schema" icon-theme "Adwaita"
-    gsettings set "$gnome-schema" cursor-theme "ComixCursors-Blue"
+    gsettings set "$gnome-schema" cursor-theme "ComixCursors-Black"
     gsettings set "$gnome-schema" font-name "Source Code Pro"
 
     mako
