@@ -34,7 +34,6 @@
 		"dynamic-order": ["artist", "title"],
 		"dynamic-importance-order": ["artist", "title"],
 		"tooltip-format": "{player} ({status}) - [{position}/{length}]",
-        "ignored-players": ["firefox", "librewolf", "chromium", "kdeconnect"]
 	},
 	"custom/updates": {
     	"format": "U: {}",
@@ -88,7 +87,7 @@
     "clock": {
 		"tooltip": false,
         "on-click": "gsimplecal",
-        "format": "{:%a %d %b %H:%M}",
+        "format": "D: {:%a %d %b %H:%M}",
     },
     "tray": {
 		"tooltip": false,
