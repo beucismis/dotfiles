@@ -84,7 +84,6 @@ This repository contains the configuration files and scripts that I use in my [A
   </tbody></table>
 </details>
 
-<details>
-  <summary>Preview</summary>
-  <img src="https://github.com/user-attachments/assets/c54f348a-d42a-4221-9420-b93068c7e797" />
-</details>
+## Preview
+
+![](https://github.com/user-attachments/assets/c54f348a-d42a-4221-9420-b93068c7e797)
