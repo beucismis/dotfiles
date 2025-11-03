@@ -43,15 +43,19 @@ This repository contains the configuration files and scripts that I use in my [A
     </tr>
     <tr>
       <td>File Browser</td>
-      <td>thunar - https://gitlab.xfce.org/xfce/thunar</td>
+      <td>pcmanfm - https://github.com/lxde/pcmanfm</td>
     </tr>
     <tr>
       <td>Internet Browser</td>
-      <td>librewolf - https://codeberg.org/librewolf</td>
+      <td>zen browser - https://github.com/zen-browser/desktop</td>
     </tr>
     <tr>
       <td>Text Editor</td>
       <td>mousepad - https://gitlab.xfce.org/apps/mousepad</td>
+    </tr>
+    <tr>
+      <td>Code Editor</td>
+      <td>zed - https://github.com/zed-industries/zed</td>
     </tr>
     <tr>
       <td>Image Viewer</td>
@@ -82,5 +86,5 @@ This repository contains the configuration files and scripts that I use in my [A
 
 <details>
   <summary>Preview</summary>
-  <img src="https://github.com/user-attachments/assets/c517d3b4-f659-48c4-99d9-415065516833">
+  <img src="https://github.com/user-attachments/assets/c54f348a-d42a-4221-9420-b93068c7e797" />
 </details>
