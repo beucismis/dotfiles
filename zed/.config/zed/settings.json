@@ -6,7 +6,34 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
+
 {
+  "git_panel": {
+    "status_style": "icon"
+  },
+  "use_system_window_tabs": false,
+  "bottom_dock_layout": "contained",
+  "preview_tabs": {
+    "enable_preview_from_file_finder": false
+  },
+  "tabs": {
+    "file_icons": false,
+    "git_status": true
+  },
+  "title_bar": {
+    "show_menus": true,
+    "show_branch_icon": true
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "agent": {
+    "enable_feedback": false,
+    "play_sound_when_agent_done": true,
+    "model_parameters": []
+  },
   "telemetry": {
     "metrics": false,
     "diagnostics": false
@@ -14,11 +41,7 @@
   "vim_mode": false,
   "ui_font_size": 14.0,
   "buffer_font_size": 12.0,
-  "theme": {
-    "mode": "system",
-    "light": "Ayu Dark",
-    "dark": "Ayu Dark"
-  },
+  "theme": "Ayu Dark",
   "icon_theme": "Colored Zed Icons Theme Dark",
   "show_wrap_guides": true,
   "soft_wrap": "editor_width",
@@ -41,12 +64,6 @@
       "language_servers": ["ruff"],
       "format_on_save": "on",
       "formatter": [
-        {
-          "code_actions": {
-            "source.fixAll.ruff": false,
-            "source.organizeImports.ruff": false
-          }
-        },
         {
           "language_server": {
             "name": "ruff"
