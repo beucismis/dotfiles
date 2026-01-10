@@ -46,7 +46,7 @@ input $touchpad {
 # Container Configurations
 
 gaps inner 5
-default_border pixel 2
+default_border pixel 3
 
 # Status Bar
 
@@ -189,13 +189,13 @@ bindsym {
     Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
 
     # Backlight Control
-    XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
-    XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
+    XF86MonBrightnessUp exec brightnessctl set +1% -m | cut -d, -f4 | tr -d '%' > $wobsock
+    XF86MonBrightnessDown exec brightnessctl set 1%- -m | cut -d, -f4 | tr -d '%' > $wobsock
 
     # Sound Control
-    XF86AudioRaiseVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
-    XF86AudioLowerVolume exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock)
-    XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $wobsock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wobsock
+    XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $wobsock
+    XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $wobsock
 }
 
 # Idle
@@ -205,8 +205,7 @@ set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-imag
 #bindsym XF86Launch2 exec bash -c "$screenlock"
 
 #exec "wlgreet --command sway; swaymsg exit"
-bindsym	$mod+Shift+e exec swaynag -t default -m "What do you want to do?" \
-	-b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot" -b "Exit" "swaymsg exit" -b "Suspend" "systemctl suspend"
+bindsym	$mod+Shift+e exec swaynag -t default -m "What do you want to do?" -b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot" -b "Exit" "swaymsg exit" -b "Suspend" "systemctl suspend"
 
 # Auto Start
 
@@ -222,8 +221,8 @@ exec_always {
     kdeconnectd
 	poweralertd -S
     nm-applet --indicator
+    
+    rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 }
-
-exec rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 
 include /etc/sway/config-vars.d/*
