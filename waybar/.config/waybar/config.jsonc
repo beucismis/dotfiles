@@ -1,8 +1,15 @@
 // -*- mode: jsonc -*-
 {
   "layer": "top",
-  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-  "modules-center": ["mpris", "custom/weather"],
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "sway/window"
+  ],
+  "modules-center": [
+    "mpris",
+    "custom/weather"
+  ],
   "modules-right": [
     "custom/updates",
     "backlight",
@@ -16,19 +23,19 @@
     "tray",
   ],
   "sway/window": {
-    "tooltip": false,
     "format": "{}",
+    "tooltip": false,
     "max-length": 100,
   },
   "mpris": {
-    "artist-len": 25,
     "title-len": 25,
+    "artist-len": 25,
     "format": "{dynamic}",
-    "format-paused": "P: {dynamic}",
+    "format-paused": "[P] {dynamic}",
     "dynamic-order": ["artist", "title"],
+    "ignored-players": ["kdeconnect", "firefox"],
     "dynamic-importance-order": ["artist", "title"],
     "tooltip-format": "{player} ({status}) - [{position}/{length}]",
-    "ignored-players": ["kdeconnect", "firefox"],
   },
   "custom/weather": {
     "return-type": "json",
@@ -38,29 +45,30 @@
     "on-click": "pkill -USR1 waybar-weather",
   },
   "custom/updates": {
-    "format": "U: {}",
+    "format": "UP: {:3}",
     "return-type": "json",
     "exec": "waybar-module-pacman-updates",
     "exec-if": "which waybar-module-pacman-updates",
   },
   "backlight": {
     "tooltip": false,
-    "scroll-step": 5,
+    "scroll-step": 1,
     "format": "BL: {percent:3}%",
     "on-click": "brightnessctl set 100%",
     "on-click-right": "brightnessctl set 0%",
-    "on-scroll-up": "brightnessctl set +5% | sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > $XDG_RUNTIME_DIR/wob.sock",
-    "on-scroll-down": "brightnessctl set 5%- | sed -En 's/.*\\(([0-9]+)%\\).*/\\1/p' > $XDG_RUNTIME_DIR/wob.sock",
+    "on-scroll-up": "brightnessctl set +1% -m | cut -d, -f4 | tr -d '%' > $XDG_RUNTIME_DIR/wob.sock",
+    "on-scroll-down": "brightnessctl set 1%- -m | cut -d, -f4 | tr -d '%' > $XDG_RUNTIME_DIR/wob.sock",
   },
   "wireplumber": {
     "tooltip": false,
-    "max-volume": "100",
-    "format": "VOL: {volume:3}%",
+    "scroll-step": 1,
+    "max-volume": 100,
     "format-muted": "VOL: Mute",
+    "format": "VOL: {volume:3}%",
     "on-click-right": "pavucontrol",
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $XDG_RUNTIME_DIR/wob.sock) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock",
-    "on-scroll-up": "(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $XDG_RUNTIME_DIR/wob.sock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock)",
-    "on-scroll-down": "(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > $XDG_RUNTIME_DIR/wob.sock) || (wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock)",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $XDG_RUNTIME_DIR/wob.sock",
+    "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $XDG_RUNTIME_DIR/wob.sock",
   },
   "bluetooth": {
     "format": "{status}",
