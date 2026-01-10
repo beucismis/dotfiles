@@ -12,6 +12,7 @@ set {
 
     $terminal foot
     $menu wmenu-run -b
+    $zooming_tool wooz
     $radio radiotray-ng
     $calculator gnome-calculator
     $colorpicker hyprpicker -ard && notify-send $(wl-paste)
@@ -39,6 +40,7 @@ input $touchpad {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
+    scroll_method two_finger
 }
 
 # Container Configurations
@@ -102,7 +104,6 @@ bindsym {
 
 for_window {
     [class="vesktop"] floating enable
-
 	[app_id="pcmanfm"] floating enable
     [app_id="pavucontrol"] floating enable
     [app_id="nm-connection-*"] floating enable
@@ -172,6 +173,7 @@ bindsym {
     $mod+m exec $menu
     $mod+Return exec $terminal
 
+    $mod+z exec $zooming_tool
     $mod+1+r exec $radio
     $mod+p exec $colorpicker
     $mod+o exec bash /home/$USER/.dotfiles/scripts/ocr.sh
@@ -179,12 +181,12 @@ bindsym {
     XF86Launch2 exec $terminal -T "Dotfiles Help Page" -H glow $HOME/.dotfiles/scripts/help.md
 
     # Screenshot
-    Shift+Print exec grimshot copy output && notify-send "Screenshot copy output"
-    Shift+Alt+Print exec grimshot copy active && notify-send "Screenshot copy active window"
-    Shift+Ctrl+Print exec grimshot copy area && notify-send "Screenshot copy area"
-    Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save output"
-    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save active window"
-    Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send "Screenshot save area"
+    Shift+Print exec grimshot copy output
+    Shift+Alt+Print exec grimshot copy active
+    Shift+Ctrl+Print exec grimshot copy area
+    Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
+    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
+    Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
 
     # Backlight Control
     XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $wobsock
@@ -204,7 +206,7 @@ set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-imag
 
 #exec "wlgreet --command sway; swaymsg exit"
 bindsym	$mod+Shift+e exec swaynag -t default -m "What do you want to do?" \
-	-b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot" -b "Exit" "systemctl exit" -b "Suspend" "systemctl suspend"
+	-b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot" -b "Exit" "swaymsg exit" -b "Suspend" "systemctl suspend"
 
 # Auto Start
 
@@ -220,7 +222,8 @@ exec_always {
     kdeconnectd
 	poweralertd -S
     nm-applet --indicator
-    rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 }
+
+exec rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 
 include /etc/sway/config-vars.d/*
