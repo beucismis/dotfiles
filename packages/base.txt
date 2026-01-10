@@ -28,6 +28,7 @@ swayidle
 swaylock
 waybar
 waybar-module-pacman-updates
+waybar-weather
 wireplumber
 wmenu
 wob
