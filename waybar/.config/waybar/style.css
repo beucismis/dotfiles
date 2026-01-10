@@ -13,18 +13,18 @@ window#waybar {
 }
 
 #window {
-	padding: 0 8px;
+    padding: 0 8px;
 }
 
 #mode {
-	color: #2D2D2D;
-	margin-left: 8px;
-	margin-right: 0px;
-    background: #F4C542;
+    color: #2d2d2d;
+    margin-left: 8px;
+    margin-right: 0px;
+    background: #f4c542;
 }
 
 #workspaces button {
-	padding: 0;
+    padding: 0;
     color: white;
     background: transparent;
 }
@@ -35,6 +35,7 @@ window#waybar {
 
 #mode,
 #mpris,
+.waybar-weather,
 #custom-updates,
 #backlight,
 #wireplumber,
@@ -48,14 +49,17 @@ window#waybar {
     padding: 2px 8px;
 }
 
-#mpris {
-	background: #225877;
+#mpris,
+.waybar-weather {
+    margin: 0px 4px;
+    background: #225877;
 }
 
-#bluetooth, #temperature {
-	padding-left: 0;
+#bluetooth,
+#temperature {
+    padding-left: 0;
 }
 
 #custom-updates {
-	background: transparent;
+    background: transparent;
 }
