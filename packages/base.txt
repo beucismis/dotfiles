@@ -31,5 +31,6 @@ waybar-module-pacman-updates
 wireplumber
 wmenu
 wob
+wooz-git
 wl-clipboard
 xcursor-comix
