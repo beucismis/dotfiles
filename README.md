@@ -23,7 +23,7 @@ This repository contains the configuration files and scripts that I use in my [A
     </tr>
     <tr>
       <td>Display Manager</td>
-      <td>ly - https://github.com/fairyglade/ly</td>
+      <td>tuigreet - https://github.com/apognu/tuigreet</td>
     </tr>
     <tr>
       <td>Audio Server</td>
@@ -66,7 +66,7 @@ This repository contains the configuration files and scripts that I use in my [A
       <td>zathura - https://github.com/pwmt/zathura</td>
     </tr>
     <tr>
-      <td>Video Player</td>
+      <td>Video/Music Player</td>
       <td>mpv - https://github.com/mpv-player/mpv</td>
     </tr>
     <tr>
