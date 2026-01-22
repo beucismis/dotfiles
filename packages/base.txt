@@ -7,9 +7,9 @@ grimshot-bin-sway
 gsimplecal
 git-delta
 gnome-themes-extra
+greetd
 hyprpicker
 libnotify
-ly
 mako
 networkmanager
 network-manager-applet
@@ -26,6 +26,7 @@ swaybg
 sway-contrib
 swayidle
 swaylock
+tuigreet
 waybar
 waybar-module-pacman-updates
 waybar-weather
