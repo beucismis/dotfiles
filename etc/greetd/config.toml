@@ -1,0 +1,6 @@
+[terminal]
+vt = 1
+
+[default_session]
+user = "greeter"
+command = "tuigreet --time --remember --cmd 'sway --unsupported-gpu' --window-padding 5"
