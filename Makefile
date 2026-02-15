@@ -1,61 +1,55 @@
-USER_HOME := /home/$(USER)
+USER_HOME := $(shell echo ~)
 DOTFILES_REPO := https://github.com/beucismis/dotfiles
 DOTFILES_DIR := $(USER_HOME)/.dotfiles
 PARU_DIR := $(USER_HOME)/.paru
 BIN_DIR := $(USER_HOME)/.local/bin
+STOW_DIRS := $(shell find * -maxdepth 0 -type d -not -name "etc" -not -name "usr" -not -name "boot" -not -name "packages" -not -name "scripts" -not -name ".git" -not -name "gtk-2.0" -not -name "gtk-3.0" -not -name "gtk-4.0")
+ALL_PKGS := packages/base.txt packages/cli.txt packages/dev.txt packages/game.txt packages/nvidia.txt packages/privacy.txt packages/ai.txt packages/extra.txt packages/nonfree.txt
 
-.PHONY: all update install-git clone-dotfiles base-devel install-paru install-stow stow-files xdg-dirs create-dirs git-completion mpv-theme
+.PHONY: all install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins
 
-all: update install-git clone-dotfiles base-devel install-paru install-stow stow-files xdg-dirs create-dirs git-completion mpv-theme
+all: install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins
 
-update:
-	sudo pacman -Syu --noconfirm
+install-system-deps:
+	@echo "Installing system dependencies..."
+	sudo pacman -Syu --needed --noconfirm git base-devel stow xdg-user-dirs
 
-install-git:
-	if ! [ -x "$$(command -v git)" ]; then \
-		echo "Installing git..."; \
-		sudo pacman -S git --noconfirm; \
+install-packages:
+	@echo "Installing all packages..."
+	@if ! [ -x "$$(command -v paru)" ]; then \
+		echo "paru not found, installing..."; \
+		git clone https://aur.archlinux.org/paru-git.git $(PARU_DIR); \
+		(cd $(PARU_DIR) && makepkg -si --noconfirm); \
 	fi
-
-clone-dotfiles:
-	git clone $(DOTFILES_REPO) $(DOTFILES_DIR)
-
-base-devel:
-	sudo pacman -S --needed base-devel
-
-install-paru:
-	git clone https://aur.archlinux.org/paru-git.git $(PARU_DIR)
-	cd $(PARU_DIR) && makepkg -si
-
-install-stow:
-	if ! [ -x "$$(command -v stow)" ]; then \
-		echo "Installing stow..."; \
-		sudo pacman -S stow --noconfirm; \
-	fi
+	paru -S --needed --noconfirm - < <(cat $(ALL_PKGS))
 
 stow-files:
-	cd $(DOTFILES_DIR) && \
-	sudo stow --adopt etc -t /etc/ && \
-	sudo stow --adopt usr -t /usr/ && \
-	stow --adopt bash fastfetch foot git mako mangohud pip qt5ct qt6ct radiotray-ng sway swaynag user-dirs waybar wob
+	@echo "Stowing configuration files..."
+	cd $(DOTFILES_DIR) && sudo stow --adopt -t /etc etc
+	cd $(DOTFILES_DIR) && sudo stow --adopt -t /usr usr
+	cd $(DOTFILES_DIR) && sudo stow --adopt -t /boot boot
+	sudo mkdir -p /root/.config
+	cd $(DOTFILES_DIR) && sudo stow --adopt -t /root/.config gtk-2.0 gtk-3.0 gtk-4.0
+	cd $(DOTFILES_DIR) && stow --adopt -t $(USER_HOME) $(STOW_DIRS)
+	sudo chown -R root:root $(DOTFILES_DIR)/etc $(DOTFILES_DIR)/usr $(DOTFILES_DIR)/boot /root/.config/gtk-2.0 /root/.config/gtk-3.0 /root/.config/gtk-4.0
 
-xdg-dirs:
-	sudo pacman -S xdg-user-dirs --noconfirm
-	xdg-user-dirs-update
-
-create-dirs:
-	mkdir -p $(USER_HOME)/screenshots
-	mkdir -p $(USER_HOME)/games
-	mkdir -p $(USER_HOME)/projects
-	mkdir -p $(USER_HOME)/clones
-	mkdir -p $(USER_HOME)/area51
-	mkdir -p $(BIN_DIR)
-
-git-completion:
+setup-shell:
+	@echo "Setting up the shell..."
 	rm -rf $(BIN_DIR)/git-completion.bash* $(BIN_DIR)/git-prompt.sh*
-	wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -P $(BIN_DIR)
-	wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -P $(BIN_DIR)
+	wget -q --show-progress https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -P $(BIN_DIR)
+	wget -q --show-progress https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -P $(BIN_DIR)
 	chmod +rx $(BIN_DIR)/git-completion.bash $(BIN_DIR)/git-prompt.sh
 
-mpv-theme:
-	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/tomasklaen/uosc/HEAD/installers/unix.sh)"
+setup-dirs:
+	@echo "Setting up user directories..."
+	xdg-user-dirs-update
+	mkdir -p $(USER_HOME)/screenshots $(USER_HOME)/games $(USER_HOME)/projects $(USER_HOME)/clones $(USER_HOME)/area51 $(USER_HOME)/sync $(BIN_DIR)
+
+install-mpv-plugins:
+	@echo "Installing mpv plugins..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/tomasklaen/uosc/HEAD/installers/unix.sh)"
+	TMP_DIR=$$(mktemp -d); \
+	git clone https://github.com/po5/thumbfast $$TMP_DIR; \
+	cp $$TMP_DIR/thumbfast.lua $(USER_HOME)/.config/mpv/scripts/; \
+	cp $$TMP_DIR/thumbfast.conf $(USER_HOME)/.config/mpv/script-opts/; \
+	rm -rf $$TMP_DIR
