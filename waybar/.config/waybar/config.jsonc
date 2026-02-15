@@ -1,15 +1,8 @@
 // -*- mode: jsonc -*-
 {
   "layer": "top",
-  "modules-left": [
-    "sway/workspaces",
-    "sway/mode",
-    "sway/window"
-  ],
-  "modules-center": [
-    "mpris",
-    "custom/weather"
-  ],
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-center": ["mpris", "custom/weather"],
   "modules-right": [
     "custom/updates",
     "backlight",
@@ -41,11 +34,11 @@
     "return-type": "json",
     "restart-interval": 60,
     "hide-empty-text": true,
-    "exec": "waybar-weather",
     "on-click": "pkill -USR1 waybar-weather",
+    "exec": "waybar-weather -config /home/$USER/.config/waybar/module/waybar-weather/config.toml",
   },
   "custom/updates": {
-    "format": "UP: {:3}",
+    "format": "UP: {}",
     "return-type": "json",
     "exec": "waybar-module-pacman-updates",
     "exec-if": "which waybar-module-pacman-updates",
@@ -62,7 +55,6 @@
   "wireplumber": {
     "tooltip": false,
     "scroll-step": 1,
-    "max-volume": 100,
     "format-muted": "VOL: Mute",
     "format": "VOL: {volume:3}%",
     "on-click-right": "pavucontrol",
@@ -79,6 +71,7 @@
     "on-click": "foot -H bluetuith",
   },
   "cpu": {
+    "tooltip": false,
     "format": "CPU: {usage:3}%",
   },
   "temperature": {
