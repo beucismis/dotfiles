@@ -7,7 +7,7 @@ Target=nvidia
 Target=linux
 
 [Action]
-Description=Updating NVIDIA module in initcpio
+Description=Update Nvidia module in initcpio
 Depends=mkinitcpio
 When=PostTransaction
 NeedsTargets
