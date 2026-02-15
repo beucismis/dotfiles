@@ -6,8 +6,8 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
-
 {
+  "context_servers": {},
   "git_panel": {
     "status_style": "icon"
   },
@@ -30,6 +30,10 @@
     }
   },
   "agent": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "gemma3:12b"
+    },
     "enable_feedback": false,
     "play_sound_when_agent_done": true,
     "model_parameters": []
@@ -79,6 +83,11 @@
           "lineLength": 120
         }
       }
+    }
+  },
+  "agent_servers": {
+    "gemini": {
+      "ignore_system_version": false
     }
   }
 }
