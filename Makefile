@@ -27,11 +27,13 @@ stow-files:
 	@echo "Stowing configuration files..."
 	cd $(DOTFILES_DIR) && sudo stow --adopt -t /etc etc
 	cd $(DOTFILES_DIR) && sudo stow --adopt -t /usr usr
-	cd $(DOTFILES_DIR) && sudo stow --adopt -t /boot boot
+	sudo cp -rT $(DOTFILES_DIR)/boot /boot
 	sudo mkdir -p /root/.config
-	cd $(DOTFILES_DIR) && sudo stow --adopt -t /root/.config gtk-2.0 gtk-3.0 gtk-4.0
+	sudo cp -rT $(DOTFILES_DIR)/gtk-2.0/.config /root/.config
+	sudo cp -rT $(DOTFILES_DIR)/gtk-3.0/.config /root/.config
+	sudo cp -rT $(DOTFILES_DIR)/gtk-4.0/.config /root/.config
 	cd $(DOTFILES_DIR) && stow --adopt -t $(USER_HOME) $(STOW_DIRS)
-	sudo chown -R root:root $(DOTFILES_DIR)/etc $(DOTFILES_DIR)/usr $(DOTFILES_DIR)/boot /root/.config/gtk-2.0 /root/.config/gtk-3.0 /root/.config/gtk-4.0
+	sudo chown -R root:root $(DOTFILES_DIR)/etc $(DOTFILES_DIR)/usr
 
 setup-shell:
 	@echo "Setting up the shell..."
