@@ -4,7 +4,7 @@ set {
     $mod Mod4
 
     $bg_color "#225877"
-    $wallpaper "$HOME/.wallpaper.jpg"
+    $wallpaper "$HOME/.dotfiles/.wallpaper.jpg"
 
     $language "tr"
     $keyboard "1:1:AT_Translated_Set_2_keyboard"
@@ -12,8 +12,9 @@ set {
 
     $terminal foot
     $menu wmenu-run -b
-    $zooming_tool wooz
+    $zooming-tool wooz
     $radio radiotray-ng
+    $web-browser librewolf
     $calculator gnome-calculator
     $colorpicker hyprpicker -ard && notify-send $(wl-paste)
 
@@ -21,11 +22,11 @@ set {
     $gnome-schema org.gnome.desktop.interface
 }
 
-# Output & Input Configuration
+# Output & Input configuration
 
 output {
-    #"eDP-1" bg $bg_color solid_color
-    #"eDP-2" bg $bg_color solid_color
+    # "eDP-1" bg $bg_color solid_color
+    # "eDP-2" bg $bg_color solid_color
 	"eDP-1" background $wallpaper fill
 	"eDP-2" background $wallpaper fill
 }
@@ -43,19 +44,19 @@ input $touchpad {
     scroll_method two_finger
 }
 
-# Container Configurations
+# Container configurations
 
 gaps inner 5
 default_border pixel 3
 
-# Status Bar
+# Status bar
 
 bar {
     position top
     swaybar_command waybar
 }
 
-# Moving Around
+# Moving around
 
 bindsym {
     $mod+Left focus left
@@ -69,7 +70,7 @@ bindsym {
     $mod+Shift+Right move right
 }
 
-# Resizing Containers
+# Resizing containers
 
 bindsym $mod+r mode "resize"
 
@@ -85,7 +86,7 @@ mode "resize" {
     }
 }
 
-# Layout Stuff
+# Layout stuff
 
 popup_during_fullscreen smart
 
@@ -103,6 +104,14 @@ bindsym {
 }
 
 for_window {
+	[instance="Minecraft*"] floating enable
+
+	[title="About*"] floating enable
+    [title="about*"] floating enable
+	[title="Hakkında*"] floating enable
+    [title="hakkında*"] floating enable
+	[title="OCR Result"] floating enable
+
     [class="vesktop"] floating enable
 	[app_id="pcmanfm"] floating enable
     [app_id="pavucontrol"] floating enable
@@ -112,13 +121,6 @@ for_window {
     [app_id="org.gnome.Calculator"] floating enable
     [app_id="org.keepassxc.KeePassXC"] floating enable
     [app_id="io.github.quodlibet.QuodLibet"] floating enable
-
-	[title="About*"] floating enable
-    [title="about*"] floating enable
-	[title="Hakkında*"] floating enable
-    [title="hakkında*"] floating enable
-	[title="OCR Result"] floating enable
-    [title="Dotfiles Help Page"] floating enable
 }
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
@@ -162,31 +164,24 @@ bindsym {
     $mod+Shift+minus move scratchpad
 }
 
-# Basics and Shortcuts
+# Basics & Shortcuts
 
 floating_modifier $mod normal
 
 bindsym {
+    # TODO: XF86Launch2 exec
+
     $mod+q kill
     $mod+Shift+r reload
 
-    $mod+m exec $menu
     $mod+Return exec $terminal
-
-    $mod+z exec $zooming_tool
+    $mod+m exec $menu
+    $mod+z exec $zooming-tool
     $mod+1+r exec $radio
+    $mod+w exec $web-browser
     $mod+p exec $colorpicker
     $mod+o exec bash /home/$USER/.dotfiles/scripts/ocr.sh
     XF86Calculator exec GTK_THEME=Adwaita:dark $calculator
-    XF86Launch2 exec $terminal -T "Dotfiles Help Page" -H glow $HOME/.dotfiles/scripts/help.md
-
-    # Screenshot
-    Shift+Print exec grimshot copy output
-    Shift+Alt+Print exec grimshot copy active
-    Shift+Ctrl+Print exec grimshot copy area
-    Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
-    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
-    Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png
 
     # Backlight Control
     XF86MonBrightnessUp exec brightnessctl set +1% -m | cut -d, -f4 | tr -d '%' > $wobsock
@@ -196,32 +191,40 @@ bindsym {
     XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $wobsock
     XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $wobsock
+
+    # Screenshot
+	Shift+Print exec grimshot copy output && notify-send -i edit-copy "Screenshot" "Full screen copied to clipboard"
+	Shift+Alt+Print exec grimshot copy active && notify-send -i edit-copy "Screenshot" "Active window copied to clipboard"
+	Shift+Ctrl+Print exec grimshot copy area && notify-send -i edit-copy "Screenshot" "Selected area copied to clipboard"
+	Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send -i camera-photo "Screenshot" "Full screen saved to folder"
+	Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send -i camera-photo "Screenshot" "Active window saved to folder"
+	Ctrl+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send -i camera-photo "Screenshot" "Selected area saved to folder"
 }
 
 # Idle
 
 set $screenlock grim -s 0.3 /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
-#exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
-#bindsym XF86Launch2 exec bash -c "$screenlock"
+# exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
+# bindsym XF86Launch2 exec bash -c "$screenlock"
 
-#exec "wlgreet --command sway; swaymsg exit"
+# exec "wlgreet --command sway; swaymsg exit"
 bindsym	$mod+Shift+e exec swaynag -t default -m "What do you want to do?" -b "Poweroff" "systemctl poweroff" -b "Reboot" "systemctl reboot" -b "Exit" "swaymsg exit" -b "Suspend" "systemctl suspend"
 
-# Auto Start
+# Auto start
 
 exec_always {
 	dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 
-    gsettings set "$gnome-schema" gtk-theme "Adwaita-dark"
-    gsettings set "$gnome-schema" icon-theme "Adwaita"
-    gsettings set "$gnome-schema" cursor-theme "ComixCursors-Black"
     gsettings set "$gnome-schema" font-name "Source Code Pro"
+    gsettings set "$gnome-schema" gtk-theme "Adwaita-dark"
+    gsettings set "$gnome-schema" icon-theme "buuf-nestort"
+    gsettings set "$gnome-schema" cursor-theme "ComixCursors-Black"
 
     mako
     kdeconnectd
-	poweralertd -S
+    poweralertd -S
     nm-applet --indicator
-    
+
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 }
 
