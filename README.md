@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository contains the configuration files and scripts that I use in my [Arch Linux](https://archlinux.org) daily working environment.
+This repository contains the configuration files and scripts that I use daily working environment.
 
 <details>
   <summary>Tools</summary>
@@ -47,7 +47,7 @@ This repository contains the configuration files and scripts that I use in my [A
     </tr>
     <tr>
       <td>Internet Browser</td>
-      <td>zen browser - https://github.com/zen-browser/desktop</td>
+      <td>librewolf - https://librewolf.net</td>
     </tr>
     <tr>
       <td>Text Editor</td>
