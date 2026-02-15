@@ -1,8 +1,8 @@
 layer=overlay
 anchor=bottom-right
 
-padding=10
 margin=5
+padding=10
 outer-margin=15,10
 font=SourceCodePro 10
 
@@ -10,8 +10,7 @@ border-size=0
 background-color=#2D2D2D
 #border-color=#225877
 
-icons=1
-icon-path=/usr/share/icons/Adwaita/
+icon-path=/usr/share/icons/Adwaita
 
 sort=-time
 ignore-timeout=1
