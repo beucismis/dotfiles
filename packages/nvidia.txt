@@ -1,5 +1,5 @@
-nvidia
-nvidia-utils
-nvidia-settings
 lib32-nvidia-utils
+nvidia
+nvidia-settings
+nvidia-utils
 wlroots-nvidia

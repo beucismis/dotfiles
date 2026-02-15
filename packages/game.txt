@@ -1,7 +1,12 @@
 goverlay
 heroic-games-launcher-bin
+hytale-launcher-bin
 lutris
 mangohud
 polymc-qt5-bin
 protonup-qt-bin
 steam
+wine
+wine-gecko
+wine-mono
+winetricks

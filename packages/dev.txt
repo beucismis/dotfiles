@@ -1,5 +1,7 @@
 docker
 go
+jdk21-openjdk
+pyenv
 python
 python-black
 python-hatch
@@ -8,6 +10,4 @@ python-pipx
 python-pytest
 python-ruff
 python-virtualenv
-pyenv
 rust
-jdk21-openjdk

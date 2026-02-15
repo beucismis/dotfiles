@@ -3,8 +3,8 @@ bandwhich
 bat
 ctop
 dua-cli
-dust
 duf
+dust
 exa
 fastfetch
 git
@@ -13,8 +13,8 @@ glow
 gping
 hblock
 lnav
-micro
 mcfly
+micro
 perl-image-exiftool
 scc
 streamlink
