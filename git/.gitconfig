@@ -38,9 +38,13 @@
 [diff]
     colorMoved = default
 [init]
-    defaultBranch = master
+    defaultBranch = main
 [interactive]
     diffFilter = delta --color-only
 [delta]
 	dark = true
     navigate = true
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
