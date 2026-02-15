@@ -6,9 +6,9 @@ BIN_DIR := $(USER_HOME)/.local/bin
 STOW_DIRS := $(shell find * -maxdepth 0 -type d -not -name "etc" -not -name "usr" -not -name "boot" -not -name "packages" -not -name "scripts" -not -name ".git" -not -name "gtk-2.0" -not -name "gtk-3.0" -not -name "gtk-4.0")
 ALL_PKGS := packages/base.txt packages/cli.txt packages/dev.txt packages/game.txt packages/nvidia.txt packages/privacy.txt packages/ai.txt packages/extra.txt packages/nonfree.txt
 
-.PHONY: all install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins
+.PHONY: all install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins install-icon-theme
 
-all: install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins
+all: install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins install-icon-theme
 
 install-system-deps:
 	@echo "Installing system dependencies..."
@@ -54,4 +54,14 @@ install-mpv-plugins:
 	git clone https://github.com/po5/thumbfast $$TMP_DIR; \
 	cp $$TMP_DIR/thumbfast.lua $(USER_HOME)/.config/mpv/scripts/; \
 	cp $$TMP_DIR/thumbfast.conf $(USER_HOME)/.config/mpv/script-opts/; \
+	rm -rf $$TMP_DIR
+
+install-icon-theme:
+	@echo "Installing icon theme..."
+	ICON_THEME_REPO=https://git.disroot.org/eudaimon/buuf-nestort.git; \
+	ICONS_DIR=$(USER_HOME)/.icons; \
+	TMP_DIR=$$(mktemp -d); \
+	mkdir -p $$ICONS_DIR; \
+	git clone $$ICON_THEME_REPO $$TMP_DIR; \
+	cp -r $$TMP_DIR/* $$ICONS_DIR/; \
 	rm -rf $$TMP_DIR
