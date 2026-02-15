@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 [ -z "$PS1" ] && return

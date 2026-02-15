@@ -1,29 +1,25 @@
 #!/bin/bash
 
-export EDITOR=nano
-
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_SCREENSHOTS_DIR=$HOME/screenshots
 
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.local/bin
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOPATH/bin:/usr/local/sbin:$HOME/.cargo/bin:$HOME/.local/bin"
 
 export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
+export SDL_VIDEODRIVER=x11 steam
 
 export QT_QPA_PLATFORM=wayland
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export QT_STYLE_OVERRIDE=Adwaita-Dark
-export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+# export QT_STYLE_OVERRIDE=Adwaita-Dark
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 export ECORE_EVAS_ENGINE=wayland_egl
 export ELM_ENGINE=wayland_egl

@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bash_profile: executed by the command interpreter for login shells.
 
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
@@ -14,16 +15,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# git completion
 . $HOME/.local/bin/git-completion.bash
 
-# mcfly
 eval "$(mcfly init bash)"
 
-# broot
 source $HOME/.config/broot/launcher/bash/br
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - bash)"

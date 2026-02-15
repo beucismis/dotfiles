@@ -1,62 +1,69 @@
 #!/bin/bash
 
-# Listing
+# Navigation
 
-alias l="eza -la"
-alias ld="eza -ld */"
-alias ls="eza --color=auto"
+alias ..='cd ..'
+alias ...='cd ../../'
 
-# Shortcuts
+# Listining
 
-alias g="git"
-alias s="sudo"
-alias c="clear"
-alias rr="rm -rf"
-alias untar="tar -zxvf "
-alias m="mousepad"
-alias catmd="glow"
-alias icat="viu"
-alias reload="source $HOME/.bashrc"
+alias ls='eza -F --git'
+alias l='eza -laF --git'
+alias ld='eza -ld --git */'
+alias lt='eza --tree --level=2'
 
-alias venvsetup="virtualenv $PWD/.venv"
-alias venvactivate="source $PWD/.venv/bin/activate"
+# Shortcut
 
-# Defaults
+alias s='sudo '
+alias c='clear'
+alias icat='viu'
+alias catmd='glow'
+alias m='mousepad'
+alias reload='source $HOME/.bash_profile'
 
-alias rm="rm -I"
-alias df="df -H"
-alias mkdir="mkdir -pv"
-alias grep="grep --color=auto"
+# System default
+
+alias df='df -H'
+alias rm='rm -I'
+alias ports='ss -tuln'
+alias mkdir='mkdir -pv'
+alias untar='tar -zxvf '
 alias du='du -h --max-depth=1'
+alias psgrep='ps aux | grep -v grep | grep'
+alias failed-units='systemctl list-units --state failed'
 
-# Network
+# Package managment
 
-alias ports="ss -tuln"
+alias cleanup='pacc && paco'
+alias pacr='sudo pacman -Rns'
+alias pacc='sudo pacman -Scc'
+alias pacu='sudo pacman -Syuu'
+alias paru-stats='paru --show --stats'
+alias paco='pacman -Qdtq | sudo pacman -Rns -'
+alias pipu='python3 -m pip install --upgrade pip'
 
-# Package Managers
+# Wayland
 
-alias pacu="sudo pacman -Syuu --noconfirm"
-alias pacr="sudo pacman -Rns --noconfirm"
-alias pacc="sudo pacman -Scc --noconfirm"
-alias paco="pacman -Qdtq | sudo pacman -Rns --noconfirm -"
-alias paru-stats="paru --show --stats"
-alias pipu="python3 -m pip install --upgrade pip"
+alias wlcopy='wl-copy'
+alias wlpaste='wl-paste'
+alias swayreload='swaymsg reload'
+alias swaytree='swaymsg -t get_tree'
+alias swaylog='sway -d 2> ~/sway.log'
 
-# Service Stuff
+# Misc
 
-alias failed-units="systemctl list-units --state failed"
+alias hgrep='history | grep'
+alias myip='curl -s ifconfig.me'
+alias cameratest='ffplay /dev/video0'
 
-# Dotfiles
+# Development
 
-alias dotfiles-check="git -C $HOME/.dotfiles status"
+alias g='git'
+alias gcb='git checkout -b'
+alias gpull='git pull --rebase'
+alias gpush='git push --force-with-lease'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-# Test
+alias pyvenv='python3 -m venv .venv && source .venv/bin/activate'
 
-alias swaylog="sway -d 2> ~/sway.log"
-alias cameratest="ffplay /dev/video0"
-
-# Functions
-
-function ffss {
-	ffsubsync $1 -i $2 -o $3
-}
+alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
