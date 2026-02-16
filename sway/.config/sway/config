@@ -11,7 +11,7 @@ set {
     $touchpad "1739:52967:SYNA32E4:00_06CB:CEE7_Touchpad"
 
     $terminal foot
-    $menu wmenu-run -b
+    $menu wmenu-run -b -i -f "Source Code Pro 9"
     $zooming-tool wooz
     $radio radiotray-ng
     $web-browser librewolf
