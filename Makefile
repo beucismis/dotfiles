@@ -1,10 +1,9 @@
 USER_HOME := $(shell echo ~)
-DOTFILES_REPO := https://github.com/beucismis/dotfiles
 DOTFILES_DIR := $(USER_HOME)/.dotfiles
 PARU_DIR := $(USER_HOME)/.paru
 BIN_DIR := $(USER_HOME)/.local/bin
 STOW_DIRS := $(shell find * -maxdepth 0 -type d -not -name "etc" -not -name "usr" -not -name "boot" -not -name "packages" -not -name "scripts" -not -name ".git" -not -name "gtk-2.0" -not -name "gtk-3.0" -not -name "gtk-4.0")
-ALL_PKGS := packages/base.txt packages/cli.txt packages/dev.txt packages/game.txt packages/nvidia.txt packages/privacy.txt packages/ai.txt packages/extra.txt packages/nonfree.txt
+ALL_PKGS := packages/base.txt packages/cli.txt packages/dev.txt packages/nvidia.txt packages/game.txt packages/privacy.txt packages/ai.txt packages/extra.txt packages/nonfree.txt 
 
 .PHONY: all install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins install-icon-theme
 
@@ -44,6 +43,7 @@ setup-shell:
 
 setup-dirs:
 	@echo "Setting up user directories..."
+	mkdir -p $(USER_HOME)/documents $(USER_HOME)/download $(USER_HOME)/music $(USER_HOME)/pictures $(USER_HOME)/public $(USER_HOME)/templates $(USER_HOME)/videos
 	xdg-user-dirs-update
 	mkdir -p $(USER_HOME)/screenshots $(USER_HOME)/games $(USER_HOME)/projects $(USER_HOME)/clones $(USER_HOME)/area51 $(USER_HOME)/sync $(BIN_DIR)
 
@@ -58,10 +58,7 @@ install-mpv-plugins:
 
 install-icon-theme:
 	@echo "Installing icon theme..."
-	ICON_THEME_REPO=https://git.disroot.org/eudaimon/buuf-nestort.git; \
 	ICONS_DIR=$(USER_HOME)/.icons; \
-	TMP_DIR=$$(mktemp -d); \
 	mkdir -p $$ICONS_DIR; \
-	git clone $$ICON_THEME_REPO $$TMP_DIR; \
-	cp -r $$TMP_DIR/* $$ICONS_DIR/; \
-	rm -rf $$TMP_DIR
+	cd $$ICONS_DIR; \
+	git clone https://git.disroot.org/eudaimon/buuf-nestort.git
