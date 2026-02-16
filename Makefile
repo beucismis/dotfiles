@@ -3,7 +3,7 @@ DOTFILES_DIR := $(USER_HOME)/.dotfiles
 PARU_DIR := $(USER_HOME)/.paru
 BIN_DIR := $(USER_HOME)/.local/bin
 STOW_DIRS := $(shell find * -maxdepth 0 -type d -not -name "etc" -not -name "usr" -not -name "boot" -not -name "packages" -not -name "scripts" -not -name ".git" -not -name "gtk-2.0" -not -name "gtk-3.0" -not -name "gtk-4.0")
-ALL_PKGS := packages/base.txt packages/cli.txt packages/dev.txt packages/nvidia.txt packages/game.txt packages/privacy.txt packages/ai.txt packages/extra.txt packages/nonfree.txt 
+ALL_PKGS := packages/base.txt packages/cli.txt packages/dev.txt packages/nvidia.txt packages/game.txt packages/privacy.txt packages/ai.txt packages/extra.txt packages/nonfree.txt
 
 .PHONY: all install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins install-icon-theme
 
@@ -27,12 +27,10 @@ stow-files:
 	cd $(DOTFILES_DIR) && sudo stow --adopt -t /etc etc
 	cd $(DOTFILES_DIR) && sudo stow --adopt -t /usr usr
 	sudo cp -rT $(DOTFILES_DIR)/boot /boot
-	sudo mkdir -p /root/.config
-	sudo cp -rT $(DOTFILES_DIR)/gtk-2.0/.config /root/.config
-	sudo cp -rT $(DOTFILES_DIR)/gtk-3.0/.config /root/.config
-	sudo cp -rT $(DOTFILES_DIR)/gtk-4.0/.config /root/.config
 	cd $(DOTFILES_DIR) && stow --adopt -t $(USER_HOME) $(STOW_DIRS)
-	sudo chown -R root:root $(DOTFILES_DIR)/etc $(DOTFILES_DIR)/usr
+	sudo chown -R $(USER):$(USER) $(DOTFILES_DIR)
+	sudo chmod -R 644 $(DOTFILES_DIR)/etc
+	sudo chmod 755 $(DOTFILES_DIR)/etc
 
 setup-shell:
 	@echo "Setting up the shell..."
