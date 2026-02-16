@@ -6,7 +6,6 @@ foot
 git-delta
 gnome-themes-extra
 greetd
-grimshot-bin-sway
 gsimplecal
 hyprpicker
 libnotify
@@ -28,9 +27,9 @@ sway-contrib
 swaybg
 swayidle
 swaylock
-tuigreet
+greetd-tuigreet
 waybar
-waybar-module-pacman-updates
+waybar-module-pacman-updates-git
 waybar-weather
 wireplumber
 wmenu

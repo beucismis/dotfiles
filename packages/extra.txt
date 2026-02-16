@@ -19,3 +19,4 @@ qbittorrent
 radiotray-ng
 syncthing
 zathura
+zed-preview-bin
