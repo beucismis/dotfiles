@@ -7,7 +7,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_SCREENSHOTS_DIR=$HOME/screenshots
 
 export GOPATH="$HOME/.go"
-export PATH="$PATH:$GOPATH/bin:/usr/local/sbin:$HOME/.cargo/bin:$HOME/.local/bin"
+export PATH="$PATH:$GOPATH/bin:/usr/local/sbin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.dotfiles/scripts"
 
 export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
