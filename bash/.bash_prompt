@@ -1,8 +1,10 @@
 #!/bin/bash
 
-. $HOME/.local/bin/git-prompt.sh
+if [ -f "$HOME/.local/bin/git-prompt.sh" ]; then
+    . "$HOME/.local/bin/git-prompt.sh"
+fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")';
+export PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; 
 
-PS1='\[\e[48;5;239m\] \u@\h \[\e[48;5;242m\] \w \[\e[0m\]${PS1_CMD1} \\$ \a'
+PS1='\[\e[48;5;24;38;5;255m\] \u@\h \[\e[48;5;236;38;5;250m\] \w \[\e[0m\]${PS1_CMD1} \[\e[38;5;214m\]\$\[\e[0m\] '
