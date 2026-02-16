@@ -86,4 +86,4 @@ This repository contains the configuration files and scripts that I use daily wo
 
 ## Preview
 
-![](https://github.com/user-attachments/assets/c54f348a-d42a-4221-9420-b93068c7e797)
+![](https://github.com/user-attachments/assets/3eed9561-d33f-4571-a048-99e6e2207a47)
