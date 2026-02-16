@@ -7,60 +7,73 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "shell": {
+      "program": "/bin/bash",
+    },
+  },
   "context_servers": {},
   "git_panel": {
-    "status_style": "icon"
+    "status_style": "icon",
   },
   "use_system_window_tabs": false,
   "bottom_dock_layout": "contained",
   "preview_tabs": {
-    "enable_preview_from_file_finder": false
+    "enable_preview_from_file_finder": false,
   },
   "tabs": {
     "file_icons": false,
-    "git_status": true
+    "git_status": true,
   },
   "title_bar": {
     "show_menus": true,
-    "show_branch_icon": true
+    "show_branch_icon": true,
   },
   "autosave": {
     "after_delay": {
-      "milliseconds": 1000
-    }
+      "milliseconds": 1000,
+    },
   },
   "agent": {
     "default_model": {
       "provider": "ollama",
-      "model": "gemma3:12b"
+      "model": "gemma3:12b",
     },
     "enable_feedback": false,
     "play_sound_when_agent_done": true,
-    "model_parameters": []
+    "model_parameters": [],
   },
   "telemetry": {
     "metrics": false,
-    "diagnostics": false
+    "diagnostics": false,
   },
   "vim_mode": false,
   "ui_font_size": 14.0,
   "buffer_font_size": 12.0,
-  "theme": "Ayu Dark",
-  "icon_theme": "Colored Zed Icons Theme Dark",
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Dark",
+    "dark": "Ayu Dark",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Colored Zed Icons Theme Dark",
+    "dark": "Colored Zed Icons Theme Dark",
+  },
   "show_wrap_guides": true,
   "soft_wrap": "editor_width",
   "preferred_line_length": 120,
   "ensure_final_newline_on_save": true,
   "auto_install_extensions": {
     "log": true,
-    "html": false,
     "toml": true,
     "scss": true,
+    "html": false,
     "pylsp": true,
     "json5": true,
     "dockerfile": true,
     "git-firefly": true,
-    "colored-zed-icons-theme": true
+    "colored-zed-icons-theme": true,
   },
   "languages": {
     "Python": {
@@ -70,24 +83,24 @@
       "formatter": [
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
-    }
+            "name": "ruff",
+          },
+        },
+      ],
+    },
   },
   "lsp": {
     "ruff": {
       "initialization_options": {
         "settings": {
-          "lineLength": 120
-        }
-      }
-    }
+          "lineLength": 120,
+        },
+      },
+    },
   },
   "agent_servers": {
     "gemini": {
-      "ignore_system_version": false
-    }
-  }
+      "ignore_system_version": false,
+    },
+  },
 }
