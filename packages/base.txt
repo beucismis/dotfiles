@@ -1,7 +1,9 @@
+autotiling
 bash-completion
 bluez
 bluetuith
 brightnessctl
+cliphist
 foot
 git-delta
 gnome-themes-extra
