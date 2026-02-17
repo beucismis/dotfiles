@@ -2,8 +2,35 @@ USER_HOME := $(shell echo ~)
 DOTFILES_DIR := $(USER_HOME)/.dotfiles
 PARU_DIR := $(USER_HOME)/.paru
 BIN_DIR := $(USER_HOME)/.local/bin
-STOW_DIRS := $(shell find * -maxdepth 0 -type d -not -name "etc" -not -name "usr" -not -name "boot" -not -name "packages" -not -name "scripts" -not -name ".git" -not -name "gtk-2.0" -not -name "gtk-3.0" -not -name "gtk-4.0")
-ALL_PKGS := packages/base.txt packages/cli.txt packages/dev.txt packages/nvidia.txt packages/game.txt packages/privacy.txt packages/ai.txt packages/extra.txt packages/nonfree.txt
+
+STOW_HOME_DIRS := \
+	bash \
+	fastfetch \
+	foot \
+	git \
+	gtk-2.0 \
+	gtk-3.0 \
+	gtk-4.0 \
+	gtkrc \
+	icons \
+	mako \
+	mangohud \
+	mimeapps \
+	mpv \
+	pcmanfm \
+	pip \
+	qt5ct \
+	qt6ct \
+	radiotray-ng \
+	sway \
+	swaynag \
+	user-dirs \
+	waybar \
+	wob \
+	xsettingsd \
+	zed
+
+ALL_PKGS := $(sort $(wildcard packages/*.txt))
 
 .PHONY: all install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins install-icon-theme
 
@@ -27,23 +54,36 @@ stow-files:
 	cd $(DOTFILES_DIR) && sudo stow --adopt -t /etc etc
 	cd $(DOTFILES_DIR) && sudo stow --adopt -t /usr usr
 	sudo cp -rT $(DOTFILES_DIR)/boot /boot
-	cd $(DOTFILES_DIR) && stow --adopt -t $(USER_HOME) $(STOW_DIRS)
+	cd $(DOTFILES_DIR) && stow --adopt -t $(USER_HOME) $(STOW_HOME_DIRS)
 	sudo chown -R $(USER):$(USER) $(DOTFILES_DIR)
 	sudo chmod -R 644 $(DOTFILES_DIR)/etc
 	sudo chmod 755 $(DOTFILES_DIR)/etc
 
 setup-shell:
-	@echo "Setting up the shell..."
-	rm -rf $(BIN_DIR)/git-completion.bash* $(BIN_DIR)/git-prompt.sh*
+	@echo "Setting up shell essentials..."
+	rm -f $(BIN_DIR)/git-completion.bash $(BIN_DIR)/git-prompt.sh
 	wget -q --show-progress https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -P $(BIN_DIR)
 	wget -q --show-progress https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -P $(BIN_DIR)
-	chmod +rx $(BIN_DIR)/git-completion.bash $(BIN_DIR)/git-prompt.sh
+	chmod +x $(BIN_DIR)/git-completion.bash $(BIN_DIR)/git-prompt.sh
 
 setup-dirs:
 	@echo "Setting up user directories..."
-	mkdir -p $(USER_HOME)/documents $(USER_HOME)/download $(USER_HOME)/music $(USER_HOME)/pictures $(USER_HOME)/public $(USER_HOME)/templates $(USER_HOME)/videos
+	mkdir -p \
+		$(USER_HOME)/area51 \
+		$(USER_HOME)/clones \
+		$(USER_HOME)/documents \
+		$(USER_HOME)/download \
+		$(USER_HOME)/games \
+		$(USER_HOME)/music \
+		$(USER_HOME)/pictures \
+		$(USER_HOME)/projects \
+		$(USER_HOME)/public \
+		$(USER_HOME)/screenshots \
+		$(USER_HOME)/sync \
+		$(USER_HOME)/templates \
+		$(USER_HOME)/videos \
+		$(BIN_DIR)
 	xdg-user-dirs-update
-	mkdir -p $(USER_HOME)/screenshots $(USER_HOME)/games $(USER_HOME)/projects $(USER_HOME)/clones $(USER_HOME)/area51 $(USER_HOME)/sync $(BIN_DIR)
 
 install-mpv-plugins:
 	@echo "Installing mpv plugins..."
