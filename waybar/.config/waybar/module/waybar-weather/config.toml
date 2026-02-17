@@ -1,5 +1,9 @@
 locale = "tr-TR"
 
+[geolocation]
+cityname_file = "/home/beucismis/.config/waybar/module/waybar-weather/cityname"
+geolocation_file = "/home/beucismis/.config/waybar/module/waybar-weather/geolocation"
+
 [templates]
 text = "{{.Current.ConditionIcon}} {{hum .Current.Temperature}}{{.Current.Units.Temperature}}"
 
