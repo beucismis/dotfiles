@@ -1,0 +1,10 @@
+bridge-utils
+dnsmasq
+edk2-ovmf
+libvirt
+qemu-full
+spice
+spice-gtk
+spice-vdagent
+virt-manager
+virt-viewer
