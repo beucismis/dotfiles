@@ -1,15 +1,18 @@
 edge=top
-dismiss-button=[X]
-font=Source Code Pro 9
+layer=overlay
+font=Iosevka 10
+dismiss-button=Close
 
 [default]
-text=FFFFFF
-button-text=FFFFFF
-background=2D2D2D
-button-background=225877
-message-padding=4
+text=e0e0e0
+background=111111
+button-text=000000
+button-background=cfa053
+
+button-gap=8
+button-padding=2
+message-padding=2
+button-dismiss-gap=0
 border-bottom-size=0
-button-gap=10
-button-padding=3
-button-dismiss-gap=10
 button-border-size=0
+details-border-size=0
