@@ -7,20 +7,26 @@ done;
 
 unset file;
 
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-. $HOME/.local/bin/git-completion.bash
+if [ -f "$HOME/.local/bin/git-completion.bash" ]; then
+    . "$HOME/.local/bin/git-completion.bash"
+fi
 
-eval "$(mcfly init bash)"
+if command -v mcfly &> /dev/null; then
+    eval "$(mcfly init bash)"
+fi
 
-source $HOME/.config/broot/launcher/bash/br
+if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
+    source "$HOME/.config/broot/launcher/bash/br"
+fi
 
 # export PYENV_ROOT="$HOME/.pyenv"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init - bash)"
+
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec sway --unsupported-gpu
+fi

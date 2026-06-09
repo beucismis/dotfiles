@@ -1,19 +1,17 @@
 #!/bin/bash
 
 # Navigation
-
 alias ..='cd ..'
 alias ...='cd ../../'
 
 # Listining
-
 alias ls='eza -F --git'
 alias l='eza -laF --git'
 alias ld='eza -ld --git */'
 alias lt='eza --tree --level=2'
+alias l.="eza -a | grep -e '^\.'"
 
 # Shortcut
-
 alias s='sudo '
 alias c='clear'
 alias icat='viu'
@@ -22,7 +20,6 @@ alias m='mousepad'
 alias reload='source $HOME/.bash_profile'
 
 # System default
-
 alias df='df -H'
 alias rm='rm -I'
 alias ports='ss -tuln'
@@ -33,37 +30,36 @@ alias psgrep='ps aux | grep -v grep | grep'
 alias failed-units='systemctl list-units --state failed'
 
 # Package managment
-
-alias cleanup='pacc && paco'
-alias pacr='sudo pacman -Rns'
-alias pacc='sudo pacman -Scc'
-alias pacu='sudo pacman -Syuu'
-alias paru-stats='paru --show --stats'
+alias update='sudo pacman -Syu'
+alias pacman-remove='sudo pacman -Rns'
+alias package-stats='paru --show --stats'
+alias big="expac -H M '%m %n' | sort -h | nl"
 alias paco='pacman -Qdtq | sudo pacman -Rns -'
-alias pipu='python3 -m pip install --upgrade pip'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+alias fix-pacman='sudo rm /var/lib/pacman/db.lck'
+alias pip-update='python3 -m pip install --upgrade pip'
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 # Wayland
-
 alias wlcopy='wl-copy'
 alias wlpaste='wl-paste'
-alias swayreload='swaymsg reload'
-alias swaytree='swaymsg -t get_tree'
-alias swaylog='sway -d 2> ~/sway.log'
+alias sway-reload='swaymsg reload'
+alias sway-tree='swaymsg -t get_tree'
+alias sway-log='sway -d 2> ~/sway.log'
+alias waybar-reload='killall -SIGUSR2 waybar'
 
 # Misc
-
 alias hgrep='history | grep'
 alias myip='curl -s ifconfig.me'
-alias cameratest='ffplay /dev/video0'
+alias jctl="journalctl -p 3 -xb"
+alias camera-test='ffplay /dev/video0'
+alias serve='python -m http.server 8000'
 
 # Development
-
+alias pyvenv='python3 -m venv .venv && source .venv/bin/activate'
+alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias g='git'
 alias gcb='git checkout -b'
 alias gpull='git pull --rebase'
 alias gpush='git push --force-with-lease'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-alias pyvenv='python3 -m venv .venv && source .venv/bin/activate'
-
-alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
