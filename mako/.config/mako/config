@@ -4,18 +4,18 @@ anchor=bottom-right
 margin=5
 padding=10
 outer-margin=15,10
-font=SourceCodePro 10
 
-border-size=0
-background-color=#2D2D2D
-#border-color=#225877
+markup=1
+font=Iosevka 10
 
-icon-path=/usr/share/icons/Adwaita
+border-size=1
+text-color=#e0e0e0
+background-color=#1c1c1c
+border-color=#111111
+
+max-icon-size=32
+icon-path=/usr/share/icons/Adwaita/
 
 sort=-time
 ignore-timeout=1
 default-timeout=10000
-
-[urgency=high]
-default-timeout=0
-border-color=#BF616A
