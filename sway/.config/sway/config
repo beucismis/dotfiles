@@ -3,8 +3,8 @@
 set {
     $mod Mod4
 
-    $bg_color "#225877"
-    $wallpaper "$HOME/.dotfiles/.wallpaper.jpg"
+    $bg_color "#000000"
+    $wallpaper "$HOME/wallpaper.jpg"
 
     $language "tr"
     $keyboard "1:1:AT_Translated_Set_2_keyboard"
@@ -15,17 +15,15 @@ set {
     $file-manager pcmanfm
     $web-browser librewolf
     $radio radiotray-ng
-    $menu wmenu-run -b -i -f "Iosevka 10"
-    $zooming-tool wooz --invert-scroll --mouse-track
-    $colorpicker hyprpicker -ard && notify-send $(wl-paste)
-    $clipboard cliphist list | wmenu -b -l 10 -i -f "Iosevka 10" | cliphist decode | wl-copy
+    $zoom wooz --invert-scroll --mouse-track
+    $color-picker hyprpicker --autocopy --notify --render-inactive --disable-preview
+    $menu wmenu-run -b -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s e0e0e0
+    $clipboard cliphist list | wmenu -b -l 10 -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s e0e0e0 | cliphist decode | wl-copy
 
     $wobsock $XDG_RUNTIME_DIR/wob.sock
 }
 
 # Output & Input configuration
-
-font pango:Iosevka 10
 
 output {
     # "eDP-1" bg $bg_color solid_color
@@ -49,8 +47,24 @@ input $touchpad {
 
 # Container configurations
 
-gaps inner 10
+font pango:Iosevka 8
+
+gaps inner 8
 default_border pixel 2
+
+set $black   #000000
+set $base    #111111
+set $surface #1c1c1c
+set $text    #529961
+set $red     #cc4444
+
+client.background        $black    $base       $black   $black    $black
+client.focused           $text     $surface    $text    $text     $surface
+client.focused_inactive  $surface  $base       $text    $surface  $base
+client.focused_tab_title $surface  $base       $text    $surface  $base
+client.unfocused         $surface  $base       $text    $surface  $base
+client.urgent            $red      $black      $text    $red      $black
+client.placeholder       $black    $base       $text    $black    $base
 
 # Status bar
 
@@ -75,9 +89,9 @@ bindsym {
 
 # Resizing containers
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "Resize"
 
-mode "resize" {
+mode "Resize" {
     bindsym {
         Return mode "default"
         Escape mode "default"
@@ -128,7 +142,6 @@ for_window {
     [app_id="io.github.quodlibet.QuodLibet"] floating enable, move position center
 }
 
-for_window [floating] title_format "[F] %title"
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 # Workspaces
@@ -175,8 +188,6 @@ bindsym {
 floating_modifier $mod normal
 
 bindsym {
-    # TODO: XF86Launch2 exec
-	
 	# Window actions
     $mod+q kill
     $mod+Shift+r reload
@@ -186,9 +197,9 @@ bindsym {
     $mod+i exec $file-manager
     $mod+w exec $web-browser
     $mod+1+r exec $radio
+    $mod+z exec $zoom
+    $mod+p exec $color-picker
     $mod+m exec $menu
-    $mod+z exec $zooming-tool
-    $mod+p exec $colorpicker
     $mod+c exec $clipboard
     $mod+Shift+c exec cliphist wipe
     $mod+o exec bash /home/$USER/.dotfiles/scripts/ocr.sh
@@ -211,13 +222,13 @@ bindsym {
     Control+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send -i camera-photo "Screenshot" "Selected area saved to folder"
 }
 
-# Idle
+# Idle manager
 
 # set $screenlock grim /tmp/screenshot.png && ffmpeg -i /tmp/screenshot.png -vf "gblur=sigma=2" -frames:v 1 -y /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
 # exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
 # bindsym XF86Launch2 exec bash -c "$screenlock"
 
-# Power Menu
+# Power menu
 
 bindsym $mod+Shift+e exec swaynag -t default -m "Power Menu" -b "Lock" "bash -c '$screenlock'" -b "Suspend" "systemctl suspend" -b "Hibernate" "systemctl hibernate" -b "Reboot" "systemctl reboot" -b "Poweroff" "systemctl poweroff" -b "Exit" "swaymsg exit"
 
@@ -230,9 +241,9 @@ exec_always {
     gsettings set org.gnome.desktop.interface font-name "Iosevka 10"
     gsettings set org.gnome.desktop.interface document-font-name "Iosevka 10"
     gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-    gsettings set org.gnome.desktop.wm.preferences theme "Adwaita-dark"
-    gsettings set org.gnome.desktop.interface icon-theme "AdwaitaLegacy"
+    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
+    gsettings set org.gnome.desktop.wm.preferences theme "Adwaita"
+    gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
     gsettings set org.gnome.desktop.interface cursor-theme "ComixCursors-Slim-Black"
     gsettings set org.gnome.desktop.interface cursor-size 20
 }
@@ -244,20 +255,17 @@ exec {
     # Notification daemon
     rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 	mako
-	
-	# Power alert daemon
-	poweralertd -sS
-	
+
     # KDE Connect daemon
 	kdeconnectd
-	
+
 	# Clipboard manager daemon
 	wl-paste --type text --watch cliphist store
 	wl-paste --type image --watch cliphist store
-	
+
 	# Gamma manager daemon
 	wlsunset -l 37.77426 -L 29.0876
-	
+
 	# Network manager daemon
 	nm-applet --indicator
 }
