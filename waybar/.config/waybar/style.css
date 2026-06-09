@@ -1,61 +1,134 @@
+@define-color background #000000;
+@define-color card-background #111111;
+@define-color active-background #1c1c1c;
+@define-color main-text #e0e0e0;
+
+@define-color accent-gray #e0e0e0;
+@define-color accent-yellow #cfa053;
+@define-color accent-purple #9c6ca6;
+@define-color accent-red #cc4444;
+
 * {
-    border: none;
+    border: 0;
     min-height: 0;
     font-size: 12px;
     border-radius: 0;
-    font-family: "Source Code Pro";
+    font-family: Iosevka;
 }
 
 window#waybar {
-    color: @theme_text_color;
-    background: @theme_base_color;
-    border-bottom: 1px solid @unfocused_borders;
+    color: @main-text;
+    background-color: @background;
 }
 
 #window {
-    padding: 0 8px;
+    padding: 0 10px;
+    margin-left: 8px;
+    background-color: @card-background;
 }
 
-#mode {
-    color: #2d2d2d;
-    margin-left: 8px;
-    margin-right: 0px;
-    background: #f4c542;
+window#waybar.empty #window {
+    background-color: @background;
 }
 
 #workspaces button {
-    padding: 0;
-    color: white;
-    background: transparent;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-color: @card-background;
 }
 
-#workspaces button.focused {
-    background: #225877;
+#workspaces button.focused,
+#workspaces button.active {
+    border-top: 1px solid @accent-gray;
+    background-color: @active-background;
+}
+
+tooltip {
+    background-color: @card-background;
+}
+
+tooltip label {
+    color: @main-text;
 }
 
 #mode,
+#clock,
 #mpris,
-.waybar-weather,
 #custom-updates,
 #backlight,
+#custom-wlsunset,
 #wireplumber,
-#bluetooth,
 #cpu,
 #temperature,
 #memory,
 #battery,
-#clock,
 #tray {
-    padding: 2px 8px;
+    margin: 0 4px;
+    padding: 0 8px;
+    background-color: @card-background;
 }
 
-#mpris,
-.waybar-weather {
-    margin: 0px 4px;
-    background: #225877;
+#mode,
+#clock,
+#mpris {
+    background-color: @card-background;
 }
 
-#bluetooth,
+#mode {
+    border-top: 1px solid @accent-yellow;
+}
+
+#mpris {
+    border-top: 1px solid @accent-purple;
+}
+
+#backlight,
+#cpu {
+    margin-right: 0;
+    padding-right: 4px;
+}
+
+#custom-wlsunset,
 #temperature {
+    margin-left: 0;
     padding-left: 0;
+}
+
+#tray {
+    margin-right: 0;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @accent-red;
+}
+
+#tray menu {
+    padding: 2px;
+    color: @main-text;
+    background: @card-background;
+}
+
+#tray menu menuitem {
+    padding: 2px;
+}
+
+#tray menu menuitem:hover {
+    background-color: @active-background;
+}
+
+#wireplumber.muted {
+    border-top: 1px solid @accent-red;
+}
+
+#battery.warning {
+    border-top: 1px solid @accent-yellow;
+}
+
+#battery.critical {
+    border-top: 1px solid @accent-red;
 }
