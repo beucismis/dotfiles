@@ -22,10 +22,6 @@ This repository contains the configuration files and scripts that I use daily wo
       <td>waybar - https://github.com/alexays/waybar</td>
     </tr>
     <tr>
-      <td>Display Manager</td>
-      <td>tuigreet - https://github.com/apognu/tuigreet</td>
-    </tr>
-    <tr>
       <td>Audio Server</td>
       <td>pipewire - https://pipewire.org</td>
     </tr>
@@ -86,4 +82,6 @@ This repository contains the configuration files and scripts that I use daily wo
 
 ## Preview
 
-![](https://github.com/user-attachments/assets/455c970f-da17-4206-a7c5-71df28b0328b)
+![](https://github.com/user-attachments/assets/46c0056e-523c-4052-bb41-1b0a6cce63e6)
+
+![](https://github.com/user-attachments/assets/dfb60f3d-8bce-4ce2-a08f-d1f0c824082d)
