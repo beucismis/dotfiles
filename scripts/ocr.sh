@@ -10,6 +10,6 @@ echo "$TEXT" | wl-copy
 yad --title="OCR Result" \
     --width=500 --height=300 \
     --text-info --center \
-    --wrap --fontname="monospace 10" \
+    --wrap --fontname="Iosevka Regular 10" \
     --button="Close":0 \
     --filename=<(echo "$TEXT")
