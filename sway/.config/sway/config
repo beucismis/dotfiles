@@ -4,7 +4,7 @@ set {
     $mod Mod4
 
     $bg_color "#000000"
-    $wallpaper "$HOME/wallpaper.jpg"
+    $wallpaper "$HOME/.dotfiles/wallpapers/felsenriff-am-meeresstrand.jpg"
 
     $language "tr"
     $keyboard "1:1:AT_Translated_Set_2_keyboard"
@@ -123,29 +123,28 @@ bindsym {
     $mod+Shift+space floating toggle
 }
 
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+
 for_window {
-    [class="vesktop"] floating enable, move position center
-
-    [instance="Minecraft*"] floating enable, move position center
-
     [title="About*"] floating enable, move position center
     [title="about*"] floating enable, move position center
     [title="Hakkında*"] floating enable, move position center
     [title="hakkında*"] floating enable, move position center
     [title="OCR Result"] floating enable, move position center
 
+    [app_id="7zFM"] floating enable, move position center
     [app_id="pcmanfm"] floating enable, move position center
     [app_id="xarchiver"] floating enable, move position center
     [app_id="pavucontrol"] floating enable, move position center
-    [app_id="CachyOSHello"] floating enable, move position center
     [app_id="nm-connection-*"] floating enable, move position center
+    [app_id="org.cachyos.hello"] floating enable, move position center
+    [app_id="cute-sway-recorder"] floating enable, move position center
     [app_id="org.cachyos.cachyos-pi"] floating enable, move position center
+    [app_id="org.cachyos.scx-manager"] floating enable, move position center
     [app_id="org.keepassxc.KeePassXC"] floating enable, move position center
     [app_id="org.cachyos.KernelManager"] floating enable, move position center
     [app_id="io.github.quodlibet.QuodLibet"] floating enable, move position center
 }
-
-for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 # Workspaces
 
@@ -208,8 +207,8 @@ bindsym {
     $mod+o exec bash /home/$USER/.dotfiles/scripts/ocr.sh
 
     # Backlight Control
-    XF86MonBrightnessUp exec brightnessctl set +1% -m | cut -d, -f4 | tr -d '%' > $wobsock
-    XF86MonBrightnessDown exec brightnessctl set 1%- -m | cut -d, -f4 | tr -d '%' > $wobsock
+    XF86MonBrightnessUp exec brightnessctl set +1% | grep -oP '\(\K[^%]+' > $wobsock
+    XF86MonBrightnessDown exec brightnessctl set 1%- | grep -oP '\(\K[^%]+' > $wobsock
 
     # Sound Control
     XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
@@ -220,16 +219,17 @@ bindsym {
     Shift+Print exec grimshot copy output && notify-send -i edit-copy "Screenshot" "Full screen copied to clipboard"
     Shift+Alt+Print exec grimshot copy active && notify-send -i edit-copy "Screenshot" "Active window copied to clipboard"
     Shift+Control+Print exec grimshot copy area && notify-send -i edit-copy "Screenshot" "Selected area copied to clipboard"
-    Print exec grimshot save output $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send -i camera-photo "Screenshot" "Full screen saved to folder"
-    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send -i camera-photo "Screenshot" "Active window saved to folder"
-    Control+Print exec grimshot save area $HOME/screenshots/$(date +"%Y-%m-%d-%I-%M-%S-%p").png && notify-send -i camera-photo "Screenshot" "Selected area saved to folder"
+    Print exec grimshot save output $HOME/screenshots/$(date +"%Y%m%d-%H%M%S").png && notify-send "Screenshot" "Full screen saved to folder"
+    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y%m%d-%H%M%S").png && notify-send "Screenshot" "Active window saved to folder"
+    Control+Print exec grimshot save area $HOME/screenshots/$(date +"%Y%m%d-%H%M%S").png && notify-send "Screenshot" "Selected area saved to folder"
 }
 
 # Idle manager
 
-# set $screenlock grim /tmp/screenshot.png && ffmpeg -i /tmp/screenshot.png -vf "gblur=sigma=2" -frames:v 1 -y /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
-# exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
+set $screenlock grim /tmp/screenshot.png && ffmpeg -i /tmp/screenshot.png -vf "gblur=sigma=2" -frames:v 1 -y /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
+
 # bindsym XF86Launch2 exec bash -c "$screenlock"
+# exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
 
 # Power menu
 
@@ -267,10 +267,10 @@ exec {
 	wl-paste --type image --watch cliphist store
 
 	# Gamma manager daemon
-	wlsunset -l 37.77426 -L 29.0876
+	wlsunset -S 19:30 -s 06:00 -t 4000 -T 6500
 
 	# Network manager daemon
 	nm-applet --indicator
 }
 
-include /etc/sway/config-vars.d/*
+# include /etc/sway/config-vars.d/*
