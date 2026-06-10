@@ -17,8 +17,8 @@ set {
     $radio radiotray-ng
     $zoom wooz --invert-scroll --mouse-track
     $color-picker hyprpicker --autocopy --notify --render-inactive --disable-preview
-    $menu wmenu-run -b -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s e0e0e0
-    $clipboard cliphist list | wmenu -b -l 10 -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s e0e0e0 | cliphist decode | wl-copy
+    $menu wmenu-run -b -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s 000000
+    $clipboard cliphist list | wmenu -b -l 10 -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s 000000 | cliphist decode | wl-copy
 
     $wobsock $XDG_RUNTIME_DIR/wob.sock
 }
@@ -52,19 +52,22 @@ font pango:Iosevka 8
 gaps inner 8
 default_border pixel 2
 
-set $black   #000000
-set $base    #111111
-set $surface #1c1c1c
-set $text    #529961
-set $red     #cc4444
+set {
+    $black   #000000
+    $base    #111111
+    $surface #1c1c1c
+    $text    #529961
+    $red     #cc4444
+    $blue    #4a7bb0
+}
 
-client.background        $black    $base       $black   $black    $black
-client.focused           $text     $surface    $text    $text     $surface
-client.focused_inactive  $surface  $base       $text    $surface  $base
-client.focused_tab_title $surface  $base       $text    $surface  $base
-client.unfocused         $surface  $base       $text    $surface  $base
-client.urgent            $red      $black      $text    $red      $black
-client.placeholder       $black    $base       $text    $black    $base
+client.background        $black   $base    $black $black   $black
+client.focused           $blue    $surface $blue  $blue    $surface
+client.focused_inactive  $surface $base    $blue  $surface $base
+client.focused_tab_title $surface $base    $blue  $surface $base
+client.unfocused         $surface $base    $blue  $surface $base
+client.urgent            $red     $black   $blue  $red     $black
+client.placeholder       $black   $base    $blue  $black   $base
 
 # Status bar
 
