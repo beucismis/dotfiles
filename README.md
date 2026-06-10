@@ -82,12 +82,8 @@ This repository contains the configuration files and scripts that I use daily wo
 
 ## Preview
 
-![](https://github.com/user-attachments/assets/46c0056e-523c-4052-bb41-1b0a6cce63e6)
+Wallpaper source: https://artvee.com/dl/felsenriff-am-meeresstrand
 
-![](https://github.com/user-attachments/assets/dfb60f3d-8bce-4ce2-a08f-d1f0c824082d)
+![](https://github.com/user-attachments/assets/ff8f4ba3-eb33-49fa-a4f2-6ee329e26809)
 
-## Base Colors
-
-<img height="75" src="https://github.com/user-attachments/assets/a982fd13-b0a1-48a2-81be-6293d95f7f7a" />
-
-https://github.com/beucismis/dotfiles/blob/53b0b12b6ce2d55805d05f57a923a1ca3c50bf30/foot/.config/foot/foot.ini#L33-L56
+![](https://github.com/user-attachments/assets/ab9de87b-485e-41e5-82c3-da5f72f2418a)
