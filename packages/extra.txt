@@ -1,12 +1,10 @@
-adobe-source-code-pro-fonts
 android-file-transfer
 android-tools
 bleachbit
-file-roller
 gimp
-gnome-calculator
 gparted
 gvfs
+helium-browser-bin
 imv
 inkscape
 kdeconnect
