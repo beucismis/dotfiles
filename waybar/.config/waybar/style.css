@@ -39,7 +39,7 @@ window#waybar.empty #window {
 
 #workspaces button.focused,
 #workspaces button.active {
-    border-top: 1px solid @accent-gray;
+    /* border-top: 1px solid @accent-gray; */
     background-color: @active-background;
 }
 
