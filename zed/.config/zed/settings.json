@@ -7,13 +7,28 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "ui_font_family": "Iosevka",
+  "buffer_line_height": "standard",
+  "buffer_font_family": "Iosevka",
   "terminal": {
+    "cursor_shape": "underline",
+    "font_family": "Iosevka",
     "shell": {
       "program": "/bin/bash",
     },
   },
   "context_servers": {},
   "git_panel": {
+    "dock": "left",
     "status_style": "icon",
   },
   "use_system_window_tabs": false,
@@ -26,8 +41,8 @@
     "git_status": true,
   },
   "title_bar": {
+    "show_branch_status_icon": true,
     "show_menus": true,
-    "show_branch_icon": true,
   },
   "autosave": {
     "after_delay": {
@@ -35,12 +50,14 @@
     },
   },
   "agent": {
+    "dock": "right",
     "default_model": {
-      "provider": "ollama",
-      "model": "gemma3:12b",
+      "enable_thinking": true,
+      "provider": "google",
+      "model": "gemini-2.5-flash-lite",
     },
     "enable_feedback": false,
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "model_parameters": [],
   },
   "telemetry": {
@@ -50,16 +67,8 @@
   "vim_mode": false,
   "ui_font_size": 14.0,
   "buffer_font_size": 12.0,
-  "theme": {
-    "mode": "dark",
-    "light": "Ayu Dark",
-    "dark": "Ayu Dark",
-  },
-  "icon_theme": {
-    "mode": "dark",
-    "light": "Colored Zed Icons Theme Dark",
-    "dark": "Colored Zed Icons Theme Dark",
-  },
+  "theme": "Ayu Dark",
+  "icon_theme": "Zed (Default)",
   "show_wrap_guides": true,
   "soft_wrap": "editor_width",
   "preferred_line_length": 120,
@@ -98,9 +107,5 @@
       },
     },
   },
-  "agent_servers": {
-    "gemini": {
-      "ignore_system_version": false,
-    },
-  },
+  "agent_servers": {},
 }
