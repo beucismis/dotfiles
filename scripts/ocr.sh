@@ -7,9 +7,4 @@ TEXT=$(tesseract "$IMG_FILE" stdout)
 rm "$IMG_FILE"
 echo "$TEXT" | wl-copy
 
-yad --title="OCR Result" \
-    --width=500 --height=300 \
-    --text-info --center \
-    --wrap --fontname="Iosevka Regular 10" \
-    --button="Close":0 \
-    --filename=<(echo "$TEXT")
+yad --text-info --width=500 --height=300 --button="Close":0 --title="OCR Result" --filename=<(echo "$TEXT") --fontname="Iosevka Regular 10"
