@@ -8,10 +8,9 @@ outer-margin=15,10
 markup=1
 font=Iosevka 10
 
-border-size=1
+border-size=0
 text-color=#e0e0e0
-background-color=#1c1c1c
-border-color=#111111
+background-color=#111111
 
 max-icon-size=32
 icon-path=/usr/share/icons/Adwaita/
