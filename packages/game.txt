@@ -4,7 +4,7 @@ heroic-games-launcher-bin
 hytale-launcher-bin
 lutris
 mangohud
-protonup-qt-bin
+protonup-qt
 steam
 wine
 wine-gecko

@@ -1,17 +1,14 @@
 aria2
 bandwhich
 bat
-ctop
 dua-cli
 duf
 exa
 fastfetch
 git
-glow
 hblock
 lnav
 mcfly
-micro
 perl-image-exiftool
 streamlink
 viu

@@ -1,3 +1,3 @@
-ayugram-desktop-bin
-spotify
+ayugram-desktop
+spotify-launcher
 vesktop-bin
