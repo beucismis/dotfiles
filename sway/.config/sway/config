@@ -213,6 +213,9 @@ bindsym {
     $mod+c exec $clipboard-menu
     $mod+Shift+c exec cliphist wipe # Clipboard clear
 
+    # Suprise
+    XF86Calculator exec xdg-open "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
     # Backlight Control
     XF86MonBrightnessUp exec brightnessctl set +1% | grep -oP '\(\K[^%]+' > $XDG_RUNTIME_DIR/wob.sock
     XF86MonBrightnessDown exec brightnessctl set 1%- | grep -oP '\(\K[^%]+' > $XDG_RUNTIME_DIR/wob.sock
