@@ -1,14 +1,9 @@
-locale = "tr-TR"
-
 [geolocation]
-cityname_file = ".config/waybar/module/waybar-weather/cityname"
 geolocation_file = ".config/waybar/module/waybar-weather/geolocation"
 
 [templates]
 text = "{{hum .Current.Temperature}}{{.Current.Units.Temperature}}"
-
 alt_text = "{{hum .Forecast.Temperature}}{{.Forecast.Units.Temperature}}"
 
 tooltip = "{{.Address.City}}, {{.Address.Country}} - {{.Current.Condition}}\n\n{{loc \"apparent\"}}: {{hum .Current.ApparentTemperature}}{{.Current.Units.Temperature}}\n{{loc \"humidity\"}}: {{.Current.RelativeHumidity}}%\n{{loc \"pressure\"}}: {{hum .Current.PressureMSL}} {{.Current.Units.Pressure}}\n{{loc \"wind\"}}: {{hum .Current.WindSpeed}} → {{hum .Current.WindGusts}} {{.Current.Units.WindSpeed}} ({{windDir .Current.WindDirection}})\n\n{{loc \"sunrise\"}}: {{localizedTime .SunriseTime}} - {{loc \"sunset\"}}: {{localizedTime .SunsetTime}}"
-
 alt_tooltip = "{{.Address.City}}, {{.Address.Country}} - {{.Forecast.Condition}}\n\n{{loc \"apparent\"}}: {{hum .Forecast.ApparentTemperature}}{{.Forecast.Units.Temperature}}\n{{loc \"humidity\"}}: {{.Forecast.RelativeHumidity}}%\n{{loc \"pressure\"}}: {{hum .Forecast.PressureMSL}} {{.Forecast.Units.Pressure}}\n{{loc \"wind\"}}: {{hum .Forecast.WindSpeed}} → {{hum .Forecast.WindGusts}} {{.Forecast.Units.WindSpeed}} ({{windDir .Forecast.WindDirection}})\n\n{{loc \"sunrise\"}}: {{localizedTime .SunriseTime}} - {{loc \"sunset\"}}: {{localizedTime .SunsetTime}}"
