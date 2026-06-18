@@ -13,7 +13,7 @@
     min-height: 0;
     font-size: 12px;
     border-radius: 0;
-    font-family: Iosevka;
+    font-family: Iosevka, sans-serif;
 }
 
 window#waybar {
@@ -39,7 +39,6 @@ window#waybar.empty #window {
 
 #workspaces button.focused,
 #workspaces button.active {
-    /* border-top: 1px solid @accent-gray; */
     background-color: @active-background;
 }
 
@@ -58,10 +57,12 @@ tooltip label {
 #backlight,
 #custom-wlsunset,
 #wireplumber,
+#bluetooth,
 #cpu,
 #temperature,
 #memory,
 #battery,
+#network,
 #tray {
     margin: 0 4px;
     padding: 0 8px;
@@ -83,18 +84,42 @@ tooltip label {
 }
 
 #backlight,
+#wireplumber,
 #cpu {
     margin-right: 0;
-    padding-right: 4px;
+    padding-right: 8px;
 }
 
 #custom-wlsunset,
+#bluetooth,
 #temperature {
     margin-left: 0;
     padding-left: 0;
 }
 
+#wireplumber.muted {
+    border-top: 1px solid @accent-red;
+}
+
+#battery.warning {
+    border-top: 1px solid @accent-yellow;
+}
+
+#battery.critical {
+    border-top: 1px solid @accent-red;
+}
+
+#network {
+    margin-right: 0;
+}
+
+#network.disabled,
+#network.disconnected {
+    border-top: 1px solid @accent-red;
+}
+
 #tray {
+    margin-left: 8;
     margin-right: 0;
 }
 
@@ -119,16 +144,4 @@ tooltip label {
 
 #tray menu menuitem:hover {
     background-color: @active-background;
-}
-
-#wireplumber.muted {
-    border-top: 1px solid @accent-red;
-}
-
-#battery.warning {
-    border-top: 1px solid @accent-yellow;
-}
-
-#battery.critical {
-    border-top: 1px solid @accent-red;
 }
