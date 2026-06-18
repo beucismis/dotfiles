@@ -21,7 +21,6 @@ STOW_HOME_DIRS := \
 	pip \
 	qt5ct \
 	qt6ct \
-	radiotray-ng \
 	sway \
 	swaynag \
 	user-dirs \
@@ -30,11 +29,9 @@ STOW_HOME_DIRS := \
 	xsettingsd \
 	zed
 
-ALL_PKGS := $(sort $(wildcard packages/*.txt))
+.PHONY: all install-system-deps install-packages setup-config-files setup-shell setup-dirs install-mpv-plugins
 
-.PHONY: all install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins install-icon-theme
-
-all: install-system-deps install-packages stow-files setup-shell setup-dirs install-mpv-plugins install-icon-theme
+all: install-system-deps install-packages setup-config-files setup-shell setup-dirs install-mpv-plugins
 
 install-system-deps:
 	@echo "Installing system dependencies..."
@@ -49,10 +46,9 @@ install-packages:
 	fi
 	paru -S --needed --noconfirm - < <(cat $(ALL_PKGS))
 
-stow-files:
-	@echo "Stowing configuration files..."
+setup-config-files:
+	@echo "Setup config files..."
 	cd $(DOTFILES_DIR) && sudo stow --adopt -t /etc etc
-	cd $(DOTFILES_DIR) && sudo stow --adopt -t /usr usr
 	sudo cp -rT $(DOTFILES_DIR)/boot /boot
 	cd $(DOTFILES_DIR) && stow --adopt -t $(USER_HOME) $(STOW_HOME_DIRS)
 	sudo chown -R $(USER):$(USER) $(DOTFILES_DIR)
@@ -69,7 +65,6 @@ setup-shell:
 setup-dirs:
 	@echo "Setting up user directories..."
 	mkdir -p \
-		$(USER_HOME)/area51 \
 		$(USER_HOME)/clones \
 		$(USER_HOME)/documents \
 		$(USER_HOME)/download \
@@ -93,10 +88,3 @@ install-mpv-plugins:
 	cp $$TMP_DIR/thumbfast.lua $(USER_HOME)/.config/mpv/scripts/; \
 	cp $$TMP_DIR/thumbfast.conf $(USER_HOME)/.config/mpv/script-opts/; \
 	rm -rf $$TMP_DIR
-
-install-icon-theme:
-	@echo "Installing icon theme..."
-	ICONS_DIR=$(USER_HOME)/.icons; \
-	mkdir -p $$ICONS_DIR; \
-	cd $$ICONS_DIR; \
-	git clone https://git.disroot.org/eudaimon/buuf-nestort.git
