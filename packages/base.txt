@@ -26,7 +26,7 @@ sway-contrib
 swaybg
 swayidle
 swaylock
-tcc-iosevka
+ttf-iosevka
 tesseract
 tesseract-data-eng
 tesseract-data-tur
