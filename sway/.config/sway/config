@@ -3,7 +3,7 @@
 set {
     $mod Mod4
 
-    $bg_color "#000000"
+    $bg-color "#4a7bb0"
     $wallpaper "$HOME/.dotfiles/wallpapers/felsenriff-am-meeresstrand.jpg"
 
     $language "tr"
@@ -14,21 +14,22 @@ set {
     $terminal foot
     $file-manager pcmanfm
     $web-browser librewolf
-    $radio radiotray-ng
-    $zoom wooz --invert-scroll --mouse-track
+    $screen-magnifier wooz --invert-scroll --mouse-track
+    $screen-ocr bash /home/$USER/.dotfiles/scripts/ocr.sh
     $color-picker hyprpicker --autocopy --notify --render-inactive --disable-preview
-    $menu wmenu-run -b -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s 000000
-    $clipboard cliphist list | wmenu -b -l 10 -i -f "Iosevka 10" -N 1c1c1c -n e0e0e0 -M 1c1c1c -m e0e0e0 -S 4a7bb0 -s 000000 | cliphist decode | wl-copy
-
-    $wobsock $XDG_RUNTIME_DIR/wob.sock
+    $application-menu wmenu-run \
+        -bi -f "Iosevka 10" -N 111111 -n e0e0e0 -M 111111 -m e0e0e0 -S 4a7bb0 -s 000000
+    $clipboard-menu cliphist list | wmenu \
+        -bi -l 15 -f "Iosevka 10" -N 111111 -n e0e0e0 -M 111111 -m e0e0e0 -S 4a7bb0 -s 000000 \
+        | cliphist decode | wl-copy
 }
 
 # Output & Input configuration
 
 output {
-    # "eDP-1" bg $bg_color solid_color
-    # "eDP-2" bg $bg_color solid_color
-    "eDP-1" background $wallpaper fill
+    # "eDP-1" bg $bg-color solid_color
+    # "eDP-2" bg $bg-color solid_color
+    # "eDP-1" background $wallpaper fill
     "eDP-2" background $wallpaper fill
 }
 
@@ -126,17 +127,20 @@ bindsym {
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 for_window {
+    [app_id="vesktop"] opacity 0.9
+    [app_id="dev.zed.Zed"] opacity 0.9
+    [app_id="com.ayugram.desktop"] opacity 0.9
+    [instance="spotify"] move container to workspace 10, workspace 10, opacity 0.9
+
     [title="About*"] floating enable, move position center
     [title="about*"] floating enable, move position center
     [title="Hakkında*"] floating enable, move position center
     [title="hakkında*"] floating enable, move position center
     [title="OCR Result"] floating enable, move position center
+    [title="Sound Manager"] floating enable, move position center
+    [title="Network Manager"] floating enable, move position center
+    [title="Bluetooth Manager"] floating enable, move position center
 
-    [app_id="7zFM"] floating enable, move position center
-    [app_id="pcmanfm"] floating enable, move position center
-    [app_id="xarchiver"] floating enable, move position center
-    [app_id="pavucontrol"] floating enable, move position center
-    [app_id="nm-connection-*"] floating enable, move position center
     [app_id="org.cachyos.hello"] floating enable, move position center
     [app_id="cute-sway-recorder"] floating enable, move position center
     [app_id="org.cachyos.cachyos-pi"] floating enable, move position center
@@ -144,38 +148,42 @@ for_window {
     [app_id="org.keepassxc.KeePassXC"] floating enable, move position center
     [app_id="org.cachyos.KernelManager"] floating enable, move position center
     [app_id="io.github.quodlibet.QuodLibet"] floating enable, move position center
+
+    [app_id="7zFM"] floating enable, move position center, opacity 0.9
+    [app_id="pcmanfm"] floating enable, move position center, opacity 0.9
+    [app_id="xarchiver"] floating enable, move position center, opacity 0.9
+    [app_id="pavucontrol"] floating enable, move position center, opacity 0.9
+    [app_id="nm-applet"] floating enable, move position center, opacity 0.9
+    [app_id="nm-connection-*"] floating enable, move position center, opacity 0.9
 }
 
 # Workspaces
 
-set $w workspace
-set $c container
-
 bindsym {
-    Control+Left $w prev
-    Control+Right $w next
+    Tab+Left workspace prev
+    Tab+Right workspace next
 
-    $mod+1 $w number 1
-    $mod+2 $w number 2
-    $mod+3 $w number 3
-    $mod+4 $w number 4
-    $mod+5 $w number 5
-    $mod+6 $w number 6
-    $mod+7 $w number 7
-    $mod+8 $w number 8
-    $mod+9 $w number 9
-    $mod+0 $w number 10
+    $mod+1 workspace number 1
+    $mod+2 workspace number 2
+    $mod+3 workspace number 3
+    $mod+4 workspace number 4
+    $mod+5 workspace number 5
+    $mod+6 workspace number 6
+    $mod+7 workspace number 7
+    $mod+8 workspace number 8
+    $mod+9 workspace number 9
+    $mod+0 workspace number 10
 
-    $mod+Shift+1 move $c to $w number 1
-    $mod+Shift+2 move $c to $w number 2
-    $mod+Shift+3 move $c to $w number 3
-    $mod+Shift+4 move $c to $w number 4
-    $mod+Shift+5 move $c to $w number 5
-    $mod+Shift+6 move $c to $w number 6
-    $mod+Shift+7 move $c to $w number 7
-    $mod+Shift+8 move $c to $w number 8
-    $mod+Shift+9 move $c to $w number 9
-    $mod+Shift+0 move $c to $w number 10
+    $mod+Shift+1 move container to workspace number 1
+    $mod+Shift+2 move container to workspace number 2
+    $mod+Shift+3 move container to workspace number 3
+    $mod+Shift+4 move container to workspace number 4
+    $mod+Shift+5 move container to workspace number 5
+    $mod+Shift+6 move container to workspace number 6
+    $mod+Shift+7 move container to workspace number 7
+    $mod+Shift+8 move container to workspace number 8
+    $mod+Shift+9 move container to workspace number 9
+    $mod+Shift+0 move container to workspace number 10
 }
 
 # Scratchpad
@@ -198,42 +206,63 @@ bindsym {
     $mod+Return exec $terminal
     $mod+i exec $file-manager
     $mod+w exec $web-browser
-    $mod+1+r exec $radio
-    $mod+z exec $zoom
+    $mod+z exec $screen-magnifier
+    $mod+o exec $screen-ocr
     $mod+p exec $color-picker
-    $mod+m exec $menu
-    $mod+c exec $clipboard
-    $mod+Shift+c exec cliphist wipe
-    $mod+o exec bash /home/$USER/.dotfiles/scripts/ocr.sh
+    $mod+m exec $application-menu
+    $mod+c exec $clipboard-menu
+    $mod+Shift+c exec cliphist wipe # Clipboard clear
 
     # Backlight Control
-    XF86MonBrightnessUp exec brightnessctl set +1% | grep -oP '\(\K[^%]+' > $wobsock
-    XF86MonBrightnessDown exec brightnessctl set 1%- | grep -oP '\(\K[^%]+' > $wobsock
+    XF86MonBrightnessUp exec brightnessctl set +1% | grep -oP '\(\K[^%]+' > $XDG_RUNTIME_DIR/wob.sock
+    XF86MonBrightnessDown exec brightnessctl set 1%- | grep -oP '\(\K[^%]+' > $XDG_RUNTIME_DIR/wob.sock
 
     # Sound Control
     XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-    XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $wobsock
-    XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}' > $wobsock
+    XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- \
+        && wpctl get-volume @DEFAULT_AUDIO_SINK@ \
+        | awk '{print $2*100}' > $XDG_RUNTIME_DIR/wob.sock
+    XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+ \
+        && wpctl get-volume @DEFAULT_AUDIO_SINK@ \
+        | awk '{print $2*100}' > $XDG_RUNTIME_DIR/wob.sock
 
     # Screenshot
-    Shift+Print exec grimshot copy output && notify-send -i edit-copy "Screenshot" "Full screen copied to clipboard"
-    Shift+Alt+Print exec grimshot copy active && notify-send -i edit-copy "Screenshot" "Active window copied to clipboard"
-    Shift+Control+Print exec grimshot copy area && notify-send -i edit-copy "Screenshot" "Selected area copied to clipboard"
-    Print exec grimshot save output $HOME/screenshots/$(date +"%Y%m%d-%H%M%S").png && notify-send "Screenshot" "Full screen saved to folder"
-    Alt+Print exec grimshot save active $HOME/screenshots/$(date +"%Y%m%d-%H%M%S").png && notify-send "Screenshot" "Active window saved to folder"
-    Control+Print exec grimshot save area $HOME/screenshots/$(date +"%Y%m%d-%H%M%S").png && notify-send "Screenshot" "Selected area saved to folder"
+    Shift+Print exec grimshot copy output \
+        && notify-send -i edit-copy "Screenshot" "Full screen copied to clipboard"
+    Shift+Alt+Print exec grimshot copy active \
+        && notify-send -i edit-copy "Screenshot" "Active window copied to clipboard"
+    Shift+Control+Print exec grimshot copy area \
+        && notify-send -i edit-copy "Screenshot" "Selected area copied to clipboard"
+    Print exec grimshot save output $XDG_SCREENSHOTS_DIR/$(date +"%Y%m%d-%H%M%S").png \
+        && notify-send "Screenshot" "Full screen saved to folder"
+    Alt+Print exec grimshot save active $XDG_SCREENSHOTS_DIR/$(date +"%Y%m%d-%H%M%S").png \
+        && notify-send "Screenshot" "Active window saved to folder"
+    Control+Print exec grimshot save area $XDG_SCREENSHOTS_DIR/$(date +"%Y%m%d-%H%M%S").png \
+        && notify-send "Screenshot" "Selected area saved to folder"
 }
 
 # Idle manager
 
-set $screenlock grim /tmp/screenshot.png && ffmpeg -i /tmp/screenshot.png -vf "gblur=sigma=2" -frames:v 1 -y /tmp/lock-image.png && swaylock -f -i /tmp/lock-image.png
+set $screenlock grim /tmp/screenshot.png \
+    && ffmpeg -i /tmp/screenshot.png -vf "gblur=sigma=2" -frames:v 1 -y /tmp/lock-image.png \
+    && swaylock -f -i /tmp/lock-image.png
 
-# bindsym XF86Launch2 exec bash -c "$screenlock"
-# exec swayidle -w timeout 300 '$screenlock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
+bindsym XF86Launch2 exec bash -c "$screenlock"
+exec swayidle -w before-sleep 'swaylock -f -c 000000'
+
+# exec swayidle -w \
+#    timeout 300 '$screenlock' \
+#    timeout 600 'swaymsg "output * power off"' \
+#    resume 'swaymsg "output * power on"'
 
 # Power menu
 
-bindsym $mod+Shift+e exec swaynag -t default -m "Power Menu" -b "Lock" "bash -c '$screenlock'" -b "Suspend" "systemctl suspend" -b "Hibernate" "systemctl hibernate" -b "Reboot" "systemctl reboot" -b "Poweroff" "systemctl poweroff" -b "Exit" "swaymsg exit"
+bindsym $mod+Shift+e exec swaynag -t default -m "Power Menu" \
+    -b "Poweroff" "systemctl poweroff" \
+    -b "Reboot" "systemctl reboot" \
+    -b "Suspend" "systemctl suspend" \
+    -b "Exit" "swaymsg exit" \
+    -b "Lock" "bash -c '$screenlock'"
 
 # Auto start
 
@@ -253,24 +282,33 @@ exec_always {
 
 exec {
 	# Environments
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_DESKTOP GTK_THEME XCURSOR_SIZE XCURSOR_THEME SWAYSOCK I3SOCK
+    dbus-update-activation-environment --systemd \
+        DISPLAY \
+        WAYLAND_DISPLAY \
+        XDG_CURRENT_DESKTOP \
+        XDG_SESSION_TYPE \
+        XDG_SESSION_DESKTOP \
+        GTK_THEME \
+        XCURSOR_SIZE \
+        XCURSOR_THEME \
+        SWAYSOCK \
+        I3SOCK
 
     # Notification daemon
-    rm -f $wobsock && mkfifo $wobsock && tail -f $wobsock | wob
 	mako
-
-    # KDE Connect daemon
-	kdeconnectd
+    rm -f $XDG_RUNTIME_DIR/wob.sock \
+        && mkfifo $XDG_RUNTIME_DIR/wob.sock \
+        && tail -f $XDG_RUNTIME_DIR/wob.sock | wob
 
 	# Clipboard manager daemon
 	wl-paste --type text --watch cliphist store
 	wl-paste --type image --watch cliphist store
 
 	# Gamma manager daemon
-	wlsunset -S 19:30 -s 06:00 -t 4000 -T 6500
+	wlsunset -S 06:30 -s 19:30 -t 4000 -T 6500
 
-	# Network manager daemon
-	nm-applet --indicator
+    # KDE Connect daemon
+	kdeconnectd
 }
 
 # include /etc/sway/config-vars.d/*
