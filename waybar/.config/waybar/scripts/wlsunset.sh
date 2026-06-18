@@ -8,7 +8,7 @@ if pgrep -x "wlsunset" > /dev/null; then
     fi
 else
     if [[ "$1" == "toggle" ]]; then
-        wlsunset -S 19:30 -s 06:00 -t 4000 -T 6500 &
+        wlsunset -S 06:30 -s 19:30 -t 4000 -T 6500 &
     else
         echo '{"text": "[LF: OFF]", "class": "deactivated"}'
     fi
