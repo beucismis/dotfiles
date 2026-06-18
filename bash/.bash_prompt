@@ -7,4 +7,4 @@ fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")';
 
-export PS1='\[\e[40;38;5;255m\] \u@\h \[\e[100;38;5;255m\] \w \[\e[0m\]${PS1_CMD1} '
+export PS1='\[\e[40;38;5;255m\] \u@\h \[\e[100;38;5;255m\] \w \[\e[0m\]${PS1_CMD1} $ '

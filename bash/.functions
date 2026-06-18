@@ -27,3 +27,29 @@ function video2gif {
 
     echo "Done! Created: $output"
 }
+
+git-open() {
+    if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        return 1
+    fi
+
+    local url=$(git config --get remote.origin.url)
+
+    if [ -z "$url" ]; then
+        return 1
+    fi
+
+    if [[ $url =~ ^git@ ]]; then
+        url=$(echo "$url" | sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git$//')
+    elif [[ $url =~ \.git$ ]]; then
+        url=$(echo "$url" | sed 's/\.git$//')
+    fi
+
+    echo "Open: $url"
+
+    if command -v xdg-open > /dev/null; then
+        xdg-open "$url"
+    else
+        return 1
+    fi
+}

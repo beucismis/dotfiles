@@ -1,5 +1,4 @@
 #!/bin/bash
-# ~/.bash_profile: executed by the command interpreter for login shells.
 
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";

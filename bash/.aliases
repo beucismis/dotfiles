@@ -1,65 +1,83 @@
 #!/bin/bash
 
 # Navigation
-alias ..='cd ..'
-alias ...='cd ../../'
+alias ..="cd .."
+alias ...="cd ../../"
 
 # Listining
-alias ls='eza -F --git'
-alias l='eza -laF --git'
-alias ld='eza -ld --git */'
-alias lt='eza --tree --level=2'
+alias l="eza -laF --git"
 alias l.="eza -a | grep -e '^\.'"
-
-# Shortcut
-alias s='sudo '
-alias c='clear'
-alias icat='viu'
-alias catmd='glow'
-alias m='mousepad'
-alias reload='source $HOME/.bash_profile'
+alias ls="eza -F --git"
+alias ld="eza -ld --git */"
+alias lt="eza --tree --level=2"
 
 # System default
-alias df='df -H'
-alias rm='rm -I'
-alias ports='ss -tuln'
-alias mkdir='mkdir -pv'
-alias untar='tar -zxvf '
-alias du='du -h --max-depth=1'
-alias psgrep='ps aux | grep -v grep | grep'
-alias failed-units='systemctl list-units --state failed'
+alias df="df -H"
+alias rm="rm -I"
+alias mkdir="mkdir -pv"
+alias lsmod="lsmod | bat -l conf -p"
+alias lscpu="lscpu | bat -l conf -p"
+alias lsblk="lsblk | bat -l conf -p"
+alias sensors="sensors | bat -l conf -p"
+
+# Shortcut
+alias s="sudo "
+alias c="clear"
+alias r="reset"
+alias g="git"
+alias icat="viu"
+alias ff="fastfetch"
+alias sys="systemctl"
+alias py="python"
+
+alias ports="ss -tuln | bat -l conf -p"
+alias serve="python -m http.server 8000"
+
+alias untar="tar -zxvf "
+alias hgrep="history | grep"
+alias du="du -h --max-depth=1"
+alias jctl="journalctl -p 3 -xb"
+alias psau="ps au | bat -l conf -p"
+alias psgrep="ps aux | grep -v grep | grep"
+
+alias reload="source \$HOME/.bash_profile"
+
+alias bl-stop="sudo systemctl stop bluetooth.service"
+alias bl-start="sudo systemctl start bluetooth.service"
+
+alias failed-units="systemctl list-units --state failed"
+alias active-units=" systemctl list-units --type=service --state=running"
+
+alias fan-auto="echo 2 | sudo tee /sys/devices/platform/hp-wmi/hwmon/hwmon*/pwm1_enable"
+alias fan-manuel="echo 1 | sudo tee /sys/devices/platform/hp-wmi/hwmon/hwmon*/pwm1_enable"
+
+alias camera-test="ffplay /dev/video0"
+
+alias sway-reload="swaymsg reload"
+alias sway-tree="swaymsg -t get_tree"
+alias sway-log="sway -d 2> ~/sway.log"
+alias waybar-reload="killall -SIGUSR2 waybar"
 
 # Package managment
-alias update='sudo pacman -Syu'
-alias pacman-remove='sudo pacman -Rns'
-alias package-stats='paru --show --stats'
-alias big="expac -H M '%m %n' | sort -h | nl"
-alias paco='pacman -Qdtq | sudo pacman -Rns -'
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
-alias fix-pacman='sudo rm /var/lib/pacman/db.lck'
-alias pip-update='python3 -m pip install --upgrade pip'
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias update="sudo pacman -Syu"
+alias pacman-remove="sudo pacman -Rns"
+alias cleanup="sudo pacman -Rns \$(pacman -Qtdq)"
+alias aur-cleanup="paru -c"
+alias pacman-fix="sudo rm /var/lib/pacman/db.lck"
 
-# Wayland
-alias wlcopy='wl-copy'
-alias wlpaste='wl-paste'
-alias sway-reload='swaymsg reload'
-alias sway-tree='swaymsg -t get_tree'
-alias sway-log='sway -d 2> ~/sway.log'
-alias waybar-reload='killall -SIGUSR2 waybar'
-
-# Misc
-alias hgrep='history | grep'
-alias myip='curl -s ifconfig.me'
-alias jctl="journalctl -p 3 -xb"
-alias camera-test='ffplay /dev/video0'
-alias serve='python -m http.server 8000'
+alias package-stats="paru --show --stats"
+alias big-packages="expac -H M '%m %n' | sort -h | nl"
+alias recent-packages="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias aur-list="pacman -Qm | awk '{printf \"%s \033[0;32m%s\033[0m\n\", \$1, \$2}'"
+alias cachyos-list="pacman -Sl cachyos | grep -F '[installed]' | awk '{printf \"%s \033[0;32m%s\033[0m\n\", \$2, \$3}'"
+alias pip-update="python3 -m pip install --upgrade pip"
 
 # Development
-alias pyvenv='python3 -m venv .venv && source .venv/bin/activate'
-alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias g='git'
-alias gcb='git checkout -b'
-alias gpull='git pull --rebase'
-alias gpush='git push --force-with-lease'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias pyvenv="python3 -m venv .venv && source .venv/bin/activate"
+alias dotfiles="git --git-dir=\$HOME/.dotfiles/ --work-tree=\$HOME"
+
+# Git
+alias git-cb="git checkout -b"
+alias git-pull="git pull --rebase"
+alias git-push="git push --force-with-lease"
+alias git-log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
