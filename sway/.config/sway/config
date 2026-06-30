@@ -52,6 +52,7 @@ font pango:Iosevka 8
 
 gaps inner 8
 default_border pixel 2
+default_floating_border pixel 2
 
 set {
     $black   #000000
@@ -62,13 +63,14 @@ set {
     $blue    #4a7bb0
 }
 
-client.background        $black   $base    $black $black   $black
-client.focused           $blue    $surface $blue  $blue    $surface
-client.focused_inactive  $surface $base    $blue  $surface $base
-client.focused_tab_title $surface $base    $blue  $surface $base
-client.unfocused         $surface $base    $blue  $surface $base
-client.urgent            $red     $black   $blue  $red     $black
-client.placeholder       $black   $base    $blue  $black   $base
+# 	                     border   background text 	indicator child_border
+client.background        $black   $base      $black $black    $black
+client.focused           $blue    $surface   $blue  $blue     $surface
+client.focused_inactive  $surface $base      $blue  $surface  $base
+client.focused_tab_title $surface $base      $blue  $surface  $base
+client.unfocused         $surface $base      $blue  $surface  $base
+client.urgent            $red     $black     $blue  $red      $black
+client.placeholder       $black   $base      $blue  $black    $base
 
 # Status bar
 
@@ -132,14 +134,10 @@ for_window {
     [app_id="com.ayugram.desktop"] opacity 0.9
     [instance="spotify"] move container to workspace 10, workspace 10, opacity 0.9
 
-    [title="About*"] floating enable, move position center
-    [title="about*"] floating enable, move position center
-    [title="Hakkında*"] floating enable, move position center
-    [title="hakkında*"] floating enable, move position center
     [title="OCR Result"] floating enable, move position center
-    [title="Sound Manager"] floating enable, move position center
-    [title="Network Manager"] floating enable, move position center
-    [title="Bluetooth Manager"] floating enable, move position center
+    [title="Sound Manager" app_id="foot"] floating enable, move position center
+    [title="Network Manager" app_id="foot"] floating enable, move position center
+    [title="Bluetooth Manager" app_id="foot"] floating enable, move position center
 
     [app_id="org.cachyos.hello"] floating enable, move position center
     [app_id="cute-sway-recorder"] floating enable, move position center
@@ -214,7 +212,7 @@ bindsym {
     $mod+Shift+c exec cliphist wipe # Clipboard clear
 
     # Suprise
-    XF86Calculator exec xdg-open "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    XF86Calculator exec xdg-open "https://youtube.com/watch?v=tg8Jahz6RM4"
 
     # Backlight Control
     XF86MonBrightnessUp exec brightnessctl set +1% | grep -oP '\(\K[^%]+' > $XDG_RUNTIME_DIR/wob.sock
