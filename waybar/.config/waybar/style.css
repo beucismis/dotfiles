@@ -3,10 +3,12 @@
 @define-color active-background #1c1c1c;
 @define-color main-text #e0e0e0;
 
-@define-color accent-gray #e0e0e0;
+@define-color accent-red #cc4444;
+@define-color accent-green #529961;
+@define-color accent-blue #4a7bb0;
 @define-color accent-yellow #cfa053;
 @define-color accent-purple #9c6ca6;
-@define-color accent-red #cc4444;
+@define-color accent-gray #e0e0e0;
 
 * {
     border: 0;
@@ -69,18 +71,12 @@ tooltip label {
     background-color: @card-background;
 }
 
-#mode,
-#clock,
-#mpris {
-    background-color: @card-background;
-}
-
 #mode {
-    border-top: 1px solid @accent-yellow;
+    color: @accent-yellow;
 }
 
-#mpris {
-    border-top: 1px solid @accent-purple;
+#mpris.paused {
+    color: @accent-red;
 }
 
 #backlight,
@@ -98,15 +94,15 @@ tooltip label {
 }
 
 #wireplumber.muted {
-    border-top: 1px solid @accent-red;
+    color: @accent-red;
 }
 
 #battery.warning {
-    border-top: 1px solid @accent-yellow;
+    color: @accent-yellow;
 }
 
 #battery.critical {
-    border-top: 1px solid @accent-red;
+    color: @accent-red;
 }
 
 #network {
@@ -115,7 +111,7 @@ tooltip label {
 
 #network.disabled,
 #network.disconnected {
-    border-top: 1px solid @accent-red;
+    color: @accent-red;
 }
 
 #tray {
@@ -135,7 +131,7 @@ tooltip label {
 #tray menu {
     padding: 2px;
     color: @main-text;
-    background: @card-background;
+    background-color: @card-background;
 }
 
 #tray menu menuitem {
