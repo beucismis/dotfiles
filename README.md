@@ -84,6 +84,6 @@ This repository contains the configuration files and scripts that I use daily wo
 
 Wallpaper source: https://artvee.com/dl/felsenriff-am-meeresstrand
 
-![](https://github.com/user-attachments/assets/ff8f4ba3-eb33-49fa-a4f2-6ee329e26809)
+![](https://github.com/user-attachments/assets/04563aaf-d9fc-44e3-855d-6dafd5f31792)
 
-![](https://github.com/user-attachments/assets/ab9de87b-485e-41e5-82c3-da5f72f2418a)
+![](https://github.com/user-attachments/assets/8e72cd1f-ea54-4682-809c-587255264b55)
